@@ -1,0 +1,26 @@
+<resources>
+  <dimen name="textsize_main_title">
+    16.0sp
+  </dimen>
+  <dimen name="margin_main_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="padding_main_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="padding_main_20dp">
+    26.67dp
+  </dimen>
+  <dimen name="textsize_search_title">
+    16.0sp
+  </dimen>
+  <dimen name="margin_search_20dp">
+    26.67dp
+  </dimen>
+  <dimen name="margin_search_25dp">
+    33.33dp
+  </dimen>
+  <dimen name="padding_search_5dp">
+    6.67dp
+  </dimen>
+</resources>

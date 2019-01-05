@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Main-->
+    <dimen name="textsize_main_title">12sp</dimen>
+
+    <dimen name="margin_main_10dp">10dp</dimen>
+
+    <dimen name="padding_main_10dp">10dp</dimen>
+    <dimen name="padding_main_20dp">20dp</dimen>
+
+    <!--Search-->
+    <dimen name="textsize_search_title">12sp</dimen>
+
+    <dimen name="margin_search_20dp">20dp</dimen>
+    <dimen name="margin_search_25dp">25dp</dimen>
+
+    <dimen name="padding_search_5dp">5dp</dimen>
+</resources>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Music</string>
+
+    <!--Main-->
+    <string name="main_title">Tìm kiếm bài hát, ca sĩ, playlist</string>
+    <string name="main_hint">   Nhập từ khóa ...</string>
+
+    <!--Search-->
+    <string name="search_song">Bài hát</string>
+    <string name="search_singer">Ca sĩ</string>
+    <string name="search_playlist">Playlist</string>
+    <string name="search_history">Lịch sử tìm kiếm</string>
+    <string name="search_deleteall">Xóa hết</string>
+
+    <!--Music-->
+    <string name="music_song">Bài hát</string>
+    <string name="music_favorite">Yêu thích</string>
+    <string name="music_singer">Ca sĩ</string>
+    <string name="music_playlist">Danh sách</string>
+</resources>
