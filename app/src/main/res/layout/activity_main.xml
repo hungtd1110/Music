@@ -1,54 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.admin.music.view.main.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbarlayout_main_search"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
-        <FrameLayout
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbarlayout_main_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar_main_toolbar"
-                android:background="@color/main_search"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="?actionBarSize">
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <TextView
-                    android:text="@string/main_title"
-                    android:textSize="@dimen/textsize_main_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar_main_toolbar"
+                    android:background="@color/main_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize">
 
-            </android.support.v7.widget.Toolbar>
+                    <TextView
+                        android:text="@string/main_title"
+                        android:textSize="@dimen/textsize_main_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
-            <com.miguelcatalan.materialsearchview.MaterialSearchView
-                android:id="@+id/materialsearchview_main_search"
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                android:hint="@string/main_hint">
-            </com.miguelcatalan.materialsearchview.MaterialSearchView>
+                </android.support.v7.widget.Toolbar>
 
+                <com.miguelcatalan.materialsearchview.MaterialSearchView
+                    android:id="@+id/materialsearchview_main_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:hint="@string/main_hint">
+                </com.miguelcatalan.materialsearchview.MaterialSearchView>
+
+            </FrameLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <FrameLayout
+            android:id="@+id/framlayout_main_content"
+            android:background="@color/all_background"
+            android:paddingLeft="@dimen/padding_main_10dp"
+            android:paddingBottom="@dimen/padding_main_10dp"
+            android:paddingRight="@dimen/padding_main_10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
         </FrameLayout>
 
-    </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
-    <FrameLayout
-        android:id="@+id/framlayout_main_content"
+    <LinearLayout
+        android:id="@+id/linearlayout_main_progressbar"
         android:background="@color/all_background"
-        android:paddingLeft="@dimen/padding_main_10dp"
-        android:paddingBottom="@dimen/padding_main_10dp"
-        android:paddingRight="@dimen/padding_main_10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    </FrameLayout>
+        android:layout_height="match_parent">
 
-</android.support.design.widget.CoordinatorLayout>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</FrameLayout>

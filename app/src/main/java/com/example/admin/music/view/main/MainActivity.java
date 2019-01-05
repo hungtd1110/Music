@@ -1,20 +1,36 @@
 package com.example.admin.music.view.main;
 
+import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.admin.music.R;
+import com.example.admin.music.model.entity.Playlist;
+import com.example.admin.music.model.entity.Singer;
+import com.example.admin.music.model.entity.Song;
+import com.example.admin.music.presenter.main.MainPresenter;
 import com.example.admin.music.view.music.MusicFragment;
 import com.example.admin.music.view.search.SearchFragment;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
-public class MainActivity extends AppCompatActivity {
-    public static MaterialSearchView msvSearch;
+import java.util.ArrayList;
 
+public class MainActivity extends AppCompatActivity implements MainListener {
+    public static MaterialSearchView msvSearch;
+    public static ArrayList<Song> listSong;
+    public static ArrayList<Song> listFavorite;
+    public static ArrayList<Singer> listSinger;
+    public static ArrayList<Playlist> listPlaylist;
+
+    private MainPresenter presenter = new MainPresenter(this);
     private FragmentTransaction fragmentTransaction;
+    private LinearLayout llProgressBar;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
         //controls
         msvSearch = findViewById(R.id.materialsearchview_main_search);
+        llProgressBar = findViewById(R.id.linearlayout_main_progressbar);
 
         //init
-        //show music
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.framlayout_main_content, new MusicFragment());
-        fragmentTransaction.commit();
+        handler.post(runnable);
 
         //events
         msvSearch.setOnSearchViewListener(searchView);
@@ -56,6 +70,26 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void show(ArrayList<Song> listSong, ArrayList<Song> listFavorite, ArrayList<Singer> listSinger, ArrayList<Playlist> listPlaylist) {
+        //set data
+        this.listSong = listSong;
+        this.listFavorite = listFavorite;
+        this.listSinger = listSinger;
+        this.listPlaylist = listPlaylist;
+
+        //show music
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.framlayout_main_content, new MusicFragment());
+        fragmentTransaction.commit();
+
+        //gone progressbar
+        llProgressBar.setVisibility(View.GONE);
+
+        //remove runnable
+        handler.removeCallbacks(runnable);
+    }
+
     private MaterialSearchView.SearchViewListener searchView = new MaterialSearchView.SearchViewListener() {
         SearchFragment fragment = new SearchFragment();
         @Override
@@ -72,6 +106,13 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.remove(fragment);
             fragmentTransaction.commit();
+        }
+    };
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            presenter.getData(getApplicationContext());
         }
     };
 }

@@ -8,6 +8,7 @@
     <dimen name="padding_main_10dp">10dp</dimen>
     <dimen name="padding_main_20dp">20dp</dimen>
 
+
     <!--Search-->
     <dimen name="textsize_search_title">12sp</dimen>
 
@@ -15,4 +16,49 @@
     <dimen name="margin_search_25dp">25dp</dimen>
 
     <dimen name="padding_search_5dp">5dp</dimen>
+
+
+    <!--Song-->
+    <dimen name="width_song_image">55dp</dimen>
+    <dimen name="height_song_image">55dp</dimen>
+    <dimen name="width_song_delete">60dp</dimen>
+    <dimen name="height_song_delete">55dp</dimen>
+
+    <dimen name="textsize_song_name">14sp</dimen>
+    <dimen name="textsize_song_singer">12sp</dimen>
+
+    <dimen name="margin_song_10dp">10dp</dimen>
+    <dimen name="margin_song_30dp">30dp</dimen>
+
+    <dimen name="padding_song_10dp">10dp</dimen>
+
+    <!--Singer-->
+    <dimen name="width_singer_image">55dp</dimen>
+    <dimen name="height_singer_image">55dp</dimen>
+    <dimen name="width_singer_delete">60dp</dimen>
+    <dimen name="height_singer_delete">55dp</dimen>
+
+    <dimen name="textsize_singer_name">14sp</dimen>
+    <dimen name="textsize_singer_singer">12sp</dimen>
+
+    <dimen name="margin_singer_10dp">10dp</dimen>
+    <dimen name="margin_singer_30dp">30dp</dimen>
+
+    <dimen name="padding_singer_10dp">10dp</dimen>
+
+    <!--Detail Song-->
+    <dimen name="radius_detailsong_indicator">2dp</dimen>
+
+    <dimen name="size_detailsong">48dp</dimen>
+    <dimen name="textsize_detailsong_name">14sp</dimen>
+    <dimen name="textsize_detailsong_singer">12sp</dimen>
+    <dimen name="textsize_detailsong_time">12sp</dimen>
+
+    <dimen name="margin_detailsong_10dp">10dp</dimen>
+    <dimen name="margin_detailsong_15dp">15dp</dimen>
+    <dimen name="margin_detailsong_20dp">20dp</dimen>
+    <dimen name="margin_detailsong_25dp">25dp</dimen>
+
+    <dimen name="padding_detailsong_5dp">5dp</dimen>
+    <dimen name="padding_detailsong_10dp">10dp</dimen>
 </resources>

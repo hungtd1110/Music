@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_gravity="right"
+        android:paddingTop="@dimen/padding_song_10dp"
+        android:layout_width="@dimen/width_song_delete"
+        android:layout_height="@dimen/height_song_delete">
+
+        <ImageView
+            android:id="@+id/imageview_song_delete"
+            android:src="@mipmap/all_delete"
+            android:padding="@dimen/padding_song_10dp"
+            android:background="@color/all_delete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:paddingTop="@dimen/padding_song_10dp"
+        android:background="@color/all_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageview_song_image"
+            android:scaleType="fitXY"
+            android:layout_width="@dimen/width_song_image"
+            android:layout_height="@dimen/height_song_image" />
+
+        <RelativeLayout
+            android:layout_toLeftOf="@id/imageview_detailsong_clock"
+            android:layout_toRightOf="@+id/imageview_song_image"
+            android:layout_marginLeft="@dimen/margin_song_10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_song_name"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="@dimen/textsize_song_name"
+                android:text="Tên bài hát rất là dài và sẽ xuống dòng"
+                android:textColor="@color/song_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textview_song_singer"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/textsize_song_singer"
+                android:layout_below="@+id/textview_song_name"
+                android:text="Tên ca sĩ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageview_song_option"
+            android:src="@mipmap/all_option"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</com.daimajia.swipe.SwipeLayout>

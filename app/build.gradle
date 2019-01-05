@@ -28,4 +28,8 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     //material_search_view
     implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+    //swipelayout
+    implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
+    //indicator_view
+    implementation 'com.romandanylyk:pageindicatorview:1.0.1@aar'
 }

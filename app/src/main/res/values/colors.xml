@@ -6,6 +6,7 @@
 
     <!--All-->
     <color name="all_background">#ffffff</color>
+    <color name="all_delete">#009688</color>
 
     <!--Main-->
     <color name="main_search">#ffffff</color>
@@ -13,4 +14,14 @@
     <!--Search-->
     <color name="search_title">#000000</color>
     <color name="search_deleteall">#009688</color>
+
+    <!--Song-->
+    <color name="song_name">#000000</color>
+
+    <!--Singer-->
+    <color name="singer_name">#000000</color>
+
+    <!--Detail Song-->
+    <color name="detailsong_name">#000000</color>
+    <color name="detailsong_time">#000000</color>
 </resources>
