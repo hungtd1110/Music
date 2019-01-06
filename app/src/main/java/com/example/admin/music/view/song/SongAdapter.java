@@ -59,7 +59,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
                 holder.imvImage.setImageBitmap(bm);
             }
         } catch (Exception e) {
-            Log.e("erorrs", "item_song_list: " + e.toString());
+            Log.e("erorrs_itemsong", e.toString());
         }
     }
 
@@ -82,6 +82,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
             txtSinger = itemView.findViewById(R.id.textview_song_singer);
 
             //events
+            imvOption.setOnClickListener(this);
             itemView.setOnClickListener(this);
         }
 

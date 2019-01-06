@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
 
         //init
         presenter = new MainPresenter(this);
+
         handler.post(runnable);
 
         //events

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Main-->
-    <dimen name="textsize_main_title">12sp</dimen>
+    <dimen name="textsize_main_title">14sp</dimen>
 
     <dimen name="margin_main_10dp">10dp</dimen>
 
@@ -32,6 +32,20 @@
 
     <dimen name="padding_song_10dp">10dp</dimen>
 
+    <!--Favorite-->
+    <dimen name="width_favorite_image">55dp</dimen>
+    <dimen name="height_favorite_image">55dp</dimen>
+    <dimen name="width_favorite_delete">60dp</dimen>
+    <dimen name="height_favorite_delete">65dp</dimen>
+
+    <dimen name="textsize_favorite_name">14sp</dimen>
+    <dimen name="textsize_favorite_singer">12sp</dimen>
+
+    <dimen name="margin_favorite_10dp">10dp</dimen>
+    <dimen name="margin_favorite_30dp">30dp</dimen>
+
+    <dimen name="padding_favorite_10dp">10dp</dimen>
+
     <!--Singer-->
     <dimen name="width_singer_image">55dp</dimen>
     <dimen name="height_singer_image">55dp</dimen>
@@ -39,17 +53,33 @@
     <dimen name="height_singer_delete">65dp</dimen>
 
     <dimen name="textsize_singer_name">14sp</dimen>
-    <dimen name="textsize_singer_singer">12sp</dimen>
+    <dimen name="textsize_singer_total">12sp</dimen>
 
     <dimen name="margin_singer_10dp">10dp</dimen>
     <dimen name="margin_singer_30dp">30dp</dimen>
 
     <dimen name="padding_singer_10dp">10dp</dimen>
 
+    <!--Playlist-->
+    <dimen name="width_playlist_image">55dp</dimen>
+    <dimen name="height_playlist_image">55dp</dimen>
+    <dimen name="width_playlist_delete">60dp</dimen>
+    <dimen name="height_playlist_delete">65dp</dimen>
+
+    <dimen name="textsize_playlist_name">14sp</dimen>
+    <dimen name="textsize_playlist_total">12sp</dimen>
+
+    <dimen name="margin_playlist_10dp">10dp</dimen>
+    <dimen name="margin_playlist_30dp">30dp</dimen>
+
+    <dimen name="padding_playlist_10dp">10dp</dimen>
+
     <!--Detail Song-->
     <dimen name="radius_detailsong_indicator">2dp</dimen>
 
-    <dimen name="size_detailsong">48dp</dimen>
+    <dimen name="size_detailsong_32dp">32dp</dimen>
+    <dimen name="size_detailsong_48dp">48dp</dimen>
+
     <dimen name="textsize_detailsong_name">14sp</dimen>
     <dimen name="textsize_detailsong_singer">12sp</dimen>
     <dimen name="textsize_detailsong_time">12sp</dimen>
@@ -63,8 +93,8 @@
     <dimen name="padding_detailsong_5dp">5dp</dimen>
     <dimen name="padding_detailsong_10dp">10dp</dimen>
 
-    <!--Dialog List-->
-    <dimen name="textsize_list_total">14sp</dimen>
+    <!--List-->
+    <dimen name="textsize_list_title">14sp</dimen>
     <dimen name="textsize_list_index">16sp</dimen>
     <dimen name="textsize_list_name">16sp</dimen>
     <dimen name="textsize_list_singer">14sp</dimen>
@@ -77,4 +107,36 @@
     <dimen name="margin_list_60dp">60dp</dimen>
 
     <dimen name="padding_list_10dp">10dp</dimen>
+
+    <!--Speed-->
+    <dimen name="size_speed_48dp">48dp</dimen>
+
+    <dimen name="textsize_speed_title">14sp</dimen>
+    <dimen name="textsize_speed_speed">16sp</dimen>
+
+    <dimen name="margin_speed_15dp">15dp</dimen>
+    <dimen name="margin_speed_20dp">20dp</dimen>
+    <dimen name="margin_speed_25dp">25dp</dimen>
+
+    <!--Add-->
+    <dimen name="width_add_image">55dp</dimen>
+    <dimen name="height_add_image">55dp</dimen>
+    <dimen name="width_add_delete">60dp</dimen>
+    <dimen name="height_add_delete">65dp</dimen>
+
+    <dimen name="size_add_32dp">32dp</dimen>
+
+    <dimen name="textsize_add_title">14sp</dimen>
+    <dimen name="textsize_add_name">14sp</dimen>
+    <dimen name="textsize_add_total">12sp</dimen>
+
+    <dimen name="margin_add_5dp">5dp</dimen>
+    <dimen name="margin_add_10dp">10dp</dimen>
+    <dimen name="margin_add_15dp">15dp</dimen>
+    <dimen name="margin_add_20dp">20dp</dimen>
+    <dimen name="margin_add_30dp">30dp</dimen>
+    <dimen name="margin_add_45dp">45dp</dimen>
+
+    <dimen name="padding_add_5dp">5dp</dimen>
+    <dimen name="padding_add_10dp">10dp</dimen>
 </resources>

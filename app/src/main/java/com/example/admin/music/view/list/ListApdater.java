@@ -1,4 +1,4 @@
-package com.example.admin.music.view.detail_song;
+package com.example.admin.music.view.list;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
+import com.example.admin.music.view.detail_song.DetailSongViewListener;
 
 import java.util.ArrayList;
 

@@ -4,8 +4,10 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 
+import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Singer;
 import com.example.admin.music.model.entity.Song;
@@ -28,7 +30,8 @@ public class MainModel {
     private ArrayList<Song> listFavorite;
     private ArrayList<Singer> listSinger;
     private ArrayList<Playlist> listPlaylist;
-    private String file_playlist = "playlist", file_favorite = "favorite";
+
+    private final String file_playlist = "playlist", file_favorite = "favorite";
 
     public MainModel(MainPresenterListener callBack) {
         this.callBack = callBack;
@@ -50,7 +53,6 @@ public class MainModel {
     }
 
     private void getListPlayList(Context context) {
-        listPlaylist.clear();
         File file = new File(context.getFilesDir(), file_playlist);
         try {
             FileInputStream fis = new FileInputStream(file);
@@ -103,7 +105,6 @@ public class MainModel {
     }
 
     private void getListFavorite(Context context) {
-        listFavorite.clear();
         File file = new File(context.getFilesDir(), file_favorite);
         try {
             FileInputStream fis = new FileInputStream(file);

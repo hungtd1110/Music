@@ -17,4 +17,14 @@
     <string name="music_favorite">Yêu thích</string>
     <string name="music_singer">Ca sĩ</string>
     <string name="music_playlist">Danh sách</string>
+
+    <!--Speed-->
+    <string name="speed_title">Chọn tốc độ</string>
+
+    <!--Add-->
+    <string name="add_title">Tạo danh sách nhạc</string>
+    <string name="add_close">Đóng</string>
+    <string name="add_create">Đồng ý</string>
+    <string name="add_cancel">Hủy bỏ</string>
+    <string name="add_notify">Đã thêm vào danh sách nhạc</string>
 </resources>

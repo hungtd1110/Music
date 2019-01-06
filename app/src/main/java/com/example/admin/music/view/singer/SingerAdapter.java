@@ -57,7 +57,7 @@ public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHolder
                 holder.imvImage.setImageBitmap(bm);
             }
         } catch (Exception e) {
-            Log.e("erorrs", "item_singer_list: " + e.toString());
+            Log.e("erorrs_itemsinger", e.toString());
         }
     }
 
@@ -67,7 +67,7 @@ public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imvImage, imvOption;
+        private ImageView imvImage;
         private TextView txtName, txtTotal;
 
         public ViewHolder(View itemView) {
@@ -75,7 +75,6 @@ public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHolder
 
             //controls
             imvImage = itemView.findViewById(R.id.imageview_singer_image);
-            imvOption = itemView.findViewById(R.id.imageview_singer_option);
             txtName = itemView.findViewById(R.id.textview_singer_name);
             txtTotal = itemView.findViewById(R.id.textview_singer_total);
         }

@@ -18,8 +18,14 @@
     <!--Song-->
     <color name="song_name">#000000</color>
 
+    <!--Favorite-->
+    <color name="favorite_name">#000000</color>
+
     <!--Singer-->
     <color name="singer_name">#000000</color>
+
+    <!--Playlist-->
+    <color name="playlist_name">#000000</color>
 
     <!--Detail Song-->
     <color name="detailsong_name">#000000</color>
@@ -30,4 +36,15 @@
     <color name="list_index">#000000</color>
     <color name="list_name">#000000</color>
     <color name="list_select">#009688</color>
+
+    <!--Speed-->
+    <color name="speed_title">#000000</color>
+    <color name="speed_speed">#000000</color>
+
+    <!--Add-->
+    <color name="add_title">#000000</color>
+    <color name="add_close">#009688</color>
+    <color name="add_name">#000000</color>
+    <color name="add_create">#009688</color>
+    <color name="add_cancel">#009688</color>
 </resources>

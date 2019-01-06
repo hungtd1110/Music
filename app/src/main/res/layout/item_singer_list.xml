@@ -5,7 +5,7 @@
 
     <LinearLayout
         android:layout_gravity="right"
-        android:paddingTop="@dimen/padding_song_10dp"
+        android:paddingTop="@dimen/padding_singer_10dp"
         android:layout_width="@dimen/width_singer_delete"
         android:layout_height="@dimen/height_singer_delete">
 
@@ -29,13 +29,12 @@
             android:id="@+id/imageview_singer_image"
             android:src="@drawable/all_image"
             android:scaleType="fitXY"
-            android:layout_width="@dimen/width_song_image"
-            android:layout_height="@dimen/height_song_image" />
+            android:layout_width="@dimen/width_singer_image"
+            android:layout_height="@dimen/height_singer_image" />
 
         <RelativeLayout
-            android:layout_toLeftOf="@id/imageview_singer_option"
             android:layout_toRightOf="@+id/imageview_singer_image"
-            android:layout_marginLeft="@dimen/margin_song_10dp"
+            android:layout_marginLeft="@dimen/margin_singer_10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -43,7 +42,7 @@
                 android:id="@+id/textview_singer_name"
                 android:maxLines="2"
                 android:ellipsize="end"
-                android:textSize="@dimen/textsize_song_name"
+                android:textSize="@dimen/textsize_singer_name"
                 android:text="Tên ca sĩ rất là dài và sẽ xuống dòng"
                 android:textColor="@color/singer_name"
                 android:layout_width="wrap_content"
@@ -53,21 +52,13 @@
                 android:id="@+id/textview_singer_total"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:textSize="@dimen/textsize_song_singer"
+                android:textSize="@dimen/textsize_singer_total"
                 android:layout_below="@+id/textview_singer_name"
                 android:text="N bài hát"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/imageview_singer_option"
-            android:src="@mipmap/all_option"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 

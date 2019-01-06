@@ -8,7 +8,7 @@
     android:background="@color/all_background"
     tools:context="com.example.admin.music.view.detail_song.DetaiSongActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearlayout_detailsong_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -16,13 +16,16 @@
         <ImageView
             android:id="@+id/imageview_detailsong_back"
             android:src="@drawable/detailsong_back"
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:padding="@dimen/padding_detailsong_5dp"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/size_detailsong_32dp"
+            android:layout_height="@dimen/size_detailsong_32dp" />
 
         <RelativeLayout
+            android:layout_toLeftOf="@id/imageview_detailsong_clock"
+            android:layout_toRightOf="@id/imageview_detailsong_back"
             android:layout_marginLeft="@dimen/margin_detailsong_10dp"
-            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -46,7 +49,16 @@
 
         </RelativeLayout>
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/imageview_detailsong_clock"
+            android:src="@drawable/detailsong_notclock"
+            android:padding="@dimen/padding_detailsong_5dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/size_detailsong_32dp"
+            android:layout_height="@dimen/size_detailsong_32dp" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/linearlayout_detailsong_media"
@@ -61,16 +73,16 @@
             android:padding="@dimen/padding_detailsong_5dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_width="@dimen/size_detailsong"
-            android:layout_height="@dimen/size_detailsong" />
+            android:layout_width="@dimen/size_detailsong_48dp"
+            android:layout_height="@dimen/size_detailsong_48dp" />
 
         <ImageView
             android:id="@+id/imageview_detailsong_previous"
             android:src="@mipmap/detailsong_previous"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_width="@dimen/size_detailsong"
-            android:layout_height="@dimen/size_detailsong" />
+            android:layout_width="@dimen/size_detailsong_48dp"
+            android:layout_height="@dimen/size_detailsong_48dp" />
 
         <RelativeLayout
             android:layout_weight="1"
@@ -83,15 +95,15 @@
                 android:src="@mipmap/detailsong_play"
                 android:visibility="invisible"
                 android:layout_centerInParent="true"
-                android:layout_width="@dimen/size_detailsong"
-                android:layout_height="@dimen/size_detailsong" />
+                android:layout_width="@dimen/size_detailsong_48dp"
+                android:layout_height="@dimen/size_detailsong_48dp" />
 
             <ProgressBar
                 android:id="@+id/progressbar_detailsong_load"
                 android:padding="@dimen/padding_detailsong_2dp"
                 android:layout_centerInParent="true"
-                android:layout_width="@dimen/size_detailsong"
-                android:layout_height="@dimen/size_detailsong" />
+                android:layout_width="@dimen/size_detailsong_48dp"
+                android:layout_height="@dimen/size_detailsong_48dp" />
 
         </RelativeLayout>
 
@@ -100,8 +112,8 @@
             android:src="@mipmap/detailsong_next"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_width="@dimen/size_detailsong"
-            android:layout_height="@dimen/size_detailsong" />
+            android:layout_width="@dimen/size_detailsong_48dp"
+            android:layout_height="@dimen/size_detailsong_48dp" />
 
         <ImageView
             android:id="@+id/imageview_detailsong_list"
@@ -109,8 +121,8 @@
             android:padding="@dimen/padding_detailsong_5dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_width="@dimen/size_detailsong"
-            android:layout_height="@dimen/size_detailsong" />
+            android:layout_width="@dimen/size_detailsong_48dp"
+            android:layout_height="@dimen/size_detailsong_48dp" />
 
     </LinearLayout>
 
@@ -162,32 +174,32 @@
             android:src="@mipmap/detailsong_notfavorite"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_width="@dimen/size_detailsong"
-            android:layout_height="@dimen/size_detailsong" />
+            android:layout_width="@dimen/size_detailsong_48dp"
+            android:layout_height="@dimen/size_detailsong_48dp" />
 
         <ImageView
             android:id="@+id/imageview_detailsong_speed"
             android:src="@mipmap/detailsong_speed"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_width="@dimen/size_detailsong"
-            android:layout_height="@dimen/size_detailsong" />
+            android:layout_width="@dimen/size_detailsong_48dp"
+            android:layout_height="@dimen/size_detailsong_48dp" />
 
         <ImageView
             android:id="@+id/imageview_detailsong_add"
             android:src="@mipmap/detailsong_add"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_width="@dimen/size_detailsong"
-            android:layout_height="@dimen/size_detailsong" />
+            android:layout_width="@dimen/size_detailsong_48dp"
+            android:layout_height="@dimen/size_detailsong_48dp" />
 
         <ImageView
-            android:id="@+id/imageview_detailsong_clock"
-            android:src="@mipmap/detailsong_clock"
+            android:id="@+id/imageview_detailsong_option"
+            android:src="@mipmap/detailsong_option"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:layout_width="@dimen/size_detailsong"
-            android:layout_height="@dimen/size_detailsong" />
+            android:layout_width="@dimen/size_detailsong_48dp"
+            android:layout_height="@dimen/size_detailsong_48dp" />
     </LinearLayout>
 
     <RelativeLayout

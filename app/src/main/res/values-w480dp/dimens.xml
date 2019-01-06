@@ -1,6 +1,6 @@
 <resources>
   <dimen name="textsize_main_title">
-    16.0sp
+    18.67sp
   </dimen>
   <dimen name="margin_main_10dp">
     13.33dp
@@ -50,6 +50,33 @@
   <dimen name="padding_song_10dp">
     13.33dp
   </dimen>
+  <dimen name="width_favorite_image">
+    73.33dp
+  </dimen>
+  <dimen name="height_favorite_image">
+    73.33dp
+  </dimen>
+  <dimen name="width_favorite_delete">
+    80.0dp
+  </dimen>
+  <dimen name="height_favorite_delete">
+    86.67dp
+  </dimen>
+  <dimen name="textsize_favorite_name">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_favorite_singer">
+    16.0sp
+  </dimen>
+  <dimen name="margin_favorite_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="margin_favorite_30dp">
+    40.0dp
+  </dimen>
+  <dimen name="padding_favorite_10dp">
+    13.33dp
+  </dimen>
   <dimen name="width_singer_image">
     73.33dp
   </dimen>
@@ -65,7 +92,7 @@
   <dimen name="textsize_singer_name">
     18.67sp
   </dimen>
-  <dimen name="textsize_singer_singer">
+  <dimen name="textsize_singer_total">
     16.0sp
   </dimen>
   <dimen name="margin_singer_10dp">
@@ -77,10 +104,40 @@
   <dimen name="padding_singer_10dp">
     13.33dp
   </dimen>
+  <dimen name="width_playlist_image">
+    73.33dp
+  </dimen>
+  <dimen name="height_playlist_image">
+    73.33dp
+  </dimen>
+  <dimen name="width_playlist_delete">
+    80.0dp
+  </dimen>
+  <dimen name="height_playlist_delete">
+    86.67dp
+  </dimen>
+  <dimen name="textsize_playlist_name">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_playlist_total">
+    16.0sp
+  </dimen>
+  <dimen name="margin_playlist_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="margin_playlist_30dp">
+    40.0dp
+  </dimen>
+  <dimen name="padding_playlist_10dp">
+    13.33dp
+  </dimen>
   <dimen name="radius_detailsong_indicator">
     2.67dp
   </dimen>
-  <dimen name="size_detailsong">
+  <dimen name="size_detailsong_32dp">
+    42.67dp
+  </dimen>
+  <dimen name="size_detailsong_48dp">
     64.0dp
   </dimen>
   <dimen name="textsize_detailsong_name">
@@ -113,7 +170,7 @@
   <dimen name="padding_detailsong_10dp">
     13.33dp
   </dimen>
-  <dimen name="textsize_list_total">
+  <dimen name="textsize_list_title">
     18.67sp
   </dimen>
   <dimen name="textsize_list_index">
@@ -144,6 +201,72 @@
     80.0dp
   </dimen>
   <dimen name="padding_list_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="size_speed_48dp">
+    64.0dp
+  </dimen>
+  <dimen name="textsize_speed_title">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_speed_speed">
+    21.33sp
+  </dimen>
+  <dimen name="margin_speed_15dp">
+    20.0dp
+  </dimen>
+  <dimen name="margin_speed_20dp">
+    26.67dp
+  </dimen>
+  <dimen name="margin_speed_25dp">
+    33.33dp
+  </dimen>
+  <dimen name="width_add_image">
+    73.33dp
+  </dimen>
+  <dimen name="height_add_image">
+    73.33dp
+  </dimen>
+  <dimen name="width_add_delete">
+    80.0dp
+  </dimen>
+  <dimen name="height_add_delete">
+    86.67dp
+  </dimen>
+  <dimen name="size_add_32dp">
+    42.67dp
+  </dimen>
+  <dimen name="textsize_add_title">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_add_name">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_add_total">
+    16.0sp
+  </dimen>
+  <dimen name="margin_add_5dp">
+    6.67dp
+  </dimen>
+  <dimen name="margin_add_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="margin_add_15dp">
+    20.0dp
+  </dimen>
+  <dimen name="margin_add_20dp">
+    26.67dp
+  </dimen>
+  <dimen name="margin_add_30dp">
+    40.0dp
+  </dimen>
+  <dimen name="margin_add_45dp">
+    60.0dp
+  </dimen>
+  <dimen name="padding_add_5dp">
+    6.67dp
+  </dimen>
+  <dimen name="padding_add_10dp">
     13.33dp
   </dimen>
 </resources>

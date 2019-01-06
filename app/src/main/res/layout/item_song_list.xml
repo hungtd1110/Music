@@ -33,7 +33,7 @@
             android:layout_height="@dimen/height_song_image" />
 
         <RelativeLayout
-            android:layout_toLeftOf="@id/imageview_detailsong_clock"
+            android:layout_toLeftOf="@id/imageview_song_option"
             android:layout_toRightOf="@+id/imageview_song_image"
             android:layout_marginLeft="@dimen/margin_song_10dp"
             android:layout_width="match_parent"

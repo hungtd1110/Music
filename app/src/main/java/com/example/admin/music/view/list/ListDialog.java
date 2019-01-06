@@ -1,4 +1,4 @@
-package com.example.admin.music.view.detail_song;
+package com.example.admin.music.view.list;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,7 +31,7 @@ public class ListDialog extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.dialog_list, container, false);
 
         //controls
-        txtTotal = view.findViewById(R.id.textview_list_total);
+        txtTotal = view.findViewById(R.id.textview_list_title);
         rvList = view.findViewById(R.id.recyclerview_list_list);
 
         //init

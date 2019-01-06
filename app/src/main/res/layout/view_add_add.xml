@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/all_background">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="@dimen/padding_add_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/add_title"
+            android:layout_marginLeft="@dimen/margin_add_5dp"
+            android:layout_marginBottom="@dimen/margin_add_10dp"
+            android:textColor="@color/add_title"
+            android:textSize="@dimen/textsize_add_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editext_add_content"
+            android:layout_marginBottom="@dimen/margin_add_15dp"
+            android:padding="10dp"
+            android:textSize="@dimen/textsize_add_name"
+            android:textColor="@color/add_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_add_create"
+                android:layout_marginRight="@dimen/margin_add_5dp"
+                android:layout_alignParentRight="true"
+                android:text="@string/add_create"
+                android:textColor="@color/add_create"
+                android:textSize="@dimen/textsize_add_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textview_add_cancel"
+                android:layout_toLeftOf="@+id/textview_add_create"
+                android:layout_marginRight="@dimen/margin_add_30dp"
+                android:text="@string/add_cancel"
+                android:textColor="@color/add_cancel"
+                android:textSize="@dimen/textsize_add_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

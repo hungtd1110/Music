@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_background">
+
+    <RelativeLayout
+        android:padding="@dimen/padding_add_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linearlayout_add_add"
+            android:paddingBottom="@dimen/padding_add_5dp"
+            android:layout_marginBottom="@dimen/margin_add_15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/add_add"
+                android:layout_width="@dimen/size_add_32dp"
+                android:layout_height="@dimen/size_add_32dp" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="@string/add_title"
+                android:textSize="@dimen/textsize_add_title"
+                android:layout_marginLeft="@dimen/margin_add_10dp"
+                android:textColor="@color/add_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_add_list"
+            android:layout_marginBottom="@dimen/margin_add_45dp"
+            android:layout_below="@+id/linearlayout_add_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/textview_add_temp"
+            android:layout_below="@+id/recyclerview_add_list"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:id="@+id/textview_add_close"
+            android:layout_above="@+id/textview_add_temp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/add_close"
+            android:textColor="@color/add_close"
+            android:textSize="@dimen/textsize_add_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/all_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textview_speed_speed"
+            android:text="x0.25"
+            android:layout_marginLeft="@dimen/margin_speed_15dp"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/textsize_speed_speed"
+            android:textColor="@color/speed_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/imageview_speed_select"
+            android:visibility="invisible"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/speed_select"
+            android:layout_width="@dimen/size_speed_48dp"
+            android:layout_height="@dimen/size_speed_48dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

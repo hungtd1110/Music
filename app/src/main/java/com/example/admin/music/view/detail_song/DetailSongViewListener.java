@@ -8,4 +8,6 @@ public interface DetailSongViewListener {
     public void updateSong(int index);
 
     public void show(boolean favorite);
+
+    public void updateSpeed(float speed);
 }

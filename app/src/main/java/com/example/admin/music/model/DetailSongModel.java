@@ -1,9 +1,12 @@
 package com.example.admin.music.model;
 
 import android.content.Context;
+import android.os.Environment;
 
+import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.detail_song.DetailSongPresenterListener;
+import com.example.admin.music.view.main.MainActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,7 +24,8 @@ import java.util.ArrayList;
 public class DetailSongModel {
     private DetailSongPresenterListener callBack;
     private ArrayList<Song> list;
-    private String file_favorite = "favorite";
+
+    private final String file_favorite = "favorite";
 
     public DetailSongModel(DetailSongPresenterListener callBack) {
         this.callBack = callBack;
@@ -66,6 +70,9 @@ public class DetailSongModel {
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(list);
+
+            //reset list favorite in activity main
+            MainActivity.listFavorite = list;
         } catch (IOException e) {
             e.printStackTrace();
         }
