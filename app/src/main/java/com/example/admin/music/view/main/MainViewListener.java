@@ -10,6 +10,6 @@ import java.util.ArrayList;
  * Created by admin on 1/5/2019.
  */
 
-public interface MainListener {
+public interface MainViewListener {
     public void show(ArrayList<Song> listSong, ArrayList<Song> listFavorite, ArrayList<Singer> listSinger, ArrayList<Playlist> listPlaylist);
 }

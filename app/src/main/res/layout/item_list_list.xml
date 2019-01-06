@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/padding_list_10dp">
+
+    <RelativeLayout
+        android:layout_width="@dimen/margin_list_60dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textview_list_index"
+            android:text="1"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/list_index"
+            android:textSize="@dimen/textsize_list_index"
+            android:layout_marginLeft="@dimen/margin_list_20dp"
+            android:layout_marginTop="@dimen/margin_list_5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textview_list_name"
+        android:textSize="@dimen/textsize_list_name"
+        android:textColor="@color/list_name"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_marginLeft="@dimen/margin_list_60dp"
+        android:text="Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textview_list_singer"
+        android:textSize="@dimen/textsize_list_singer"
+        android:layout_below="@id/textview_list_name"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginLeft="@dimen/margin_list_60dp"
+        android:text="Singer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

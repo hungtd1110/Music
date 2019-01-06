@@ -6,7 +6,7 @@ import com.example.admin.music.model.MainModel;
 import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Singer;
 import com.example.admin.music.model.entity.Song;
-import com.example.admin.music.view.main.MainListener;
+import com.example.admin.music.view.main.MainViewListener;
 
 import java.util.ArrayList;
 
@@ -15,11 +15,14 @@ import java.util.ArrayList;
  */
 
 public class MainPresenter implements MainPresenterListener {
-    private MainListener callBack;
-    private MainModel model = new MainModel(this);
+    private MainViewListener callBack;
+    private MainModel model;
 
-    public MainPresenter(MainListener callBack) {
+    public MainPresenter(MainViewListener callBack) {
         this.callBack = callBack;
+
+        //init
+        model = new MainModel(this);
     }
 
     @Override

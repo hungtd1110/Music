@@ -24,4 +24,10 @@
     <!--Detail Song-->
     <color name="detailsong_name">#000000</color>
     <color name="detailsong_time">#000000</color>
+
+    <!--List-->
+    <color name="list_total">#000000</color>
+    <color name="list_index">#000000</color>
+    <color name="list_name">#000000</color>
+    <color name="list_select">#009688</color>
 </resources>

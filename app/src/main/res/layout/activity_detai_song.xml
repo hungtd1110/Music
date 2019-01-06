@@ -81,13 +81,14 @@
             <ImageView
                 android:id="@+id/imageview_detailsong_run"
                 android:src="@mipmap/detailsong_play"
+                android:visibility="invisible"
                 android:layout_centerInParent="true"
                 android:layout_width="@dimen/size_detailsong"
                 android:layout_height="@dimen/size_detailsong" />
 
             <ProgressBar
-                android:id="@+id/progressbar_song_load"
-                android:visibility="gone"
+                android:id="@+id/progressbar_detailsong_load"
+                android:padding="@dimen/padding_detailsong_2dp"
                 android:layout_centerInParent="true"
                 android:layout_width="@dimen/size_detailsong"
                 android:layout_height="@dimen/size_detailsong" />
@@ -140,7 +141,7 @@
             android:layout_height="wrap_content" />
 
         <SeekBar
-            android:id="@+id/seekbar_song_audio"
+            android:id="@+id/seekbar_detailsong_audio"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/textview_detailsong_time"
             android:layout_toLeftOf="@+id/textview_detailsong_duration"
@@ -158,31 +159,35 @@
 
         <ImageView
             android:id="@+id/imageview_detailsong_favorite"
+            android:src="@mipmap/detailsong_notfavorite"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/size_detailsong"
+            android:layout_height="@dimen/size_detailsong" />
 
         <ImageView
             android:id="@+id/imageview_detailsong_speed"
+            android:src="@mipmap/detailsong_speed"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/size_detailsong"
+            android:layout_height="@dimen/size_detailsong" />
 
         <ImageView
             android:id="@+id/imageview_detailsong_add"
+            android:src="@mipmap/detailsong_add"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/size_detailsong"
+            android:layout_height="@dimen/size_detailsong" />
 
         <ImageView
             android:id="@+id/imageview_detailsong_clock"
+            android:src="@mipmap/detailsong_clock"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/size_detailsong"
+            android:layout_height="@dimen/size_detailsong" />
     </LinearLayout>
 
     <RelativeLayout

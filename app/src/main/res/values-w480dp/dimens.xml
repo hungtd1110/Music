@@ -33,7 +33,7 @@
     80.0dp
   </dimen>
   <dimen name="height_song_delete">
-    73.33dp
+    86.67dp
   </dimen>
   <dimen name="textsize_song_name">
     18.67sp
@@ -60,7 +60,7 @@
     80.0dp
   </dimen>
   <dimen name="height_singer_delete">
-    73.33dp
+    86.67dp
   </dimen>
   <dimen name="textsize_singer_name">
     18.67sp
@@ -104,10 +104,46 @@
   <dimen name="margin_detailsong_25dp">
     33.33dp
   </dimen>
+  <dimen name="padding_detailsong_2dp">
+    2.67dp
+  </dimen>
   <dimen name="padding_detailsong_5dp">
     6.67dp
   </dimen>
   <dimen name="padding_detailsong_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="textsize_list_total">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_list_index">
+    21.33sp
+  </dimen>
+  <dimen name="textsize_list_name">
+    21.33sp
+  </dimen>
+  <dimen name="textsize_list_singer">
+    18.67sp
+  </dimen>
+  <dimen name="margin_list_5dp">
+    6.67dp
+  </dimen>
+  <dimen name="margin_list_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="margin_list_15dp">
+    20.0dp
+  </dimen>
+  <dimen name="margin_list_20dp">
+    26.67dp
+  </dimen>
+  <dimen name="margin_list_25dp">
+    33.33dp
+  </dimen>
+  <dimen name="margin_list_60dp">
+    80.0dp
+  </dimen>
+  <dimen name="padding_list_10dp">
     13.33dp
   </dimen>
 </resources>

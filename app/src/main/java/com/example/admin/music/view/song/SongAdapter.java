@@ -27,11 +27,11 @@ import java.util.ArrayList;
 
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<Song> listSong;
+    private ArrayList<Song> list;
 
-    public SongAdapter(Context context, ArrayList<Song> listSong) {
+    public SongAdapter(Context context, ArrayList<Song> list) {
         this.context = context;
-        this.listSong = listSong;
+        this.list = list;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Song song = listSong.get(position);
+        Song song = list.get(position);
 
         holder.txtName.setText(song.getName());
         holder.txtSinger.setText(song.getSinger());
@@ -65,7 +65,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return listSong.size();
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -92,6 +92,11 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
                     break;
                 default:
                     Intent intent = new Intent(context, DetaiSongActivity.class);
+
+                    //put data
+                    intent.putExtra("list", list);
+                    intent.putExtra("index", getAdapterPosition());
+
                     context.startActivity(intent);
                     break;
             }

@@ -20,14 +20,14 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements MainListener {
+public class MainActivity extends AppCompatActivity implements MainViewListener {
     public static MaterialSearchView msvSearch;
     public static ArrayList<Song> listSong;
     public static ArrayList<Song> listFavorite;
     public static ArrayList<Singer> listSinger;
     public static ArrayList<Playlist> listPlaylist;
 
-    private MainPresenter presenter = new MainPresenter(this);
+    private MainPresenter presenter;
     private FragmentTransaction fragmentTransaction;
     private LinearLayout llProgressBar;
     private Handler handler = new Handler();
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements MainListener {
         llProgressBar = findViewById(R.id.linearlayout_main_progressbar);
 
         //init
+        presenter = new MainPresenter(this);
         handler.post(runnable);
 
         //events

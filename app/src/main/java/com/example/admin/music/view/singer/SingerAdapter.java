@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Singer;
-import com.example.admin.music.model.entity.Song;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -26,11 +25,11 @@ import java.util.ArrayList;
 
 public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<Singer> listSinger;
+    private ArrayList<Singer> list;
 
-    public SingerAdapter(Context context, ArrayList<Singer> listSinger) {
+    public SingerAdapter(Context context, ArrayList<Singer> list) {
         this.context = context;
-        this.listSinger = listSinger;
+        this.list = list;
     }
 
     @Override
@@ -42,7 +41,7 @@ public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Singer singer = listSinger.get(position);
+        Singer singer = list.get(position);
 
         holder.txtName.setText(singer.getName());
         holder.txtTotal.setText(singer.getListSong().size() + " bài hát");
@@ -64,7 +63,7 @@ public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return listSinger.size();
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

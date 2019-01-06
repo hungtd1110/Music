@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class SingerFragment extends Fragment {
     private RecyclerView rvList;
-    private ArrayList<Singer> listSinger;
+    private ArrayList<Singer> list;
 
     @Nullable
     @Override
@@ -32,14 +32,14 @@ public class SingerFragment extends Fragment {
         rvList = view.findViewById(R.id.recyclerview_singer_list);
 
         //init
-        listSinger = MainActivity.listSinger;
+        list = MainActivity.listSinger;
         show();
 
         return view;
     }
 
     private void show() {
-        SingerAdapter adapter = new SingerAdapter(getContext(), listSinger);
+        SingerAdapter adapter = new SingerAdapter(getContext(), list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
