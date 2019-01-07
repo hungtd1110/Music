@@ -29,7 +29,7 @@ dependencies {
     //material_search_view
     implementation 'com.miguelcatalan:materialsearchview:1.4.0'
     //swipelayout
-    implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
+    implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
     //indicator_view
     implementation 'com.romandanylyk:pageindicatorview:1.0.1@aar'
 }

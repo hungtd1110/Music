@@ -13,7 +13,9 @@ import java.util.ArrayList;
  */
 
 public interface MainPresenterListener {
-    public void getData(Context context);
+    public void getData(Context context, String action);
 
-    public void show(ArrayList<Song> listSong, ArrayList<Song> listFavorite, ArrayList<Singer> listSinger, ArrayList<Playlist> listPlaylist);
+    public void show();
+
+    public void showUpdate();
 }

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:dragEdge="right">
 
+    <!--layout bottom-->
     <LinearLayout
         android:layout_gravity="right"
         android:paddingTop="@dimen/padding_singer_10dp"
@@ -19,6 +22,7 @@
 
     </LinearLayout>
 
+    <!--layout show-->
     <RelativeLayout
         android:paddingTop="@dimen/padding_singer_10dp"
         android:background="@color/all_background"
@@ -62,4 +66,4 @@
 
     </RelativeLayout>
 
-</com.daimajia.swipe.SwipeLayout>
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

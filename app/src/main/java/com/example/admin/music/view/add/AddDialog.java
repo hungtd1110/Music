@@ -1,5 +1,6 @@
 package com.example.admin.music.view.add;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -13,11 +14,13 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.add.AddPresenter;
+import com.example.admin.music.view.playlist.PlaylistFragment;
 
 import java.util.ArrayList;
 
@@ -62,6 +65,18 @@ public class AddDialog extends DialogFragment implements AddViewListener, View.O
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
+    }
+
+    @Override
+    public void success(Context context) {
+        PlaylistFragment.callBack.update();
+
+        Toast.makeText(context, context.getString(R.string.add_notify_success), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void fail(Context context) {
+        Toast.makeText(context, context.getString(R.string.add_notify_fail), Toast.LENGTH_SHORT).show();
     }
 
     @Override

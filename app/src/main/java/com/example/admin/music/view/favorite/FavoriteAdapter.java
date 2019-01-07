@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.view.detail_song.DetaiSongActivity;
+import com.example.admin.music.view.option.OptionDialog;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -28,10 +31,12 @@ import java.util.ArrayList;
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
     private Context context;
     private ArrayList<Song> list;
+    private FragmentManager fragmentManager;
 
-    public FavoriteAdapter(Context context, ArrayList<Song> list) {
+    public FavoriteAdapter(Context context, ArrayList<Song> list, FragmentManager fragmentManager) {
         this.context = context;
         this.list = list;
+        this.fragmentManager = fragmentManager;
     }
 
     @Override
@@ -90,13 +95,24 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.imageview_favorite_option:
+                    OptionDialog dialog = new OptionDialog();
+
+                    //get data
+                    Song song = list.get(getAdapterPosition());
+
+                    //put data
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(context.getString(R.string.key_song), song);
+
+                    dialog.setArguments(bundle);
+                    dialog.show(fragmentManager, context.getString(R.string.key_singer) + "");
                     break;
                 default:
                     Intent intent = new Intent(context, DetaiSongActivity.class);
 
                     //put data
-                    intent.putExtra("list", list);
-                    intent.putExtra("index", getAdapterPosition());
+                    intent.putExtra(context.getString(R.string.key_list), list);
+                    intent.putExtra(context.getString(R.string.key_index), getAdapterPosition());
 
                     context.startActivity(intent);
                     break;

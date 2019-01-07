@@ -11,5 +11,9 @@ import java.util.ArrayList;
  */
 
 public interface MainViewListener {
-    public void show(ArrayList<Song> listSong, ArrayList<Song> listFavorite, ArrayList<Singer> listSinger, ArrayList<Playlist> listPlaylist);
+    public void show();
+
+    public void update();
+
+    public void showUpdate();
 }

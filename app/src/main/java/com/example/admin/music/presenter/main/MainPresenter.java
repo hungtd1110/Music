@@ -26,12 +26,17 @@ public class MainPresenter implements MainPresenterListener {
     }
 
     @Override
-    public void getData(Context context) {
-        model.getData(context);
+    public void getData(Context context, String action) {
+        model.getData(context, action);
     }
 
     @Override
-    public void show(ArrayList<Song> listSong, ArrayList<Song> listFavorite, ArrayList<Singer> listSinger, ArrayList<Playlist> listPlaylist) {
-        callBack.show(listSong, listFavorite, listSinger, listPlaylist);
+    public void show() {
+        callBack.show();
+    }
+
+    @Override
+    public void showUpdate() {
+        callBack.showUpdate();
     }
 }

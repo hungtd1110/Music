@@ -308,8 +308,8 @@ public class DetaiSongActivity extends AppCompatActivity implements View.OnClick
 
     private void getData() {
         Bundle bundle = getIntent().getExtras();
-        list = (ArrayList<Song>) bundle.getSerializable("list");
-        index = bundle.getInt("index");
+        list = (ArrayList<Song>) bundle.getSerializable(getString(R.string.key_list));
+        index = bundle.getInt(getString(R.string.key_index));
         song = list.get(index);
 
         //show favorite

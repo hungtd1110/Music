@@ -1,5 +1,7 @@
 package com.example.admin.music.view.add;
 
+import android.content.Context;
+
 import com.example.admin.music.model.entity.Playlist;
 
 import java.util.ArrayList;
@@ -10,4 +12,8 @@ import java.util.ArrayList;
 
 public interface AddViewListener {
     public void show(ArrayList<Playlist> list);
+
+    public void success(Context context);
+
+    public void fail(Context context);
 }

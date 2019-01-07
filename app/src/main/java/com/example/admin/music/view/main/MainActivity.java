@@ -1,6 +1,7 @@
 package com.example.admin.music.view.main;
 
 import android.os.Handler;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,8 +15,12 @@ import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Singer;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.main.MainPresenter;
+import com.example.admin.music.view.favorite.FavoriteFragment;
 import com.example.admin.music.view.music.MusicFragment;
+import com.example.admin.music.view.playlist.PlaylistFragment;
 import com.example.admin.music.view.search.SearchFragment;
+import com.example.admin.music.view.singer.SingerFragment;
+import com.example.admin.music.view.song.SongFragment;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
@@ -26,11 +31,13 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
     public static ArrayList<Song> listFavorite;
     public static ArrayList<Singer> listSinger;
     public static ArrayList<Playlist> listPlaylist;
+    public static MainViewListener callBack;
 
     private MainPresenter presenter;
     private FragmentTransaction fragmentTransaction;
     private LinearLayout llProgressBar;
-    private Handler handler = new Handler();
+    private Handler handler;
+    private String action;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
         llProgressBar = findViewById(R.id.linearlayout_main_progressbar);
 
         //init
+        callBack = this;
+        action = getString(R.string.main_action_get);
+        handler = new Handler();
         presenter = new MainPresenter(this);
 
         handler.post(runnable);
@@ -73,13 +83,7 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
     }
 
     @Override
-    public void show(ArrayList<Song> listSong, ArrayList<Song> listFavorite, ArrayList<Singer> listSinger, ArrayList<Playlist> listPlaylist) {
-        //set data
-        this.listSong = listSong;
-        this.listFavorite = listFavorite;
-        this.listSinger = listSinger;
-        this.listPlaylist = listPlaylist;
-
+    public void show() {
         //show music
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.framlayout_main_content, new MusicFragment());
@@ -87,6 +91,30 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
 
         //gone progressbar
         llProgressBar.setVisibility(View.GONE);
+
+        //remove runnable
+        handler.removeCallbacks(runnable);
+    }
+
+    @Override
+    public void update() {
+        action = getString(R.string.main_action_update);
+        handler.post(runnable);
+    }
+
+    @Override
+    public void showUpdate() {
+        //update list song
+        SongFragment.callBack.update();
+
+        //update list favorite
+        FavoriteFragment.callBack.update();
+
+        //update list singer
+        SingerFragment.callBack.update();
+
+        //update list playlist
+        PlaylistFragment.callBack.update();
 
         //remove runnable
         handler.removeCallbacks(runnable);
@@ -114,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            presenter.getData(getApplicationContext());
+            presenter.getData(getApplicationContext(), action);
         }
     };
 }

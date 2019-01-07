@@ -17,4 +17,8 @@ public interface AddPresenterListener {
     public void show(ArrayList<Playlist> list);
 
     public void saveData(Context context, String name, Song song);
+
+    public void success(Context context);
+
+    public void fail(Context context);
 }

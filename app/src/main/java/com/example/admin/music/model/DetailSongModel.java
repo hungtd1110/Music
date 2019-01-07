@@ -71,7 +71,7 @@ public class DetailSongModel {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(list);
 
-            //reset list favorite in activity main
+            //update list favorite in activity main
             MainActivity.listFavorite = list;
         } catch (IOException e) {
             e.printStackTrace();
@@ -89,6 +89,7 @@ public class DetailSongModel {
     }
 
     private void readFavorite(Context context) {
+        list.clear();
         File file = new File(context.getFilesDir(), file_favorite);
         try {
             FileInputStream fis = new FileInputStream(file);

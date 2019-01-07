@@ -19,7 +19,9 @@ import java.util.ArrayList;
  * Created by admin on 1/5/2019.
  */
 
-public class SingerFragment extends Fragment {
+public class SingerFragment extends Fragment implements SingerViewListener {
+    public static SingerViewListener callBack;
+
     private RecyclerView rvList;
     private ArrayList<Singer> list;
 
@@ -32,10 +34,18 @@ public class SingerFragment extends Fragment {
         rvList = view.findViewById(R.id.recyclerview_singer_list);
 
         //init
+        callBack = this;
         list = MainActivity.listSinger;
+
         show();
 
         return view;
+    }
+
+    @Override
+    public void update() {
+        list = MainActivity.listSinger;
+        show();
     }
 
     private void show() {
@@ -44,4 +54,5 @@ public class SingerFragment extends Fragment {
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
     }
+
 }

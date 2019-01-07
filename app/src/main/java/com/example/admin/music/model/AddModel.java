@@ -44,7 +44,7 @@ public class AddModel {
     public void saveData(Context context, String name, Song song) {
         ArrayList<Song> listSong = new ArrayList<>();
 
-        //check playlist is exits
+        //check playlist is exsits
         for (Playlist playList : list) {
             if (playList.getName().equals(name)) {
                 listSong = playList.getListSong();
@@ -53,7 +53,7 @@ public class AddModel {
             }
         }
 
-        //check song is exits
+        //check song is exists
         for (Song s : listSong) {
             if (song.getName().equals(s.getName()) && song.getSinger().equals(s.getSinger())) {
                 listSong.remove(s);
@@ -81,17 +81,17 @@ public class AddModel {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(list);
 
-            //reset list playlist in activity main
+            //update list playlist in activity main
             MainActivity.listPlaylist = list;
 
-            //notify
-            Toast.makeText(context, context.getString(R.string.add_notify), Toast.LENGTH_SHORT).show();
+            callBack.success(context);
         } catch (IOException e) {
-            e.printStackTrace();
+            callBack.fail(context);
         }
     }
 
     private void readPlaylist(Context context) {
+        list.clear();
         File file = new File(context.getFilesDir(), file_playlist);
         try {
             FileInputStream fis = new FileInputStream(file);

@@ -19,7 +19,9 @@ import java.util.ArrayList;
  * Created by admin on 1/5/2019.
  */
 
-public class SongFragment extends Fragment {
+public class SongFragment extends Fragment implements SongViewListener {
+    public static SongViewListener callBack;
+
     private RecyclerView rvList;
     private ArrayList<Song> list;
 
@@ -32,14 +34,22 @@ public class SongFragment extends Fragment {
         rvList = view.findViewById(R.id.recyclerview_song_list);
 
         //init
+        callBack = this;
         list = MainActivity.listSong;
+
         show();
 
         return view;
     }
 
+    @Override
+    public void update() {
+        list = MainActivity.listSong;
+        show();
+    }
+
     private void show() {
-        SongAdapter adapter = new SongAdapter(getContext(), list);
+        SongAdapter adapter = new SongAdapter(getContext(), list, getFragmentManager());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);

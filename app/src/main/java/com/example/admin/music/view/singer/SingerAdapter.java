@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Singer;
@@ -66,7 +67,7 @@ public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHolder
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imvImage;
         private TextView txtName, txtTotal;
 
@@ -77,6 +78,17 @@ public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHolder
             imvImage = itemView.findViewById(R.id.imageview_singer_image);
             txtName = itemView.findViewById(R.id.textview_singer_name);
             txtTotal = itemView.findViewById(R.id.textview_singer_total);
+
+            //events
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                default:
+                    break;
+            }
         }
     }
 }

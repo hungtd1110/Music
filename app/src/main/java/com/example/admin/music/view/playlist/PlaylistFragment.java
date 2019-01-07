@@ -19,9 +19,12 @@ import java.util.ArrayList;
  * Created by admin on 1/5/2019.
  */
 
-public class PlaylistFragment extends Fragment {
+public class PlaylistFragment extends Fragment implements PlaylistViewListener {
+    public static PlaylistViewListener callBack;
+
     private RecyclerView rvList;
     private ArrayList<Playlist> list;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -30,12 +33,17 @@ public class PlaylistFragment extends Fragment {
         //controls
         rvList = view.findViewById(R.id.recyclerview_playlist_list);
 
+        //init
+        callBack = this;
+        list = MainActivity.listPlaylist;
+
+        show();
+
         return view;
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void update() {
         list = MainActivity.listPlaylist;
         show();
     }
@@ -46,4 +54,5 @@ public class PlaylistFragment extends Fragment {
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
     }
+
 }

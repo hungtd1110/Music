@@ -38,4 +38,14 @@ public class AddPresenter implements AddPresenterListener {
     public void saveData(Context context, String name, Song song) {
         model.saveData(context, name, song);
     }
+
+    @Override
+    public void success(Context context) {
+        callBack.success(context);
+    }
+
+    @Override
+    public void fail(Context context) {
+        callBack.fail(context);
+    }
 }

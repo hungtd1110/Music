@@ -139,4 +139,14 @@
 
     <dimen name="padding_add_5dp">5dp</dimen>
     <dimen name="padding_add_10dp">10dp</dimen>
+
+    <!--Option-->
+    <dimen name="size_option_48dp">48dp</dimen>
+
+    <dimen name="textsize_option_title">14sp</dimen>
+    <dimen name="textsize_option_option">16sp</dimen>
+
+    <dimen name="margin_option_15dp">15dp</dimen>
+    <dimen name="margin_option_20dp">20dp</dimen>
+    <dimen name="margin_option_25dp">25dp</dimen>
 </resources>

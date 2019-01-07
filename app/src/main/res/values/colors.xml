@@ -47,4 +47,8 @@
     <color name="add_name">#000000</color>
     <color name="add_create">#009688</color>
     <color name="add_cancel">#009688</color>
+
+    <!--Option-->
+    <color name="option_title">#000000</color>
+    <color name="option_option">#000000</color>
 </resources>

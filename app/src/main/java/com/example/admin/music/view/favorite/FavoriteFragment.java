@@ -19,7 +19,9 @@ import java.util.ArrayList;
  * Created by admin on 1/5/2019.
  */
 
-public class FavoriteFragment extends Fragment {
+public class FavoriteFragment extends Fragment implements FavoriteViewListener {
+    public static FavoriteViewListener callBack;
+
     private RecyclerView rvList;
     private ArrayList<Song> list;
 
@@ -31,18 +33,23 @@ public class FavoriteFragment extends Fragment {
         //controls
         rvList = view.findViewById(R.id.recyclerview_favorite_list);
 
+        //init
+        callBack = this;
+        list = MainActivity.listFavorite;
+
+        show();
+
         return view;
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void update() {
         list = MainActivity.listFavorite;
         show();
     }
 
     private void show() {
-        FavoriteAdapter adapter = new FavoriteAdapter(getContext(), list);
+        FavoriteAdapter adapter = new FavoriteAdapter(getContext(), list, getFragmentManager());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);

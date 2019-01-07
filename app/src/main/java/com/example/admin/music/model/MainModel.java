@@ -12,6 +12,7 @@ import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Singer;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.main.MainPresenterListener;
+import com.example.admin.music.view.main.MainActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -43,16 +44,28 @@ public class MainModel {
         listPlaylist = new ArrayList<>();
     }
 
-    public void getData(Context context) {
+    public void getData(Context context, String action) {
         getListSong(context);
         getListFavorite(context);
         getListSinger();
         getListPlayList(context);
 
-        callBack.show(listSong, listFavorite, listSinger, listPlaylist);
+        //set data
+        MainActivity.listSong = listSong;
+        MainActivity.listFavorite = listFavorite;
+        MainActivity.listSinger = listSinger;
+        MainActivity.listPlaylist = listPlaylist;
+
+        if (action.equals(context.getString(R.string.main_action_get))) {
+            callBack.show();
+        }
+        else if (action.equals(context.getString(R.string.main_action_update))) {
+            callBack.showUpdate();
+        }
     }
 
     private void getListPlayList(Context context) {
+        listPlaylist.clear();
         File file = new File(context.getFilesDir(), file_playlist);
         try {
             FileInputStream fis = new FileInputStream(file);
@@ -68,6 +81,8 @@ public class MainModel {
     }
 
     private void getListSinger() {
+        listSinger.clear();
+
         //get list name singer
         ArrayList<String> listNameSinger = new ArrayList<>();
         for (Song song : listSong) {
@@ -105,6 +120,7 @@ public class MainModel {
     }
 
     private void getListFavorite(Context context) {
+        listFavorite.clear();
         File file = new File(context.getFilesDir(), file_favorite);
         try {
             FileInputStream fis = new FileInputStream(file);
