@@ -63,6 +63,9 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                 Bitmap bm = BitmapFactory.decodeStream(is);
                 holder.imvImage.setImageBitmap(bm);
             }
+            else {
+                holder.imvImage.setImageResource(R.drawable.all_imagesong);
+            }
         } catch (Exception e) {
             Log.e("erorrs_itemfavorite", e.toString());
         }

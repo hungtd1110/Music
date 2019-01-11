@@ -15,10 +15,10 @@ import com.example.admin.music.view.song.SongFragment;
  * Created by admin on 1/5/2019.
  */
 
-public class ContentAdapter extends FragmentPagerAdapter {
+public class MusicAdapter extends FragmentPagerAdapter {
     private Context context;
 
-    public ContentAdapter(FragmentManager fm, Context context) {
+    public MusicAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
     }

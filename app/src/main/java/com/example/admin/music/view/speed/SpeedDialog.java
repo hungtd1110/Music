@@ -40,7 +40,7 @@ public class SpeedDialog extends BottomSheetDialogFragment {
         list.add("default");
         list.add("x1.5");
         list.add("x2.0");
-        SpeedAdapter adapter = new SpeedAdapter(getContext(), list);
+        SpeedAdapter adapter = new SpeedAdapter(getContext(), list, getTag());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);

@@ -1,14 +1,13 @@
 package com.example.admin.music.view.main;
 
 import android.os.Handler;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Playlist;
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
 
     private MainPresenter presenter;
     private FragmentTransaction fragmentTransaction;
-    private LinearLayout llProgressBar;
+    private RelativeLayout rlProgressBar;
     private Handler handler;
     private String action;
 
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
 
         //controls
         msvSearch = findViewById(R.id.materialsearchview_main_search);
-        llProgressBar = findViewById(R.id.linearlayout_main_progressbar);
+        rlProgressBar = findViewById(R.id.relativelayout_main_progressbar);
 
         //init
         callBack = this;
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
         fragmentTransaction.commit();
 
         //gone progressbar
-        llProgressBar.setVisibility(View.GONE);
+        rlProgressBar.setVisibility(View.GONE);
 
         //remove runnable
         handler.removeCallbacks(runnable);

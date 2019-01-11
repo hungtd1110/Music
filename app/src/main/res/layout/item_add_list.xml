@@ -11,7 +11,7 @@
 
         <ImageView
             android:id="@+id/imageview_add_image"
-            android:src="@drawable/all_image"
+            android:src="@drawable/all_imagesong"
             android:scaleType="fitXY"
             android:layout_width="@dimen/width_add_image"
             android:layout_height="@dimen/height_add_image" />

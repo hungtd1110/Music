@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/all_background"
+    tools:context="com.example.admin.music.view.detail_singer.DetailSingerActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?actionBarSize"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/imageview_detailsinger_imagebig"
+                android:src="@drawable/all_imagelist"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_detailsinger_imagebig" />
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="?actionBarSize">
+
+               <TextView
+                   android:layout_centerVertical="true"
+                   android:text="@string/detailsinger_title"
+                   android:textSize="@dimen/textsize_detailsinger_title"
+                   android:textColor="@color/detailsinger_title"
+                   android:layout_marginLeft="@dimen/margin_detailsinger_65dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+
+           </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_detaisinger_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_collapseMode="pin">
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_detailsinger_list"
+        android:paddingLeft="@dimen/padding_detailsinger_10dp"
+        android:paddingRight="@dimen/padding_detailsinger_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    </android.support.v7.widget.RecyclerView>
+
+</android.support.design.widget.CoordinatorLayout>

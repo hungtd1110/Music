@@ -62,6 +62,9 @@ public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
                 Bitmap bm = BitmapFactory.decodeStream(is);
                 holder.imvImage.setImageBitmap(bm);
             }
+            else {
+                holder.imvImage.setImageResource(R.drawable.all_imagesong);
+            }
         } catch (Exception e) {
             Log.e("erorrs_itemadd", e.toString());
         }
@@ -92,7 +95,6 @@ public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
         public void onClick(View view) {
             String name = list.get(getAdapterPosition()).getName();
             presenter.saveData(context, name, song);
-            notifyDataSetChanged();
         }
     }
 }

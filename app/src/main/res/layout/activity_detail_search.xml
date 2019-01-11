@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.admin.music.view.detail_search.DetailSearchActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_detailsearch_toolbar"
+            android:background="@color/all_background"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+
+            <TextView
+                android:id="@+id/textview_detailsearch_title"
+                android:text="title"
+                android:textSize="@dimen/textsize_detailsearch_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tablayout_detailsearch_tab"
+            android:background="@color/all_background"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:tabMode="fixed">
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_detailsearch_content"
+            android:background="@color/all_background"
+            android:paddingLeft="@dimen/padding_detailsearch_10dp"
+            android:paddingBottom="@dimen/padding_detailsearch_10dp"
+            android:paddingRight="@dimen/padding_detailsearch_10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v4.view.ViewPager>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_detailsearch_progressbar"
+        android:background="@color/all_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</FrameLayout>

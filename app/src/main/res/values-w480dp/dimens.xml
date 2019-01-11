@@ -11,14 +11,41 @@
   <dimen name="padding_main_20dp">
     26.67dp
   </dimen>
+  <dimen name="margin_music_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="size_search_48dp">
+    64.0dp
+  </dimen>
+  <dimen name="size_search_55dp">
+    73.33dp
+  </dimen>
   <dimen name="textsize_search_title">
     16.0sp
+  </dimen>
+  <dimen name="textsize_search_name">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_search_noresult">
+    18.67sp
+  </dimen>
+  <dimen name="margin_search_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="margin_search_15dp">
+    20.0dp
   </dimen>
   <dimen name="margin_search_20dp">
     26.67dp
   </dimen>
   <dimen name="margin_search_25dp">
     33.33dp
+  </dimen>
+  <dimen name="margin_search_30dp">
+    40.0dp
+  </dimen>
+  <dimen name="margin_search_40dp">
+    53.33dp
   </dimen>
   <dimen name="padding_search_5dp">
     6.67dp
@@ -170,6 +197,9 @@
   <dimen name="padding_detailsong_10dp">
     13.33dp
   </dimen>
+  <dimen name="padding_image_20dp">
+    26.67dp
+  </dimen>
   <dimen name="textsize_list_title">
     18.67sp
   </dimen>
@@ -272,11 +302,20 @@
   <dimen name="size_option_48dp">
     64.0dp
   </dimen>
+  <dimen name="textsize_option_name">
+    18.67sp
+  </dimen>
   <dimen name="textsize_option_title">
     18.67sp
   </dimen>
   <dimen name="textsize_option_option">
     21.33sp
+  </dimen>
+  <dimen name="margin_option_5dp">
+    6.67dp
+  </dimen>
+  <dimen name="margin_option_10dp">
+    13.33dp
   </dimen>
   <dimen name="margin_option_15dp">
     20.0dp
@@ -286,5 +325,89 @@
   </dimen>
   <dimen name="margin_option_25dp">
     33.33dp
+  </dimen>
+  <dimen name="margin_option_30dp">
+    40.0dp
+  </dimen>
+  <dimen name="padding_option_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="height_detailsinger_imagebig">
+    480.0dp
+  </dimen>
+  <dimen name="width_detailsinger_image">
+    73.33dp
+  </dimen>
+  <dimen name="height_detailsinger_image">
+    73.33dp
+  </dimen>
+  <dimen name="width_detailsinger_add">
+    80.0dp
+  </dimen>
+  <dimen name="height_detailsinger_add">
+    86.67dp
+  </dimen>
+  <dimen name="textsize_detailsinger_title">
+    21.33sp
+  </dimen>
+  <dimen name="textsize_detailsinger_name">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_detailsinger_singer">
+    16.0sp
+  </dimen>
+  <dimen name="margin_detailsinger_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="margin_detailsinger_30dp">
+    40.0dp
+  </dimen>
+  <dimen name="margin_detailsinger_65dp">
+    86.67dp
+  </dimen>
+  <dimen name="padding_detailsinger_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="height_detailplaylist_imagebig">
+    480.0dp
+  </dimen>
+  <dimen name="width_detailplaylist_image">
+    73.33dp
+  </dimen>
+  <dimen name="height_detailplaylist_image">
+    73.33dp
+  </dimen>
+  <dimen name="width_detailplaylist_delete">
+    80.0dp
+  </dimen>
+  <dimen name="height_detailplaylist_delete">
+    86.67dp
+  </dimen>
+  <dimen name="textsize_detailplaylist_title">
+    21.33sp
+  </dimen>
+  <dimen name="textsize_detailplaylist_name">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_detailplaylist_singer">
+    16.0sp
+  </dimen>
+  <dimen name="margin_detailplaylist_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="margin_detailplaylist_30dp">
+    40.0dp
+  </dimen>
+  <dimen name="margin_detailplaylist_65dp">
+    86.67dp
+  </dimen>
+  <dimen name="padding_detailplaylist_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="textsize_detailsearch_title">
+    18.67sp
+  </dimen>
+  <dimen name="padding_detailsearch_10dp">
+    13.33dp
   </dimen>
 </resources>

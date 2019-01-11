@@ -3,6 +3,7 @@ package com.example.admin.music.presenter.option;
 import android.content.Context;
 
 import com.example.admin.music.model.OptionModel;
+import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.view.option.OptionViewListener;
 
@@ -32,8 +33,18 @@ public class OptionPresenter implements OptionPresenterListener {
     }
 
     @Override
-    public void delete(Context context, Song song) {
-        model.delete(context, song);
+    public void deleteSong(Context context, Song song) {
+        model.deleteSong(context, song);
+    }
+
+    @Override
+    public void edit(Context context, Playlist playlist, String name) {
+        model.edit(context, playlist, name);
+    }
+
+    @Override
+    public void deletePlaylist(Context context, Playlist playlist) {
+        model.deletePlaylist(context, playlist);
     }
 
     @Override
@@ -42,7 +53,7 @@ public class OptionPresenter implements OptionPresenterListener {
     }
 
     @Override
-    public void fail(String action) {
-        callBack.fail(action);
+    public void fail(Context context, String action) {
+        callBack.fail(context, action);
     }
 }

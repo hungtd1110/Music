@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.view.detail_song.DetaiSongActivity;
@@ -63,6 +62,9 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
                 InputStream is = new ByteArrayInputStream(mmr.getEmbeddedPicture());
                 Bitmap bm = BitmapFactory.decodeStream(is);
                 holder.imvImage.setImageBitmap(bm);
+            }
+            else {
+                holder.imvImage.setImageResource(R.drawable.all_imagesong);
             }
         } catch (Exception e) {
             Log.e("erorrs_itemsong", e.toString());

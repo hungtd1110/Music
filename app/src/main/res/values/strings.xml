@@ -6,12 +6,21 @@
     <string name="key_singer">singer</string>
     <string name="key_list">list</string>
     <string name="key_index">index</string>
+    <string name="key_playlist">playlist</string>
+    <string name="key_word">word</string>
+    <string name="key_action">action</string>
+
+    <string name="action_see">see</string>
+    <string name="action_search">search</string>
+    <string name="action_song">song</string>
+    <string name="action_singer">singer</string>
+    <string name="action_playlist">playlist</string>
 
     <!--Main-->
     <string name="main_title">Tìm kiếm bài hát, ca sĩ, playlist</string>
     <string name="main_hint">Nhập từ khóa ...</string>
-    <string name="main_action_get">Get</string>
-    <string name="main_action_update">Update</string>
+    <string name="main_action_get">get</string>
+    <string name="main_action_update">update</string>
 
     <!--Search-->
     <string name="search_song">Bài hát</string>
@@ -19,6 +28,10 @@
     <string name="search_playlist">Playlist</string>
     <string name="search_history">Lịch sử tìm kiếm</string>
     <string name="search_deleteall">Xóa hết</string>
+    <string name="search_noresult">Không tìm thấy kết quả</string>
+    <string name="search_notify">Xem thêm</string>
+    <string name="search_message">Chưa nhập từ khóa</string>
+    <string name="search_delete">Đã xóa</string>
 
     <!--Music-->
     <string name="music_song">Bài hát</string>
@@ -26,30 +39,65 @@
     <string name="music_singer">Ca sĩ</string>
     <string name="music_playlist">Danh sách</string>
 
+    <!--Detail Song-->
+    <string name="detailsong_speed">Chức năng hỗ trợ cho Android 6.0+</string>
+
     <!--Speed-->
     <string name="speed_title">Chọn tốc độ</string>
 
     <!--Add-->
     <string name="add_title">Tạo danh sách nhạc</string>
     <string name="add_close">Đóng</string>
-    <string name="add_create">Đồng ý</string>
-    <string name="add_cancel">Hủy bỏ</string>
+    <string name="add_create">ĐỒNG Ý</string>
+    <string name="add_cancel">HỦY BỎ</string>
     <string name="add_notify_success">Đã thêm vào danh sách nhạc</string>
-    <string name="add_notify_fail">Đã thêm vào danh sách nhạc</string>
+    <string name="add_notify_fail">Lỗi</string>
 
     <!--Option-->
     <string name="option_title">Chọn chức năng</string>
     <string name="option_title_confirm">Xác nhận</string>
+
     <string name="option_item_add">Thêm vào playlist</string>
     <string name="option_item_addfavorite">Yêu thích</string>
     <string name="option_item_subfavorite">Bỏ yêu thích</string>
-    <string name="option_item_delete">Xóa</string>
-    <string name="option_action_add">Add</string>
-    <string name="option_action_sub">Sub</string>
-    <string name="option_action_delete">Delete</string>
+    <string name="option_item_deletesong">Xóa bài hát</string>
+    <string name="option_item_edit">Sửa playlist</string>
+    <string name="option_item_deleteplaylist">Xóa playlist</string>
+
+    <string name="option_action_add">add</string>
+    <string name="option_action_sub">sub</string>
+    <string name="option_action_deletesong">delete song</string>
+    <string name="option_action_edit">edit</string>
+    <string name="option_action_deleteplaylist">delete playlist</string>
+
     <string name="option_notify_add">Đã thêm vào yêu thích</string>
     <string name="option_notify_sub">Đã bỏ yêu thích</string>
-    <string name="option_notify_delete">Đã xóa</string>
+    <string name="option_notify_deletesong">Đã xóa bài hát</string>
+    <string name="option_notify_edit">Đã cập nhật playlist</string>
+    <string name="option_notify_deleteplaylist">Đã xóa playlist</string>
     <string name="option_notify_errors">Lỗi</string>
-    <string name="option_message">Bạn có chắc muốn xóa bài</string>
+    <string name="option_notify_conflict">Playlist đã tồn tại</string>
+
+    <string name="option_title_edit">Sửa danh sách nhạc</string>
+    <string name="option_create">ĐỒNG Ý</string>
+    <string name="option_cancel">HỦY BỎ</string>
+
+    <string name="option_message_song">Bạn có chắc muốn xóa bài hát</string>
+    <string name="option_message_playlist">Bạn có chắc muốn xóa playlist</string>
+
+    <!--Detail Singer-->
+    <string name="detailsinger_title">Ca sĩ</string>
+    <string name="detailsinger_suggest">Vuốt sang trái để thêm bài hát vào playlist</string>
+
+    <!--Detail Playlist-->
+    <string name="detailplaylist_title">Danh sách</string>
+    <string name="detailplaylist_suggest">Vuốt sang trái để xóa bài hát</string>
+    <string name="detailplaylist_message">Bạn có chắc muốn xóa bài hát</string>
+    <string name="detailplaylist_notify_success">Đã xóa bài hát khỏi playlist</string>
+    <string name="detailplaylist_notify_fail">Lỗi</string>
+
+    <!--Detail Search-->
+    <string name="detailsearch_song">Bài hát</string>
+    <string name="detailsearch_singer">Ca sĩ</string>
+    <string name="detailsearch_playlist">Danh sách</string>
 </resources>

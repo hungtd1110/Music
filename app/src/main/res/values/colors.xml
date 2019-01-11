@@ -6,14 +6,17 @@
 
     <!--All-->
     <color name="all_background">#ffffff</color>
-    <color name="all_delete">#009688</color>
+    <color name="all_swipe">#009688</color>
 
     <!--Main-->
     <color name="main_search">#ffffff</color>
 
     <!--Search-->
     <color name="search_title">#000000</color>
+    <color name="search_name">#000000</color>
     <color name="search_deleteall">#009688</color>
+    <color name="search_result">#000000</color>
+    <color name="search_notify">#009688</color>
 
     <!--Song-->
     <color name="song_name">#000000</color>
@@ -30,6 +33,8 @@
     <!--Detail Song-->
     <color name="detailsong_name">#000000</color>
     <color name="detailsong_time">#000000</color>
+    <color name="detailsong_select">#009688</color>
+    <color name="detailsong_unselect">#E0E0E0</color>
 
     <!--List-->
     <color name="list_total">#000000</color>
@@ -51,4 +56,15 @@
     <!--Option-->
     <color name="option_title">#000000</color>
     <color name="option_option">#000000</color>
+    <color name="option_name">#000000</color>
+    <color name="option_create">#009688</color>
+    <color name="option_cancel">#009688</color>
+
+    <!--Detail Singer-->
+    <color name="detailsinger_title">#ffffff</color>
+    <color name="detailsinger_name">#000000</color>
+
+    <!--Detail Playlist-->
+    <color name="detailplaylist_title">#ffffff</color>
+    <color name="detailplaylist_name">#000000</color>
 </resources>

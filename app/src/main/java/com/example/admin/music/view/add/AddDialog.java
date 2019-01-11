@@ -20,6 +20,7 @@ import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.add.AddPresenter;
+import com.example.admin.music.view.main.MainActivity;
 import com.example.admin.music.view.playlist.PlaylistFragment;
 
 import java.util.ArrayList;
@@ -31,9 +32,11 @@ import java.util.ArrayList;
 public class AddDialog extends DialogFragment implements AddViewListener, View.OnClickListener {
     private AddPresenter presenter;
     private Song song;
+    private ArrayList<Playlist> list;
     private RecyclerView rvList;
     private LinearLayout llAdd;
     private TextView txtClose;
+    private AddAdapter adapter;
 
     @Nullable
     @Override
@@ -46,11 +49,12 @@ public class AddDialog extends DialogFragment implements AddViewListener, View.O
         txtClose = view.findViewById(R.id.textview_add_close);
 
         //init
-        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+        list = MainActivity.listPlaylist;
         presenter = new AddPresenter(this);
+        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         getData();
-        presenter.getData(getContext());
+        show();
 
         //events
         llAdd.setOnClickListener(this);
@@ -60,8 +64,8 @@ public class AddDialog extends DialogFragment implements AddViewListener, View.O
     }
 
     @Override
-    public void show(ArrayList<Playlist> list) {
-        AddAdapter adapter = new AddAdapter(getContext(), list, presenter, song);
+    public void show() {
+        adapter = new AddAdapter(getContext(), list, presenter, song);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
@@ -69,6 +73,11 @@ public class AddDialog extends DialogFragment implements AddViewListener, View.O
 
     @Override
     public void success(Context context) {
+        //reset show list
+        list = MainActivity.listPlaylist;
+        show();
+
+        //update playlist
         PlaylistFragment.callBack.update();
 
         Toast.makeText(context, context.getString(R.string.add_notify_success), Toast.LENGTH_SHORT).show();
@@ -127,6 +136,6 @@ public class AddDialog extends DialogFragment implements AddViewListener, View.O
 
     private void getData() {
         Bundle bundle = getArguments();
-        song = (Song) bundle.getSerializable("song");
+        song = (Song) bundle.getSerializable(getString(R.string.key_song));
     }
 }

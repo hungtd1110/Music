@@ -35,7 +35,7 @@ public class DetailSongModel {
     }
 
     public void getData(Context context, Song song) {
-        readFavorite(context);
+        list = MainActivity.listFavorite;
 
         //check favorite
         int count = 0;
@@ -46,10 +46,10 @@ public class DetailSongModel {
             }
         }
         if (count == 0) {
-            callBack.show(false);
+            callBack.showFavorite(false);
         }
         else {
-            callBack.show(true);
+            callBack.showFavorite(true);
         }
     }
 
@@ -62,6 +62,8 @@ public class DetailSongModel {
         }
         
         writeFavorite(context);
+
+        callBack.success();
     }
 
     private void writeFavorite(Context context) {
@@ -85,22 +87,6 @@ public class DetailSongModel {
                 list.remove(i);
                 break;
             }
-        }
-    }
-
-    private void readFavorite(Context context) {
-        list.clear();
-        File file = new File(context.getFilesDir(), file_favorite);
-        try {
-            FileInputStream fis = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            list = (ArrayList<Song>) ois.readObject();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
     }
 }

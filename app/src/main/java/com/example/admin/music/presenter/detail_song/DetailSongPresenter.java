@@ -27,12 +27,17 @@ public class DetailSongPresenter implements DetailSongPresenterListener {
     }
 
     @Override
-    public void show(boolean favorite) {
-        callBack.show(favorite);
+    public void showFavorite(boolean favorite) {
+        callBack.showFavorite(favorite);
     }
 
     @Override
     public void saveData(Context context, Song song, boolean favorite) {
         model.saveData(context, song, favorite);
+    }
+
+    @Override
+    public void success() {
+        callBack.success();
     }
 }

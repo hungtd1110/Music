@@ -12,9 +12,7 @@ import java.util.ArrayList;
  */
 
 public interface AddPresenterListener {
-    public void getData(Context context);
-
-    public void show(ArrayList<Playlist> list);
+    public void show();
 
     public void saveData(Context context, String name, Song song);
 

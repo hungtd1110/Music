@@ -25,13 +25,8 @@ public class AddPresenter implements AddPresenterListener {
     }
 
     @Override
-    public void getData(Context context) {
-        model.getData(context);
-    }
-
-    @Override
-    public void show(ArrayList<Playlist> list) {
-        callBack.show(list);
+    public void show() {
+        callBack.show();
     }
 
     @Override

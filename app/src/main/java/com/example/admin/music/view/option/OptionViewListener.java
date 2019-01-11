@@ -2,6 +2,7 @@ package com.example.admin.music.view.option;
 
 import android.content.Context;
 
+import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Song;
 
 /**
@@ -15,9 +16,13 @@ public interface OptionViewListener {
 
     public void subFavorite(Song song);
 
-    public void delete(Context context, Song song);
+    public void deleteSong(Context context, Song song);
+
+    public void edit(Context context, Playlist playlist,String name);
+
+    public void deletePlaylist(Context context, Playlist playlist);
 
     public void success(Context context, String action);
 
-    public void fail(String action);
+    public void fail(Context context, String action);
 }

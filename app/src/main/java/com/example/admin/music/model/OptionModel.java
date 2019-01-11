@@ -39,51 +39,97 @@ public class OptionModel {
     }
 
     public void addFavorite(Context context, Song song) {
-        readFavorite(context);
+        listFavorite = MainActivity.listFavorite;
 
         //delete song if song exits into list
         updateFavorite(song);
 
         listFavorite.add(0, song);
-        writeFavorite(context, context.getString(R.string.option_action_add));
+        writeFavorite(context);
+
+        callBack.success(context, context.getString(R.string.option_action_add));
     }
 
     public void subFavorite(Context context, Song song) {
-        readFavorite(context);
+        listFavorite = MainActivity.listFavorite;
 
         //delete song if song exits into list
         updateFavorite(song);
 
-        writeFavorite(context, context.getString(R.string.option_action_sub));
+        writeFavorite(context);
+
+        callBack.success(context, context.getString(R.string.option_action_sub));
     }
 
-    public void delete(Context context, Song song) {
-        String action = context.getString(R.string.option_action_delete);
+    public void deleteSong(Context context, Song song) {
+        //delete file in media store
+        context.getContentResolver().delete(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, MediaStore.MediaColumns.DATA +
+                "='" + song.getPathAudio() + "'", null);
 
-        try {
-            //delete file in media store
-            context.getContentResolver().delete(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, MediaStore.MediaColumns.DATA +
-                    "='" + song.getPathAudio() + "'", null);
+        //delete file infact
+        File file = new File(song.getPathAudio());
+        file.delete();
 
-            //delete file infact
-            File file = new File(song.getPathAudio());
-            file.delete();
+        //update favorite
+        listFavorite = MainActivity.listFavorite;
+        updateFavorite(song);   //delete song if song exits into list
+        writeFavorite(context);
 
-            //update favorite
-            readFavorite(context);  //get data list
-            updateFavorite(song);   //delete song if song exits into list
-            writeFavorite(context, "");
+        //update playlist
+        listPlayList = MainActivity.listPlaylist;
+        updatePlaylist(song);   //delete song if song exits into playlist
+        writePlaylist(context);
 
-            //update playlist
-            readPlaylist(context);  //get data playlist
-            updatePlaylist(song);   //delete song if song exits into playlist
-            writePlaylist(context);
+        callBack.success(context, context.getString(R.string.option_action_deletesong));
+    }
 
-            callBack.success(context, action);
+    public void edit(Context context, Playlist playlist, String name) {
+        boolean check = false;
+        listPlayList = MainActivity.listPlaylist;
+
+        //check name
+        for (Playlist pl : listPlayList) {
+            if (pl.getName().equals(name)) {
+                callBack.fail(context, context.getString(R.string.option_action_edit));
+                check = true;
+                break;
+            }
         }
-        catch (Exception e) {
-            callBack.fail(action);
-            Log.e("errors_option_delete", e.toString());
+
+        if (!check) {
+            handleEdit(playlist, name);
+            writePlaylist(context);
+            callBack.success(context, context.getString(R.string.option_action_edit));
+        }
+    }
+
+    public void deletePlaylist(Context context, Playlist playlist) {
+        listPlayList = MainActivity.listPlaylist;
+        handleDelete(playlist);
+        writePlaylist(context);
+
+        callBack.success(context, context.getString(R.string.option_action_deleteplaylist));
+    }
+
+    private void handleDelete(Playlist playlist) {
+        for (int i = 0 ; i < listPlayList.size() ; i++) {
+            Playlist pl = listPlayList.get(i);
+            if (playlist.getName().equals(pl.getName())) {
+                listPlayList.remove(i);
+                break;
+            }
+        }
+    }
+
+    private void handleEdit(Playlist playlist, String name) {
+        for (int i = 0 ; i < listPlayList.size() ; i++) {
+            Playlist pl = listPlayList.get(i);
+            if (playlist.getName().equals(pl.getName())) {
+                listPlayList.remove(i);
+                playlist.setName(name);
+                listPlayList.add(0, playlist);
+                break;
+            }
         }
     }
 
@@ -123,23 +169,7 @@ public class OptionModel {
         }
     }
 
-    private void readPlaylist(Context context) {
-        listPlayList.clear();
-        File file = new File(context.getFilesDir(), file_playlist);
-        try {
-            FileInputStream fis = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            listPlayList = (ArrayList<Playlist>) ois.readObject();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void writeFavorite(Context context, String action) {
+    private void writeFavorite(Context context) {
         File file = new File(context.getFilesDir(), file_favorite);
         try {
             FileOutputStream fos = new FileOutputStream(file);
@@ -148,14 +178,8 @@ public class OptionModel {
 
             //update list favorite in activity main
             MainActivity.listFavorite = listFavorite;
-
-            if (!action.equals("")) {
-                callBack.success(context, action);
-            }
         } catch (IOException e) {
-            if (!action.equals("")) {
-                callBack.fail(action);
-            }
+
         }
     }
 
@@ -166,22 +190,6 @@ public class OptionModel {
                 listFavorite.remove(i);
                 break;
             }
-        }
-    }
-
-    private void readFavorite(Context context) {
-        listFavorite.clear();
-        File file = new File(context.getFilesDir(), file_favorite);
-        try {
-            FileInputStream fis = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            listFavorite = (ArrayList<Song>) ois.readObject();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
     }
 }

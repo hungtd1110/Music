@@ -14,9 +14,9 @@
 
         <ImageView
             android:id="@+id/imageview_song_delete"
-            android:src="@mipmap/all_delete"
+            android:src="@mipmap/detailplaylist_delete"
             android:padding="@dimen/padding_song_10dp"
-            android:background="@color/all_delete"
+            android:background="@color/all_swipe"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -32,7 +32,7 @@
 
         <ImageView
             android:id="@+id/imageview_song_image"
-            android:src="@drawable/all_image"
+            android:src="@drawable/all_imagesong"
             android:scaleType="fitXY"
             android:layout_width="@dimen/width_song_image"
             android:layout_height="@dimen/height_song_image" />

@@ -4,18 +4,22 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Handler;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.detail_song.DetailSongPresenter;
 import com.example.admin.music.view.add.AddDialog;
+import com.example.admin.music.view.favorite.FavoriteFragment;
 import com.example.admin.music.view.list.ListDialog;
 import com.example.admin.music.view.speed.SpeedDialog;
 
@@ -30,12 +34,13 @@ public class DetaiSongActivity extends AppCompatActivity implements View.OnClick
     private ArrayList<Integer> listRandom;
     private MediaPlayer mediaPlayer;
     private ProgressBar pbLoad;
-    private ImageView imvRun, imvNext, imvPrevious, imvLoop, imvList, imvFavorite, imvSpeed, imvAdd;
+    private ImageView imvRun, imvNext, imvPrevious, imvLoop, imvList, imvFavorite, imvSpeed, imvAdd, imvBack;
     private SeekBar sbAudio;
     private TextView txtTime, txtDuration, txtName, txtSinger;
+    private ViewPager vpContent;
     private Runnable runnableTime;
     private Handler handler;
-    private String typeLoop = "repeat";
+    private String typeLoop = "repeat", speed = "1";
     private DetailSongPresenter presenter;
     private boolean favorite, autoRun;
 
@@ -55,12 +60,14 @@ public class DetaiSongActivity extends AppCompatActivity implements View.OnClick
         imvFavorite = findViewById(R.id.imageview_detailsong_favorite);
         imvSpeed = findViewById(R.id.imageview_detailsong_speed);
         imvAdd = findViewById(R.id.imageview_detailsong_add);
+        imvBack = findViewById(R.id.imageview_detailsong_back);
         pbLoad = findViewById(R.id.progressbar_detailsong_load);
         sbAudio = findViewById(R.id.seekbar_detailsong_audio);
         txtTime = findViewById(R.id.textview_detailsong_time);
         txtDuration = findViewById(R.id.textview_detailsong_duration);
         txtName = findViewById(R.id.textview_detailsong_name);
         txtSinger = findViewById(R.id.textview_detailsong_singer);
+        vpContent = findViewById(R.id.viewpager_detailsong_content);
 
         //init
         presenter = new DetailSongPresenter(this);
@@ -70,6 +77,7 @@ public class DetaiSongActivity extends AppCompatActivity implements View.OnClick
 
         getData();
         loadAudio();
+        showViewPager();
         txtName.setText(song.getName());
         txtSinger.setText(song.getSinger());
 
@@ -82,6 +90,7 @@ public class DetaiSongActivity extends AppCompatActivity implements View.OnClick
         imvFavorite.setOnClickListener(this);
         imvSpeed.setOnClickListener(this);
         imvAdd.setOnClickListener(this);
+        imvBack.setOnClickListener(this);
         sbAudio.setOnSeekBarChangeListener(changeListener);
     }
 
@@ -99,7 +108,7 @@ public class DetaiSongActivity extends AppCompatActivity implements View.OnClick
     }
 
     @Override
-    public void show(boolean favorite) {
+    public void showFavorite(boolean favorite) {
         this.favorite = favorite;
         if (favorite) {
             imvFavorite.setImageResource(R.mipmap.detailsong_favorite);
@@ -113,7 +122,17 @@ public class DetaiSongActivity extends AppCompatActivity implements View.OnClick
     public void updateSpeed(float speed) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             mediaPlayer.setPlaybackParams(mediaPlayer.getPlaybackParams().setSpeed(speed));
+
+            this.speed = (int) (speed/0.5f) - 1 + "";
         }
+        else {
+            Toast.makeText(this, getString(R.string.detailsong_speed), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void success() {
+        FavoriteFragment.callBack.update();
     }
 
     @Override
@@ -143,20 +162,23 @@ public class DetaiSongActivity extends AppCompatActivity implements View.OnClick
             case R.id.imageview_detailsong_add:
                 handleAdd();
                 break;
+            case R.id.imageview_detailsong_back:
+                finish();
+                break;
         }
     }
 
     private void handleAdd() {
         AddDialog dialog = new AddDialog();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("song", song);
+        bundle.putSerializable(getString(R.string.key_song), song);
         dialog.setArguments(bundle);
         dialog.show(getSupportFragmentManager(), "");
     }
 
     private void handleSpeed() {
         SpeedDialog dialog = new SpeedDialog();
-        dialog.show(getSupportFragmentManager(), "");
+        dialog.show(getSupportFragmentManager(), speed);
     }
 
     private void handleFavorite() {
@@ -269,6 +291,11 @@ public class DetaiSongActivity extends AppCompatActivity implements View.OnClick
             }
         };
         handler.postDelayed(runnableTime, TIME_UPDATE);
+    }
+
+    private void showViewPager() {
+        DetailSongAdapter adapter = new DetailSongAdapter(getSupportFragmentManager(), this, song);
+        vpContent.setAdapter(adapter);
     }
 
     private void loadAudio() {

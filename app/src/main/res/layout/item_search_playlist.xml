@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:paddingTop="@dimen/padding_playlist_10dp"
+        android:background="@color/all_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageview_playlist_image"
+            android:src="@drawable/all_imagesong"
+            android:scaleType="fitXY"
+            android:layout_width="@dimen/width_playlist_image"
+            android:layout_height="@dimen/height_playlist_image" />
+
+        <RelativeLayout
+            android:layout_toRightOf="@+id/imageview_playlist_image"
+            android:layout_marginLeft="@dimen/margin_playlist_10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_playlist_name"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="@dimen/textsize_playlist_name"
+                android:text="Tên ca sĩ rất là dài và sẽ xuống dòng"
+                android:textColor="@color/playlist_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textview_playlist_total"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/textsize_playlist_total"
+                android:layout_below="@+id/textview_playlist_name"
+                android:text="N bài hát"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

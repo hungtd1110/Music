@@ -23,13 +23,13 @@ public class SpeedAdapter extends RecyclerView.Adapter<SpeedAdapter.ViewHolder> 
     private DetailSongViewListener callBack;
     private int select;
 
-    public SpeedAdapter(Context context, ArrayList<String> list) {
+    public SpeedAdapter(Context context, ArrayList<String> list, String speed) {
         this.context = context;
         this.list = list;
 
         //init
         callBack = (DetailSongViewListener) context;
-        select = 1;
+        select = Integer.parseInt(speed);
     }
 
     @Override

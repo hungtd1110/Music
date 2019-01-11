@@ -19,7 +19,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll">
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar_main_toolbar"
@@ -49,9 +49,6 @@
         <FrameLayout
             android:id="@+id/framlayout_main_content"
             android:background="@color/all_background"
-            android:paddingLeft="@dimen/padding_main_10dp"
-            android:paddingBottom="@dimen/padding_main_10dp"
-            android:paddingRight="@dimen/padding_main_10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -59,16 +56,17 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-    <LinearLayout
-        android:id="@+id/linearlayout_main_progressbar"
+    <RelativeLayout
+        android:id="@+id/relativelayout_main_progressbar"
         android:background="@color/all_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ProgressBar
+            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>

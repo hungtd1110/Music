@@ -29,7 +29,7 @@ public class MusicFragment extends Fragment {
         vpContent = view.findViewById(R.id.viewpager_music_content);
 
         //init
-        ContentAdapter adapter = new ContentAdapter(getFragmentManager(), getContext());
+        MusicAdapter adapter = new MusicAdapter(getFragmentManager(), getContext());
         vpContent.setAdapter(adapter);
         vpContent.setOffscreenPageLimit(4);
         tlTab.setupWithViewPager(vpContent);

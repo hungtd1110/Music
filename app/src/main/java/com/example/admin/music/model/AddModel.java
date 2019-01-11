@@ -37,11 +37,8 @@ public class AddModel {
         list = new ArrayList<>();
     }
 
-    public void getData(Context context) {
-        readPlaylist(context);
-    }
-
     public void saveData(Context context, String name, Song song) {
+        list = MainActivity.listPlaylist;
         ArrayList<Song> listSong = new ArrayList<>();
 
         //check playlist is exsits
@@ -72,6 +69,8 @@ public class AddModel {
         list.add(0, playList);
 
         writePlaylist(context);
+
+        callBack.success(context);
     }
 
     private void writePlaylist(Context context) {
@@ -83,27 +82,8 @@ public class AddModel {
 
             //update list playlist in activity main
             MainActivity.listPlaylist = list;
-
-            callBack.success(context);
         } catch (IOException e) {
-            callBack.fail(context);
-        }
-    }
 
-    private void readPlaylist(Context context) {
-        list.clear();
-        File file = new File(context.getFilesDir(), file_playlist);
-        try {
-            FileInputStream fis = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            list = (ArrayList<Playlist>) ois.readObject();
-            callBack.show(list);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
     }
 }

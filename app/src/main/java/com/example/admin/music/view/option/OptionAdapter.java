@@ -9,10 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.admin.music.R;
+import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.view.add.AddDialog;
 
@@ -27,15 +30,17 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
     private ArrayList<String> listTitle;
     private ArrayList<Integer> listImage;
     private Song song;
+    private Playlist playlist;
     private FragmentManager fragmentManager;
     private OptionViewListener callBack;
 
     public OptionAdapter(Context context, ArrayList<String> listTitle, ArrayList<Integer> listImage,
-                         Song song, FragmentManager fragmentManager, OptionDialog optionDialog) {
+                         Song song, Playlist playlist, FragmentManager fragmentManager, OptionDialog optionDialog) {
         this.context = context;
         this.listTitle = listTitle;
         this.listImage = listImage;
         this.song = song;
+        this.playlist = playlist;
         this.fragmentManager = fragmentManager;
 
         //init
@@ -81,7 +86,9 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
             String add = context.getString(R.string.option_item_add);
             String addFavorite = context.getString(R.string.option_item_addfavorite);
             String subFavorite = context.getString(R.string.option_item_subfavorite);
-            String delete = context.getString(R.string.option_item_delete);
+            String deleteSong = context.getString(R.string.option_item_deletesong);
+            String edit = context.getString(R.string.option_item_edit);
+            String deletePlaylist = context.getString(R.string.option_item_deleteplaylist);
 
             if (title.equals(add)) {
                 AddDialog dialog = new AddDialog();
@@ -96,28 +103,94 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
             else if (title.equals(subFavorite)) {
                 callBack.subFavorite(song);
             }
-            else if (title.equals(delete)) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle(context.getString(R.string.option_title_confirm))
-                        .setMessage(context.getString(R.string.option_message) + " \"" + song.getName() + "\" không?")
-                        .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                callBack.delete(context, song);
-                                dialogInterface.dismiss();
-                            }
-                        })
-                        .setNeutralButton("Hủy bỏ", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        });
-                builder.show();
+            else if (title.equals(deleteSong)) {
+                handleDeleteSong();
+            }
+            else if (title.equals(edit)) {
+                handleEdit();
+            }
+            else if (title.equals(deletePlaylist)) {
+                handleDeletePlaylist();
             }
 
             //hide dialog
             callBack.hide();
         }
+    }
+
+    private void handleDeletePlaylist() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(context.getString(R.string.option_title_confirm))
+                .setMessage(context.getString(R.string.option_message_playlist) + " \"" + playlist.getName() + "\" không?")
+                .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        callBack.deletePlaylist(context, playlist);
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNeutralButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        builder.show();
+    }
+
+    private void handleDeleteSong() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(context.getString(R.string.option_title_confirm))
+                .setMessage(context.getString(R.string.option_message_song) + " \"" + song.getName() + "\" không?")
+                .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        callBack.deleteSong(context, song);
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNeutralButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        builder.show();
+    }
+
+    private void handleEdit() {
+        final AlertDialog dialog = new AlertDialog.Builder(context).create();
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.view_option_edit, null,false);
+
+        //controls
+        final EditText edtContent = view.findViewById(R.id.editext_option_content);
+        TextView txtCancel = view.findViewById(R.id.textview_option_cancel);
+        TextView txtCreate = view.findViewById(R.id.textview_option_create);
+
+        //init
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setView(view);
+        dialog.show();
+
+        //events
+        txtCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        txtCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = edtContent.getText().toString();
+                callBack.edit(context, playlist, name);
+                dialog.dismiss();
+            }
+        });
+
+
+
     }
 }

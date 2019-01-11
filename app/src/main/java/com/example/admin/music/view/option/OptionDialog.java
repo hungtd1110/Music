@@ -12,11 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.admin.music.R;
+import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.option.OptionPresenter;
 import com.example.admin.music.view.favorite.FavoriteFragment;
 import com.example.admin.music.view.main.MainActivity;
-import com.example.admin.music.view.song.SongFragment;
+import com.example.admin.music.view.playlist.PlaylistFragment;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,7 @@ public class OptionDialog extends BottomSheetDialogFragment implements OptionVie
     private OptionPresenter presenter;
     private RecyclerView rvList;
     private Song song;
+    private Playlist playlist;
     private ArrayList<String> listTitle;
     private ArrayList<Integer> listImage;
 
@@ -43,6 +45,8 @@ public class OptionDialog extends BottomSheetDialogFragment implements OptionVie
         presenter = new OptionPresenter(this);
         listTitle = new ArrayList<>();
         listImage = new ArrayList<>();
+        song = new Song();
+        playlist = new Playlist();
 
         getData();
         show();
@@ -66,8 +70,18 @@ public class OptionDialog extends BottomSheetDialogFragment implements OptionVie
     }
 
     @Override
-    public void delete(Context context, Song song) {
-        presenter.delete(context, song);
+    public void deleteSong(Context context, Song song) {
+        presenter.deleteSong(context, song);
+    }
+
+    @Override
+    public void edit(Context context, Playlist playlist, String name) {
+        presenter.edit(context, playlist, name);
+    }
+
+    @Override
+    public void deletePlaylist(Context context, Playlist playlist) {
+        presenter.deletePlaylist(context,playlist);
     }
 
     @Override
@@ -76,25 +90,42 @@ public class OptionDialog extends BottomSheetDialogFragment implements OptionVie
             //update list favorite
             FavoriteFragment.callBack.update();
 
-            Toast.makeText(getContext(), getString(R.string.option_notify_add), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.option_notify_add), Toast.LENGTH_SHORT).show();
         }
         else if (action.equals(context.getString(R.string.option_action_sub))) {
             //update list favorite
             FavoriteFragment.callBack.update();
 
-            Toast.makeText(getContext(), getString(R.string.option_notify_sub), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.option_notify_sub), Toast.LENGTH_SHORT).show();
         }
-        else if (action.equals(context.getString(R.string.option_action_delete))) {
+        else if (action.equals(context.getString(R.string.option_action_deletesong))) {
             //update data
             MainActivity.callBack.update();
 
-            Toast.makeText(context, context.getString(R.string.option_notify_delete), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.option_notify_deletesong), Toast.LENGTH_SHORT).show();
+        }
+        else if (action.equals(context.getString(R.string.option_action_edit))) {
+            //update data
+            PlaylistFragment.callBack.update();
+
+            Toast.makeText(context, context.getString(R.string.option_notify_edit), Toast.LENGTH_SHORT).show();
+        }
+        else if (action.equals(context.getString(R.string.option_action_deleteplaylist))) {
+            //update data
+            PlaylistFragment.callBack.update();
+
+            Toast.makeText(context, context.getString(R.string.option_notify_deleteplaylist), Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
-    public void fail(String action) {
-//        Toast.makeText(getContext(), getString(R.string.option_notify_errors), Toast.LENGTH_SHORT).show();
+    public void fail(Context context, String action) {
+        if (action.equals(context.getString(R.string.option_action_edit))) {
+            Toast.makeText(context, context.getString(R.string.option_notify_conflict), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(context, context.getString(R.string.option_notify_errors), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void show() {
@@ -103,7 +134,7 @@ public class OptionDialog extends BottomSheetDialogFragment implements OptionVie
         if (key.equals(getString(R.string.key_song))) {
             listTitle.add(getString(R.string.option_item_add));
             listTitle.add(getString(R.string.option_item_addfavorite));
-            listTitle.add(getString(R.string.option_item_delete));
+            listTitle.add(getString(R.string.option_item_deletesong));
 
             listImage.add(R.mipmap.option_add);
             listImage.add(R.mipmap.option_addfavorite);
@@ -112,15 +143,22 @@ public class OptionDialog extends BottomSheetDialogFragment implements OptionVie
         else if (key.equals(getString(R.string.key_singer))){
             listTitle.add(getString(R.string.option_item_add));
             listTitle.add(getString(R.string.option_item_subfavorite));
-            listTitle.add(getString(R.string.option_item_delete));
+            listTitle.add(getString(R.string.option_item_deletesong));
 
             listImage.add(R.mipmap.option_add);
             listImage.add(R.mipmap.option_subfavorite);
             listImage.add(R.mipmap.option_delete);
         }
+        else if (key.equals(getString(R.string.key_playlist))){
+            listTitle.add(getString(R.string.option_item_edit));
+            listTitle.add(getString(R.string.option_item_deleteplaylist));
+
+            listImage.add(R.mipmap.option_edit);
+            listImage.add(R.mipmap.option_delete);
+        }
 
         //show
-        OptionAdapter adapter = new OptionAdapter(getContext(), listTitle, listImage, song, getFragmentManager(), this);
+        OptionAdapter adapter = new OptionAdapter(getContext(), listTitle, listImage, song, playlist, getFragmentManager(), this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
@@ -128,6 +166,12 @@ public class OptionDialog extends BottomSheetDialogFragment implements OptionVie
 
     private void getData() {
         Bundle bundle = getArguments();
-        song = (Song) bundle.getSerializable("song");
+        if (getTag().equals(getString(R.string.key_playlist))) {
+            playlist = (Playlist) bundle.getSerializable(getString(R.string.key_playlist));
+        }
+        else {
+            song = (Song) bundle.getSerializable(getString(R.string.key_song));
+        }
+
     }
 }

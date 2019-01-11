@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 
 public interface AddViewListener {
-    public void show(ArrayList<Playlist> list);
+    public void show();
 
     public void success(Context context);
 

@@ -49,7 +49,7 @@ public class PlaylistFragment extends Fragment implements PlaylistViewListener {
     }
 
     private void show() {
-        PlaylistAdapter adapter = new PlaylistAdapter(getContext(), list);
+        PlaylistAdapter adapter = new PlaylistAdapter(getContext(), list, getFragmentManager());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
