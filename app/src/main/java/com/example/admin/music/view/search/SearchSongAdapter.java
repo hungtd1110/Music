@@ -12,12 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.view.detail_search.DetailSearchActivity;
-import com.example.admin.music.view.detail_song.DetaiSongActivity;
+import com.example.admin.music.view.detail_song.DetailSongActivity;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -143,7 +142,7 @@ public class SearchSongAdapter extends RecyclerView.Adapter<SearchSongAdapter.Vi
                     context.startActivity(intent);
                 }
                 else {
-                    Intent intent = new Intent(context, DetaiSongActivity.class);
+                    Intent intent = new Intent(context, DetailSongActivity.class);
 
                     //put data
                     intent.putExtra(context.getString(R.string.key_list), list);

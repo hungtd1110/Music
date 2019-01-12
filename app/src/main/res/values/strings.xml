@@ -41,6 +41,8 @@
 
     <!--Detail Song-->
     <string name="detailsong_speed">Chức năng hỗ trợ cho Android 6.0+</string>
+    <string name="detailsong_notification">notification</string>
+    <string name="detailsong_continue">continue</string>
 
     <!--Speed-->
     <string name="speed_title">Chọn tốc độ</string>

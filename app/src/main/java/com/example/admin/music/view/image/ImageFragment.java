@@ -22,7 +22,9 @@ import java.io.InputStream;
  * Created by admin on 1/10/2019.
  */
 
-public class ImageFragment extends Fragment {
+public class ImageFragment extends Fragment implements ImageViewListener {
+    public static ImageViewListener callBack;
+
     private ImageView imvImage;
     private Song song;
 
@@ -35,10 +37,18 @@ public class ImageFragment extends Fragment {
         imvImage = view.findViewById(R.id.imageview_image_image);
 
         //init
+        callBack = this;
+
         getData();
         show();
 
         return view;
+    }
+
+    @Override
+    public void update(Song song) {
+        this.song = song;
+        show();
     }
 
     private void show() {
@@ -63,4 +73,5 @@ public class ImageFragment extends Fragment {
         Bundle bundle = getArguments();
         song = (Song) bundle.getSerializable(getString(R.string.key_song));
     }
+
 }

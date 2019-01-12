@@ -67,4 +67,9 @@
     <!--Detail Playlist-->
     <color name="detailplaylist_title">#ffffff</color>
     <color name="detailplaylist_name">#000000</color>
+
+    <!--Notification-->
+    <color name="notification_name">#000000</color>
+    <color name="notification_singer">#9E9E9E</color>
+    <color name="notification_separate">#E0E0E0</color>
 </resources>

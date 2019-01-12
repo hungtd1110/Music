@@ -11,17 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".view.main.MainActivity">
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".view.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.detail_song.DetaiSongActivity" />
-        <activity android:name=".view.detail_singer.DetailSingerActivity" />
-        <activity android:name=".view.detail_playlist.DetailPlaylistActivity" />
-        <activity android:name=".view.detail_search.DetailSearchActivity"></activity>
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".view.detail_song.DetailSongActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".view.detail_singer.DetailSingerActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".view.detail_playlist.DetailPlaylistActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".view.detail_search.DetailSearchActivity"></activity>
+
+        <service android:name=".service.MusicService" />
     </application>
 
 </manifest>

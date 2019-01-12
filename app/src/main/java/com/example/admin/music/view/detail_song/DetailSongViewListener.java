@@ -12,4 +12,14 @@ public interface DetailSongViewListener {
     public void updateSpeed(float speed);
 
     public void success();
+
+    public void updateRun();
+
+    public void updatePrevious();
+
+    public void updateNext();
+
+    public void updateClose();
+
+    public void updateShow();
 }

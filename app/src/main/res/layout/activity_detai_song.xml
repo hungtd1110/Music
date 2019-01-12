@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/padding_detailsong_10dp"
     android:background="@color/all_background"
-    tools:context="com.example.admin.music.view.detail_song.DetaiSongActivity">
+    tools:context="com.example.admin.music.view.detail_song.DetailSongActivity">
 
     <RelativeLayout
         android:id="@+id/linearlayout_detailsong_title"

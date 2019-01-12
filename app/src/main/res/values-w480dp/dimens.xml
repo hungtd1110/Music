@@ -410,4 +410,34 @@
   <dimen name="padding_detailsearch_10dp">
     13.33dp
   </dimen>
+  <dimen name="size_notification_32dp">
+    42.67dp
+  </dimen>
+  <dimen name="size_notification_64dp">
+    85.33dp
+  </dimen>
+  <dimen name="size_notification_96dp">
+    128.0dp
+  </dimen>
+  <dimen name="size_notification_0.1dp">
+    0.13dp
+  </dimen>
+  <dimen name="textsize_notification_name">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_notification_singer">
+    16.0sp
+  </dimen>
+  <dimen name="margin_notification_2dp">
+    2.67dp
+  </dimen>
+  <dimen name="margin_notification_5dp">
+    6.67dp
+  </dimen>
+  <dimen name="margin_notification_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="marginnotification_40dp">
+    53.33dp
+  </dimen>
 </resources>

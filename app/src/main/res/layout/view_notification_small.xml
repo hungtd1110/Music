@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageview_notification_image"
+        android:src="@drawable/all_imagesong"
+        android:scaleType="fitXY"
+        android:layout_width="@dimen/size_notification_64dp"
+        android:layout_height="@dimen/size_notification_64dp" />
+
+    <LinearLayout
+        android:layout_toRightOf="@+id/imageview_notification_image"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/margin_notification_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_notification_64dp">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textview_notification_name"
+                    android:layout_marginTop="@dimen/margin_notification_2dp"
+                    android:text="Name"
+                    android:textSize="@dimen/textsize_notification_name"
+                    android:textColor="@color/notification_name"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textview_notification_singer"
+                    android:text="singer"
+                    android:textColor="@color/notification_singer"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textSize="@dimen/textsize_notification_singer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageview_notification_previous"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/notification_previous"
+                android:layout_width="@dimen/size_notification_32dp"
+                android:layout_height="@dimen/size_notification_32dp" />
+
+            <ImageView
+                android:id="@+id/imageview_notification_run"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/notification_pause"
+                android:layout_width="@dimen/size_notification_32dp"
+                android:layout_height="@dimen/size_notification_32dp" />
+
+            <ImageView
+                android:id="@+id/imageview_notification_next"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/notification_next"
+                android:layout_width="@dimen/size_notification_32dp"
+                android:layout_height="@dimen/size_notification_32dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

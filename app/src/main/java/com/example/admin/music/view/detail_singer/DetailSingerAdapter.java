@@ -20,7 +20,7 @@ import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.view.add.AddDialog;
-import com.example.admin.music.view.detail_song.DetaiSongActivity;
+import com.example.admin.music.view.detail_song.DetailSongActivity;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -122,7 +122,7 @@ public class DetailSingerAdapter extends RecyclerView.Adapter<DetailSingerAdapte
                     dialog.show(fragmentManager, "");
                     break;
                 default:
-                    Intent intent = new Intent(context, DetaiSongActivity.class);
+                    Intent intent = new Intent(context, DetailSongActivity.class);
 
                     //put data
                     intent.putExtra(context.getString(R.string.key_list), list);
