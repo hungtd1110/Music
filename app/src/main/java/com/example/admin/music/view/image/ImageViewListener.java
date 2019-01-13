@@ -8,4 +8,6 @@ import com.example.admin.music.model.entity.Song;
 
 public interface ImageViewListener {
     public void update(Song song);
+
+    public void animation(boolean run);
 }

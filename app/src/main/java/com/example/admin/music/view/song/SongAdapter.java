@@ -108,7 +108,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
                     bundle.putSerializable(context.getString(R.string.key_song), song);
 
                     dialog.setArguments(bundle);
-                    dialog.show(fragmentManager, context.getString(R.string.key_song) + "");
+                    dialog.show(fragmentManager, context.getString(R.string.key_song));
                     break;
                 default:
                     Intent intent = new Intent(context, DetailSongActivity.class);

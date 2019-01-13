@@ -12,7 +12,7 @@
         <LinearLayout
             android:id="@+id/linearlayout_add_add"
             android:paddingBottom="@dimen/padding_add_5dp"
-            android:layout_marginBottom="@dimen/margin_add_15dp"
+            android:layout_marginBottom="@dimen/margin_add_10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

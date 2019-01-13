@@ -14,7 +14,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <item name="colorAccent">#009688</item>
+        <item name="colorAccent">#00BFA5</item>
     </style>
 
 

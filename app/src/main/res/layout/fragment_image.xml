@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageview_image_image"
-        android:paddingLeft="@dimen/padding_image_20dp"
-        android:paddingBottom="@dimen/padding_image_20dp"
-        android:paddingRight="@dimen/padding_image_20dp"
+    <com.pkmmte.view.CircularImageView
+        android:id="@+id/circleimageview_image_image"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/all_imagesong"
         android:scaleType="fitXY"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="@dimen/size_image_300dp"
+        android:layout_height="@dimen/size_image_300dp" />
 
-</LinearLayout>
+</RelativeLayout>

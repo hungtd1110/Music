@@ -1,8 +1,10 @@
 package com.example.admin.music.view.detail_song;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,11 +15,17 @@ import android.os.Build;
 import android.os.Handler;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RemoteViews;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -25,14 +33,18 @@ import android.widget.Toast;
 
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
-import com.example.admin.music.notification.MusicNotification;
 import com.example.admin.music.presenter.detail_song.DetailSongPresenter;
 import com.example.admin.music.service.MusicService;
 import com.example.admin.music.view.add.AddDialog;
+import com.example.admin.music.view.establish.EstablishDialog;
 import com.example.admin.music.view.favorite.FavoriteFragment;
 import com.example.admin.music.view.image.ImageFragment;
 import com.example.admin.music.view.list.ListDialog;
+import com.example.admin.music.view.lyrics.LyricsFragment;
 import com.example.admin.music.view.speed.SpeedDialog;
+import com.vincent.filepicker.Constant;
+import com.vincent.filepicker.activity.NormalFilePickActivity;
+import com.vincent.filepicker.filter.entity.NormalFile;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -44,25 +56,26 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
     public static DetailSongViewListener callBack;
 
     private static ArrayList<Song> list;
-    private static int index;
+    private static int index, time;
     private static Song song;
     private static ArrayList<Integer> listRandom;
     private static MediaPlayer mediaPlayer;
-    private static String typeLoop = "repeat", speed = "1";
-    private static boolean favorite, autoRun, close, open;
+    private static String typeLoop, speed;
+    private static boolean autoRun, close, open, clock;
     private static NotificationManager notificationManager;
 
     private ProgressBar pbLoad;
-    private ImageView imvRun, imvNext, imvPrevious, imvLoop, imvList, imvFavorite, imvSpeed, imvAdd, imvBack;
+    private ImageView imvRun, imvNext, imvPrevious, imvLoop, imvList, imvFavorite, imvSpeed, imvAdd, imvBack, imvEstablish, imvClock;
     private SeekBar sbAudio;
     private TextView txtTime, txtDuration, txtName, txtSinger;
     private ViewPager vpContent;
     private Handler handler;
-    private Runnable runnableTime;
-    private boolean notification;
+    private Runnable runnableTime, runnableLyrics;
+    private boolean favorite, notification;
+    private String type;
     private DetailSongPresenter presenter;
 
-    private final int TIME_UPDATE = 1000, NOTIFICATION_ID = 0;
+    private final int TIME_UPDATE = 500, NOTIFICATION_ID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +92,8 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         imvSpeed = findViewById(R.id.imageview_detailsong_speed);
         imvAdd = findViewById(R.id.imageview_detailsong_add);
         imvBack = findViewById(R.id.imageview_detailsong_back);
+        imvEstablish = findViewById(R.id.imageview_detailsong_establish);
+        imvClock = findViewById(R.id.imageview_detailsong_clock);
         pbLoad = findViewById(R.id.progressbar_detailsong_load);
         sbAudio = findViewById(R.id.seekbar_detailsong_audio);
         txtTime = findViewById(R.id.textview_detailsong_time);
@@ -89,10 +104,10 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
 
         //init
         presenter = new DetailSongPresenter(this);
-        listRandom = new ArrayList<>();
         handler = new Handler();
         close = false;
         open =true;
+        type = getString(R.string.key_hightlight);
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         getNotification();
@@ -102,6 +117,10 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         else {
             callBack = this;
             autoRun = false;
+            clock = false;
+            typeLoop = "repeat";
+            speed = "1";
+            listRandom = new ArrayList<>();
 
             resetMediaPlayer();
             getData();
@@ -123,6 +142,8 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         imvSpeed.setOnClickListener(this);
         imvAdd.setOnClickListener(this);
         imvBack.setOnClickListener(this);
+        imvEstablish.setOnClickListener(this);
+        imvClock.setOnClickListener(this);
         sbAudio.setOnSeekBarChangeListener(changeListener);
     }
 
@@ -136,7 +157,7 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         super.onPause();
 
         //save data
-        presenter.saveData(this, song, favorite);
+        presenter.saveFavorite(this, song, favorite);
     }
 
     @Override
@@ -176,8 +197,15 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
-    public void success() {
-        FavoriteFragment.callBack.update();
+    public void success(String action) {
+        if (action.equals(getString(R.string.action_favorite))) {
+            FavoriteFragment.callBack.update();
+        }
+        else if (action.equals(getString(R.string.action_lyrics))) {
+            LyricsFragment.callBack.update(song);
+
+            Toast.makeText(this, getString(R.string.detailsong_lyrics), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -215,6 +243,29 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
+    public void cancel() {
+        notificationManager.cancel(NOTIFICATION_ID);
+    }
+
+    @Override
+    public void addLyrics() {
+        Intent intent = new Intent(this, NormalFilePickActivity.class);
+        intent.putExtra(Constant.MAX_NUMBER, 1);
+        intent.putExtra(NormalFilePickActivity.SUFFIX, new String[] {"txt"});
+        startActivityForResult(intent, 0);
+    }
+
+    @Override
+    public void updateType(String type) {
+        this.type = type;
+
+        //update lyrics
+        LyricsFragment.callBack.updateLyrics(mediaPlayer.getCurrentPosition(), type);
+
+        Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_detailsong_run:
@@ -244,7 +295,146 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
             case R.id.imageview_detailsong_back:
                 finish();
                 break;
+            case R.id.imageview_detailsong_establish:
+                handleEstablish();
+                break;
+            case R.id.imageview_detailsong_clock:
+                handleClock();
+                break;
         }
+    }
+
+    private void handleClock() {
+        if (!clock) {
+            showClock();
+        }
+        else {
+            showTime();
+        }
+    }
+
+    private void showTime() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //get view
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.view_detailsong_time, null, false);
+
+        //controls
+        final TextView txtTime = view.findViewById(R.id.textview_time_time);
+
+        //init
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                if (time > 0) {
+                    txtTime.setText(convertTime(time));
+                    Log.i("time_show", convertTime(time));
+                    handler.postDelayed(this, 0);
+                }
+                else {
+                    txtTime.setText(convertTime(0));
+                }
+            }
+        };
+        handler.postDelayed(runnable, 0);
+
+        builder.setTitle(getString(R.string.clock_title))
+                .setView(view)
+                .setPositiveButton("Tắt hẹn giờ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        time = 0;
+                        clock = false;
+
+                        Toast.makeText(DetailSongActivity.this, getString(R.string.detailsong_time), Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .create();
+
+        builder.show();
+    }
+
+    private void showClock() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //get view
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.view_detailsong_clock, null, false);
+
+        //controls
+        final LinearLayout llDefault = view.findViewById(R.id.linearlayout_clock_default);
+        final LinearLayout llTime = view.findViewById(R.id.linearlayout_clock_time);
+        final EditText edtTime = view.findViewById(R.id.editext_clock_time);
+        final RadioButton rb30 = view.findViewById(R.id.radiobutton_clock_30);
+        final RadioButton rb45 = view.findViewById(R.id.radiobutton_clock_45);
+        final RadioButton rb60 = view.findViewById(R.id.radiobutton_clock_60);
+        final RadioButton rb90 = view.findViewById(R.id.radiobutton_clock_90);
+
+
+        //events
+        llTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                llDefault.setVisibility(View.GONE);
+                edtTime.setVisibility(View.VISIBLE);
+            }
+        });
+
+        builder.setTitle(getString(R.string.clock_title))
+                .setView(view)
+                .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String time = edtTime.getText().toString();
+                        if (time.equals("") || time.equals(null)) {
+                            if (rb30.isChecked()) {
+                                handleTime(30);
+                            }
+                            else if (rb45.isChecked()) {
+                                handleTime(45);
+                            }
+                            else if (rb60.isChecked()){
+                                handleTime(60);
+                            }
+                            else if (rb90.isChecked()) {
+                                handleTime(90);
+                            }
+                        }
+                        else {
+                            handleTime(Integer.parseInt(time));
+                        }
+                    }
+                }).create();
+        
+        builder.show();
+    }
+
+    private void handleTime(int t) {
+        time = t * 60 * 1000;
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (time > 0) {
+                    time -= 1000;
+                    Log.i("time_set", convertTime(time));
+                    handler.postDelayed(this, 1000);
+                }
+                else if (clock){
+                    updateClose();
+                    clock = false;
+                }
+            }
+        }, 1000);
+
+        clock = true;
+        Toast.makeText(this, getString(R.string.detailsong_clock) + " " + t + " phút", Toast.LENGTH_SHORT).show();
+    }
+
+    private void handleEstablish() {
+        EstablishDialog dialog = new EstablishDialog();
+        dialog.show(getSupportFragmentManager(), "");
     }
 
     private void handleAdd() {
@@ -331,6 +521,10 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
 
         //update viewpager
         ImageFragment.callBack.update(song);
+        LyricsFragment.callBack.update(song);
+
+        //update favorite
+        presenter.getFavorite(this, song);
     }
 
     private void resetMediaPlayer() {
@@ -349,12 +543,19 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
             mediaPlayer.pause();
             imvRun.setImageResource(R.mipmap.detailsong_play);
             autoRun = false;
+
+            //update animation
+            ImageFragment.callBack.animation(false);
         }
         else {
             mediaPlayer.start();
             imvRun.setImageResource(R.mipmap.detailsong_pause);
             setTime();
+            setLyrics();
             autoRun = true;
+
+            //update animation
+            ImageFragment.callBack.animation(true);
 
             //get data list random
             if (listRandom.size() == 0) {
@@ -383,6 +584,9 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         txtDuration.setText(convertTime(duration));
 
         setTime();
+        setLyrics();
+
+        presenter.getFavorite(this, song);
     }
 
     private void setTime() {
@@ -400,6 +604,22 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
             }
         };
         handler.postDelayed(runnableTime, TIME_UPDATE);
+    }
+
+    private void setLyrics() {
+        runnableLyrics = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    int time = mediaPlayer.getCurrentPosition();
+                    LyricsFragment.callBack.run(time, type);
+                } catch (Exception e) {
+
+                }
+                handler.postDelayed(this, 0);
+            }
+        };
+        handler.postDelayed(runnableLyrics, 0);
     }
 
     private void showViewPager() {
@@ -454,7 +674,7 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         song = list.get(index);
 
         //show favorite
-        presenter.getData(this, song);
+        presenter.getFavorite(this, song);
     }
 
     private void getNotification() {
@@ -509,7 +729,12 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
 
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
-            mediaPlayer.seekTo(seekBar.getProgress());
+            int time = seekBar.getProgress();
+
+            //update lyrics
+            LyricsFragment.callBack.updateLyrics(time, type);
+
+            mediaPlayer.seekTo(time);
         }
     };
 
@@ -598,4 +823,13 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         notificationManager.notify(NOTIFICATION_ID, builder.build());
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
+            ArrayList<NormalFile> list = data.getParcelableArrayListExtra(Constant.RESULT_PICK_FILE);
+            String path = list.get(0).getPath();
+            song.setPathLyrics(path);
+            presenter.addLyrics(this, song);
+        }
+    }
 }

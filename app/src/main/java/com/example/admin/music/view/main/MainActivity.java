@@ -1,10 +1,12 @@
 package com.example.admin.music.view.main;
 
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -14,6 +16,7 @@ import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Singer;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.main.MainPresenter;
+import com.example.admin.music.view.detail_song.DetailSongActivity;
 import com.example.admin.music.view.favorite.FavoriteFragment;
 import com.example.admin.music.view.music.MusicFragment;
 import com.example.admin.music.view.playlist.PlaylistFragment;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
     public static ArrayList<Song> listFavorite;
     public static ArrayList<Singer> listSinger;
     public static ArrayList<Playlist> listPlaylist;
+    public static ArrayList<Song> listLyrics;
     public static MainViewListener callBack;
 
     private MainPresenter presenter;
@@ -65,6 +69,14 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
         //events
         msvSearch.setOnSearchViewListener(searchView);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (DetailSongActivity.callBack != null) {
+            DetailSongActivity.callBack.cancel();
+        }
     }
 
     @Override
@@ -144,4 +156,5 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
             presenter.getData(getApplicationContext(), action);
         }
     };
+
 }

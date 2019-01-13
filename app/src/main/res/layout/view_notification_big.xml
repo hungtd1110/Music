@@ -20,10 +20,10 @@
         android:layout_height="@dimen/size_notification_96dp">
 
         <LinearLayout
-            android:layout_weight="4"
+            android:layout_weight="6"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp">
 
             <TextView
                 android:id="@+id/textview_notification_name"
@@ -49,10 +49,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_weight="7"
+            android:layout_weight="3"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp">
 
             <TextView
                 android:background="@color/notification_separate"

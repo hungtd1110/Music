@@ -9,11 +9,13 @@ import com.example.admin.music.model.entity.Song;
  */
 
 public interface DetailSongPresenterListener {
-    public void getData(Context context, Song song);
+    public void getFavorite(Context context, Song song);
 
     public void showFavorite(boolean favorite);
 
-    public void saveData(Context context, Song song, boolean favorite);
+    public void saveFavorite(Context context, Song song, boolean favorite);
 
-    public void success();
+    public void addLyrics(Context context, Song song);
+
+    public void success(String action);
 }

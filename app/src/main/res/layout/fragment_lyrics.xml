@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.example.lyrics_lib.LyricsView
+        android:id="@+id/lyricsview_lyrics_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:change_color="@color/lyrics_change"
+        app:original_color="@color/lyrics_origin"
+        app:row_scroll="6"
+        app:text_size="@dimen/textsize_lyrics_content">
+    </com.example.lyrics_lib.LyricsView>
 
 </LinearLayout>

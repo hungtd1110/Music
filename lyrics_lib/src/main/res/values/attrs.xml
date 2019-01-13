@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LyricsView">
+        
+        <attr name="original_color" format="color"/>
+        <attr name="change_color" format="color"/>
+        <attr name="text_size" format="dimension"/>
+        <attr name="row_scroll" format="integer"/>
+
+    </declare-styleable>
+    
+</resources>

@@ -197,8 +197,14 @@
   <dimen name="padding_detailsong_10dp">
     13.33dp
   </dimen>
+  <dimen name="size_image_300dp">
+    400.0dp
+  </dimen>
   <dimen name="padding_image_20dp">
     26.67dp
+  </dimen>
+  <dimen name="textsize_lyrics_content">
+    21.33sp
   </dimen>
   <dimen name="textsize_list_title">
     18.67sp
@@ -269,6 +275,9 @@
   <dimen name="textsize_add_title">
     18.67sp
   </dimen>
+  <dimen name="textsize_add_subname">
+    18.67sp
+  </dimen>
   <dimen name="textsize_add_name">
     18.67sp
   </dimen>
@@ -299,8 +308,83 @@
   <dimen name="padding_add_10dp">
     13.33dp
   </dimen>
+  <dimen name="padding_add_20dp">
+    26.67dp
+  </dimen>
+  <dimen name="size_establish_48dp">
+    64.0dp
+  </dimen>
+  <dimen name="textsize_establish_name">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_establish_title">
+    18.67sp
+  </dimen>
+  <dimen name="textsize_establish_option">
+    21.33sp
+  </dimen>
+  <dimen name="margin_establish_5dp">
+    6.67dp
+  </dimen>
+  <dimen name="margin_establish_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="margin_establish_15dp">
+    20.0dp
+  </dimen>
+  <dimen name="margin_establish_20dp">
+    26.67dp
+  </dimen>
+  <dimen name="margin_establish_25dp">
+    33.33dp
+  </dimen>
+  <dimen name="margin_establish_30dp">
+    40.0dp
+  </dimen>
+  <dimen name="padding_establish_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="textsize_clock_action">
+    16.0sp
+  </dimen>
+  <dimen name="textsize_clock_time">
+    16.0sp
+  </dimen>
+  <dimen name="margin_clock_5dp">
+    6.67dp
+  </dimen>
+  <dimen name="margin_clock_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="margin_clock_15dp">
+    20.0dp
+  </dimen>
+  <dimen name="margin_clock_20dp">
+    26.67dp
+  </dimen>
+  <dimen name="textsize_time_action">
+    16.0sp
+  </dimen>
+  <dimen name="textsize_time_time">
+    16.0sp
+  </dimen>
+  <dimen name="margin_time_5dp">
+    6.67dp
+  </dimen>
+  <dimen name="margin_time_10dp">
+    13.33dp
+  </dimen>
+  <dimen name="margin_time_15dp">
+    20.0dp
+  </dimen>
+  <dimen name="margin_time_20dp">
+    26.67dp
+  </dimen>
   <dimen name="size_option_48dp">
     64.0dp
+  </dimen>
+  <dimen name="textsize_option_subname">
+    16.0sp
   </dimen>
   <dimen name="textsize_option_name">
     18.67sp
@@ -331,6 +415,9 @@
   </dimen>
   <dimen name="padding_option_10dp">
     13.33dp
+  </dimen>
+  <dimen name="padding_option_20dp">
+    26.67dp
   </dimen>
   <dimen name="height_detailsinger_imagebig">
     480.0dp

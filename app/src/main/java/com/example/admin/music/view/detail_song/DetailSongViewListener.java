@@ -11,7 +11,7 @@ public interface DetailSongViewListener {
 
     public void updateSpeed(float speed);
 
-    public void success();
+    public void success(String action);
 
     public void updateRun();
 
@@ -22,4 +22,10 @@ public interface DetailSongViewListener {
     public void updateClose();
 
     public void updateShow();
+
+    public void cancel();
+
+    public void addLyrics();
+
+    public void updateType(String type);
 }

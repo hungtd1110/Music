@@ -22,8 +22,8 @@ public class DetailSongPresenter implements DetailSongPresenterListener {
     }
 
     @Override
-    public void getData(Context context, Song song) {
-        model.getData(context, song);
+    public void getFavorite(Context context, Song song) {
+        model.getFavorite(context, song);
     }
 
     @Override
@@ -32,12 +32,17 @@ public class DetailSongPresenter implements DetailSongPresenterListener {
     }
 
     @Override
-    public void saveData(Context context, Song song, boolean favorite) {
-        model.saveData(context, song, favorite);
+    public void saveFavorite(Context context, Song song, boolean favorite) {
+        model.saveFavorite(context, song, favorite);
     }
 
     @Override
-    public void success() {
-        callBack.success();
+    public void addLyrics(Context context, Song song) {
+        model.addLyrics(context, song);
+    }
+
+    @Override
+    public void success(String action) {
+        callBack.success(action);
     }
 }

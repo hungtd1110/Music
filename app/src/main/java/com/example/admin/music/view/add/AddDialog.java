@@ -1,6 +1,7 @@
 package com.example.admin.music.view.add;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -102,36 +103,33 @@ public class AddDialog extends DialogFragment implements AddViewListener, View.O
     }
 
     private void handleAdd() {
-        final AlertDialog dialog = new AlertDialog.Builder(getContext()).create();
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        //get view
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View view = inflater.inflate(R.layout.view_add_add, (ViewGroup) getView(), false);
+        View view = inflater.inflate(R.layout.view_add_add, null, false);
 
         //controls
         final EditText edtContent = view.findViewById(R.id.editext_add_content);
-        TextView txtCancel = view.findViewById(R.id.textview_add_cancel);
-        TextView txtCreate = view.findViewById(R.id.textview_add_create);
 
-        //init
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setView(view);
-        dialog.show();
+        builder.setTitle(builder.getContext().getString(R.string.add_title))
+                .setView(view)
+                .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String name = edtContent.getText().toString();
+                        presenter.saveData(builder.getContext(), name, song);
+                    }
+                })
+                .setNeutralButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .create();
 
-        //events
-        txtCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
-
-        txtCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = edtContent.getText().toString();
-                presenter.saveData(dialog.getContext(), name, song);
-                dialog.dismiss();
-            }
-        });
+        builder.show();
     }
 
     private void getData() {

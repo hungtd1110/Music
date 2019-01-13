@@ -35,16 +35,14 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
     private OptionViewListener callBack;
 
     public OptionAdapter(Context context, ArrayList<String> listTitle, ArrayList<Integer> listImage,
-                         Song song, Playlist playlist, FragmentManager fragmentManager, OptionDialog optionDialog) {
+                         Song song, Playlist playlist, FragmentManager fragmentManager, OptionViewListener callBack) {
         this.context = context;
         this.listTitle = listTitle;
         this.listImage = listImage;
         this.song = song;
         this.playlist = playlist;
         this.fragmentManager = fragmentManager;
-
-        //init
-        callBack = optionDialog;
+        this.callBack = callBack;
     }
 
     @Override
@@ -154,43 +152,38 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                     }
-                });
+                })
+                .create();
+
         builder.show();
     }
 
     private void handleEdit() {
-        final AlertDialog dialog = new AlertDialog.Builder(context).create();
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.view_option_edit, null,false);
 
         //controls
         final EditText edtContent = view.findViewById(R.id.editext_option_content);
-        TextView txtCancel = view.findViewById(R.id.textview_option_cancel);
-        TextView txtCreate = view.findViewById(R.id.textview_option_create);
 
-        //init
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setView(view);
-        dialog.show();
+        builder.setTitle(context.getString(R.string.option_title_edit))
+                .setView(view)
+                .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String name = edtContent.getText().toString();
+                        callBack.edit(context, playlist, name);
+                    }
+                })
+                .setNeutralButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .create();
 
-        //events
-        txtCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
-
-        txtCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = edtContent.getText().toString();
-                callBack.edit(context, playlist, name);
-                dialog.dismiss();
-            }
-        });
-
-
-
+        builder.show();
     }
 }

@@ -4,17 +4,22 @@
     <!--All-->
     <string name="key_song">song</string>
     <string name="key_singer">singer</string>
+    <string name="key_favorite">favorite</string>
     <string name="key_list">list</string>
     <string name="key_index">index</string>
     <string name="key_playlist">playlist</string>
     <string name="key_word">word</string>
     <string name="key_action">action</string>
+    <string name="key_hightlight">Hightlight</string>
+    <string name="key_karaoke">Karaoke</string>
 
     <string name="action_see">see</string>
     <string name="action_search">search</string>
     <string name="action_song">song</string>
     <string name="action_singer">singer</string>
     <string name="action_playlist">playlist</string>
+    <string name="action_favorite">favorite</string>
+    <string name="action_lyrics">lyrics</string>
 
     <!--Main-->
     <string name="main_title">Tìm kiếm bài hát, ca sĩ, playlist</string>
@@ -43,6 +48,9 @@
     <string name="detailsong_speed">Chức năng hỗ trợ cho Android 6.0+</string>
     <string name="detailsong_notification">notification</string>
     <string name="detailsong_continue">continue</string>
+    <string name="detailsong_lyrics">Đã thêm file Lyrics</string>
+    <string name="detailsong_clock">Hẹn giờ</string>
+    <string name="detailsong_time">Đã tắt hẹn giờ</string>
 
     <!--Speed-->
     <string name="speed_title">Chọn tốc độ</string>
@@ -50,14 +58,29 @@
     <!--Add-->
     <string name="add_title">Tạo danh sách nhạc</string>
     <string name="add_close">Đóng</string>
-    <string name="add_create">ĐỒNG Ý</string>
-    <string name="add_cancel">HỦY BỎ</string>
     <string name="add_notify_success">Đã thêm vào danh sách nhạc</string>
     <string name="add_notify_fail">Lỗi</string>
+
+    <!--Establish-->
+    <string name="establish_title">Chọn chức năng</string>
+    <string name="establish_addlyrics">Thêm lyrics</string>
+    <string name="establish_change">Kiểu lyrics</string>
+    <string name="establish_item_karaoke">Karaoke</string>
+    <string name="establish_item_hightlight">Hightlight</string>
+    <string name="establish_item_device">Từ thiết bị</string>
+    <string name="establish_item_server">Từ server</string>
+
+    <!--Clock-->
+    <string name="clock_title">Hẹn giờ</string>
+    <string name="clock_action">Nhập số phút</string>
+
+    <!--Time-->
+    <string name="time_action">Thời gian còn lại</string>
 
     <!--Option-->
     <string name="option_title">Chọn chức năng</string>
     <string name="option_title_confirm">Xác nhận</string>
+    <string name="option_title_edit">Sửa danh sách nhạc</string>
 
     <string name="option_item_add">Thêm vào playlist</string>
     <string name="option_item_addfavorite">Yêu thích</string>
@@ -79,10 +102,6 @@
     <string name="option_notify_deleteplaylist">Đã xóa playlist</string>
     <string name="option_notify_errors">Lỗi</string>
     <string name="option_notify_conflict">Playlist đã tồn tại</string>
-
-    <string name="option_title_edit">Sửa danh sách nhạc</string>
-    <string name="option_create">ĐỒNG Ý</string>
-    <string name="option_cancel">HỦY BỎ</string>
 
     <string name="option_message_song">Bạn có chắc muốn xóa bài hát</string>
     <string name="option_message_playlist">Bạn có chắc muốn xóa playlist</string>

@@ -15,6 +15,7 @@ import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.option.OptionPresenter;
+import com.example.admin.music.view.detail_song.DetailSongActivity;
 import com.example.admin.music.view.favorite.FavoriteFragment;
 import com.example.admin.music.view.main.MainActivity;
 import com.example.admin.music.view.playlist.PlaylistFragment;
@@ -140,7 +141,7 @@ public class OptionDialog extends BottomSheetDialogFragment implements OptionVie
             listImage.add(R.mipmap.option_addfavorite);
             listImage.add(R.mipmap.option_delete);
         }
-        else if (key.equals(getString(R.string.key_singer))){
+        else if (key.equals(getString(R.string.key_favorite))){
             listTitle.add(getString(R.string.option_item_add));
             listTitle.add(getString(R.string.option_item_subfavorite));
             listTitle.add(getString(R.string.option_item_deletesong));

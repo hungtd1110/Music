@@ -31,8 +31,9 @@ public class MainModel {
     private ArrayList<Song> listFavorite;
     private ArrayList<Singer> listSinger;
     private ArrayList<Playlist> listPlaylist;
+    private ArrayList<Song> listLyrics;
 
-    private final String file_playlist = "playlist", file_favorite = "favorite";
+    private final String file_playlist = "playlist", file_favorite = "favorite", file_lyrics = "lyrics";
 
     public MainModel(MainPresenterListener callBack) {
         this.callBack = callBack;
@@ -42,6 +43,7 @@ public class MainModel {
         listFavorite = new ArrayList<>();
         listSinger = new ArrayList<>();
         listPlaylist = new ArrayList<>();
+        listLyrics = new ArrayList<>();
     }
 
     public void getData(Context context, String action) {
@@ -49,18 +51,36 @@ public class MainModel {
         getListFavorite(context);
         getListSinger();
         getListPlayList(context);
+        getListLyrics(context);
 
         //set data
         MainActivity.listSong = listSong;
         MainActivity.listFavorite = listFavorite;
         MainActivity.listSinger = listSinger;
         MainActivity.listPlaylist = listPlaylist;
+        MainActivity.listLyrics = listLyrics;
 
         if (action.equals(context.getString(R.string.main_action_get))) {
             callBack.show();
         }
         else if (action.equals(context.getString(R.string.main_action_update))) {
             callBack.showUpdate();
+        }
+    }
+
+    private void getListLyrics(Context context) {
+        listLyrics.clear();
+        File file = new File(context.getFilesDir(), file_lyrics);
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            listLyrics = (ArrayList<Song>) ois.readObject();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

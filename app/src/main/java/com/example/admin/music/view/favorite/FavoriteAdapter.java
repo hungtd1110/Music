@@ -108,7 +108,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                     bundle.putSerializable(context.getString(R.string.key_song), song);
 
                     dialog.setArguments(bundle);
-                    dialog.show(fragmentManager, context.getString(R.string.key_singer) + "");
+                    dialog.show(fragmentManager, context.getString(R.string.key_favorite));
                     break;
                 default:
                     Intent intent = new Intent(context, DetailSongActivity.class);

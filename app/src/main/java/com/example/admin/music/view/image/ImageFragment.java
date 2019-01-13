@@ -6,14 +6,15 @@ import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
+import com.pkmmte.view.CircularImageView;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -25,7 +26,7 @@ import java.io.InputStream;
 public class ImageFragment extends Fragment implements ImageViewListener {
     public static ImageViewListener callBack;
 
-    private ImageView imvImage;
+    private CircularImageView civImage;
     private Song song;
 
     @Nullable
@@ -34,13 +35,14 @@ public class ImageFragment extends Fragment implements ImageViewListener {
         View view = inflater.inflate(R.layout.fragment_image, container, false);
 
         //controls
-        imvImage = view.findViewById(R.id.imageview_image_image);
+        civImage = view.findViewById(R.id.circleimageview_image_image);
 
         //init
         callBack = this;
 
         getData();
         show();
+        animation(false);
 
         return view;
     }
@@ -51,6 +53,18 @@ public class ImageFragment extends Fragment implements ImageViewListener {
         show();
     }
 
+    @Override
+    public void animation(boolean run) {
+        if (run) {
+            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_image_run);
+            civImage.startAnimation(animation);
+        }
+        else {
+            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_image_stop);
+            civImage.startAnimation(animation);
+        }
+    }
+
     private void show() {
         try {
             MediaMetadataRetriever mmr = new MediaMetadataRetriever();
@@ -59,10 +73,10 @@ public class ImageFragment extends Fragment implements ImageViewListener {
             if (artBytes != null) {
                 InputStream is = new ByteArrayInputStream(mmr.getEmbeddedPicture());
                 Bitmap bm = BitmapFactory.decodeStream(is);
-                imvImage.setImageBitmap(bm);
+                civImage.setImageBitmap(bm);
             }
             else {
-                imvImage.setImageResource(R.drawable.all_imagesong);
+                civImage.setImageResource(R.drawable.all_imagesong);
             }
         } catch (Exception e) {
 

@@ -105,7 +105,12 @@
     <dimen name="padding_detailsong_10dp">10dp</dimen>
 
     <!--Image-->
+    <dimen name="size_image_300dp">300dp</dimen>
+
     <dimen name="padding_image_20dp">20dp</dimen>
+
+    <!--Lyrics-->
+    <dimen name="textsize_lyrics_content">16sp</dimen>
 
     <!--List-->
     <dimen name="textsize_list_title">14sp</dimen>
@@ -141,6 +146,7 @@
     <dimen name="size_add_32dp">32dp</dimen>
 
     <dimen name="textsize_add_title">14sp</dimen>
+    <dimen name="textsize_add_subname">14sp</dimen>
     <dimen name="textsize_add_name">14sp</dimen>
     <dimen name="textsize_add_total">12sp</dimen>
 
@@ -153,10 +159,46 @@
 
     <dimen name="padding_add_5dp">5dp</dimen>
     <dimen name="padding_add_10dp">10dp</dimen>
+    <dimen name="padding_add_20dp">20dp</dimen>
+
+    <!--Establish-->
+    <dimen name="size_establish_48dp">48dp</dimen>
+
+    <dimen name="textsize_establish_name">14sp</dimen>
+    <dimen name="textsize_establish_title">14sp</dimen>
+    <dimen name="textsize_establish_option">16sp</dimen>
+
+    <dimen name="margin_establish_5dp">5dp</dimen>
+    <dimen name="margin_establish_10dp">10dp</dimen>
+    <dimen name="margin_establish_15dp">15dp</dimen>
+    <dimen name="margin_establish_20dp">20dp</dimen>
+    <dimen name="margin_establish_25dp">25dp</dimen>
+    <dimen name="margin_establish_30dp">30dp</dimen>
+
+    <dimen name="padding_establish_10dp">10dp</dimen>
+
+    <!--Clock-->
+    <dimen name="textsize_clock_action">12sp</dimen>
+    <dimen name="textsize_clock_time">12sp</dimen>
+
+    <dimen name="margin_clock_5dp">5dp</dimen>
+    <dimen name="margin_clock_10dp">10dp</dimen>
+    <dimen name="margin_clock_15dp">15dp</dimen>
+    <dimen name="margin_clock_20dp">20dp</dimen>
+
+    <!--Time-->
+    <dimen name="textsize_time_action">12sp</dimen>
+    <dimen name="textsize_time_time">12sp</dimen>
+
+    <dimen name="margin_time_5dp">5dp</dimen>
+    <dimen name="margin_time_10dp">10dp</dimen>
+    <dimen name="margin_time_15dp">15dp</dimen>
+    <dimen name="margin_time_20dp">20dp</dimen>
 
     <!--Option-->
     <dimen name="size_option_48dp">48dp</dimen>
 
+    <dimen name="textsize_option_subname">12sp</dimen>
     <dimen name="textsize_option_name">14sp</dimen>
     <dimen name="textsize_option_title">14sp</dimen>
     <dimen name="textsize_option_option">16sp</dimen>
@@ -169,6 +211,7 @@
     <dimen name="margin_option_30dp">30dp</dimen>
 
     <dimen name="padding_option_10dp">10dp</dimen>
+    <dimen name="padding_option_20dp">20dp</dimen>
 
     <!--Detail Singer-->
     <dimen name="height_detailsinger_imagebig">360dp</dimen>
@@ -214,8 +257,6 @@
     <dimen name="size_notification_64dp">64dp</dimen>
     <dimen name="size_notification_96dp">96dp</dimen>
     <dimen name="size_notification_0.1dp">0.1dp</dimen>
-
-    <!--<dimen name="size_notification_96dp">96dp</dimen>-->
 
     <dimen name="textsize_notification_name">14sp</dimen>
     <dimen name="textsize_notification_singer">12sp</dimen>

@@ -6,7 +6,7 @@
 
     <!--All-->
     <color name="all_background">#ffffff</color>
-    <color name="all_swipe">#009688</color>
+    <color name="all_swipe">#00BFA5</color>
 
     <!--Main-->
     <color name="main_search">#ffffff</color>
@@ -14,9 +14,9 @@
     <!--Search-->
     <color name="search_title">#000000</color>
     <color name="search_name">#000000</color>
-    <color name="search_deleteall">#009688</color>
+    <color name="search_deleteall">#00BFA5</color>
     <color name="search_result">#000000</color>
-    <color name="search_notify">#009688</color>
+    <color name="search_notify">#00BFA5</color>
 
     <!--Song-->
     <color name="song_name">#000000</color>
@@ -33,14 +33,18 @@
     <!--Detail Song-->
     <color name="detailsong_name">#000000</color>
     <color name="detailsong_time">#000000</color>
-    <color name="detailsong_select">#009688</color>
+    <color name="detailsong_select">#00BFA5</color>
     <color name="detailsong_unselect">#E0E0E0</color>
+
+    <!--Lyric-->
+    <color name="lyrics_origin">#757575</color>
+    <color name="lyrics_change">#00BFA5</color>
 
     <!--List-->
     <color name="list_total">#000000</color>
     <color name="list_index">#000000</color>
     <color name="list_name">#000000</color>
-    <color name="list_select">#009688</color>
+    <color name="list_select">#00BFA5</color>
 
     <!--Speed-->
     <color name="speed_title">#000000</color>
@@ -48,28 +52,40 @@
 
     <!--Add-->
     <color name="add_title">#000000</color>
-    <color name="add_close">#009688</color>
+    <color name="add_close">#00BFA5</color>
     <color name="add_name">#000000</color>
-    <color name="add_create">#009688</color>
-    <color name="add_cancel">#009688</color>
+    <color name="add_create">#00BFA5</color>
+    <color name="add_cancel">#00BFA5</color>
+
+    <!--Establish-->
+    <color name="establish_title">#000000</color>
+    <color name="establish_option">#000000</color>
+
+    <!--Clock-->
+    <color name="clock_action">#000000</color>
+    <color name="clock_time">#000000</color>
+
+    <!--Time-->
+    <color name="time_action">#000000</color>
+    <color name="time_time">#000000</color>
 
     <!--Option-->
     <color name="option_title">#000000</color>
     <color name="option_option">#000000</color>
     <color name="option_name">#000000</color>
-    <color name="option_create">#009688</color>
-    <color name="option_cancel">#009688</color>
+    <color name="option_create">#00BFA5</color>
+    <color name="option_cancel">#00BFA5</color>
 
     <!--Detail Singer-->
-    <color name="detailsinger_title">#ffffff</color>
+    <color name="detailsinger_title">#EEEEEE</color>
     <color name="detailsinger_name">#000000</color>
 
     <!--Detail Playlist-->
-    <color name="detailplaylist_title">#ffffff</color>
+    <color name="detailplaylist_title">#EEEEEE</color>
     <color name="detailplaylist_name">#000000</color>
 
     <!--Notification-->
     <color name="notification_name">#000000</color>
-    <color name="notification_singer">#9E9E9E</color>
+    <color name="notification_singer">#757575</color>
     <color name="notification_separate">#E0E0E0</color>
 </resources>

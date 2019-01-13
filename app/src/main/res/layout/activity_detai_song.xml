@@ -50,8 +50,7 @@
 
         <ImageView
             android:id="@+id/imageview_detailsong_clock"
-            android:src="@drawable/detailsong_notclock"
-            android:padding="@dimen/padding_detailsong_5dp"
+            android:src="@drawable/detailsong_clock"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_width="@dimen/size_detailsong_32dp"
@@ -193,7 +192,7 @@
             android:layout_height="@dimen/size_detailsong_48dp" />
 
         <ImageView
-            android:id="@+id/imageview_detailsong_option"
+            android:id="@+id/imageview_detailsong_establish"
             android:src="@mipmap/detailsong_option"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
