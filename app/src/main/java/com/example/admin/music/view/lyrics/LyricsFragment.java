@@ -1,5 +1,6 @@
 package com.example.admin.music.view.lyrics;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -63,21 +64,21 @@ public class LyricsFragment extends Fragment implements LyricsViewListener {
     }
 
     @Override
-    public void run(int time, String type) {
-        if (type.equals(getString(R.string.key_karaoke))) {
+    public void run(Context context, int time, String type) {
+        if (type.equals(context.getString(R.string.key_karaoke))) {
             lrvContent.runKaraoke(time);
         }
-        else if (type.equals(getString(R.string.key_hightlight))) {
+        else if (type.equals(context.getString(R.string.key_hightlight))) {
             lrvContent.runHightLight(time);
         }
     }
 
     @Override
-    public void updateLyrics(int time, String type) {
-        if (type.equals(getString(R.string.key_karaoke))) {
+    public void updateLyrics(Context context, int time, String type) {
+        if (type.equals(context.getString(R.string.key_karaoke))) {
             lrvContent.updateKaraoke(time);
         }
-        else if (type.equals(getString(R.string.key_hightlight))) {
+        else if (type.equals(context.getString(R.string.key_hightlight))) {
             lrvContent.updateHightLight(time);
         }
     }

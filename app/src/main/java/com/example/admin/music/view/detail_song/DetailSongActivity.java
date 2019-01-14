@@ -51,28 +51,30 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.TimeZone;
 
 public class DetailSongActivity extends AppCompatActivity implements View.OnClickListener, DetailSongViewListener {
     public static DetailSongViewListener callBack;
 
+    private static Activity activity;
     private static ArrayList<Song> list;
-    private static int index, time;
+    private static int index, duration;
     private static Song song;
     private static ArrayList<Integer> listRandom;
     private static MediaPlayer mediaPlayer;
-    private static String typeLoop, speed;
-    private static boolean autoRun, close, open, clock;
+    private static String typeLoop, speed, typeLyrics;
+    private static boolean autoRun, close, clock;
+    private static ImageView imvRun;
     private static NotificationManager notificationManager;
 
     private ProgressBar pbLoad;
-    private ImageView imvRun, imvNext, imvPrevious, imvLoop, imvList, imvFavorite, imvSpeed, imvAdd, imvBack, imvEstablish, imvClock;
+    private ImageView imvNext, imvPrevious, imvLoop, imvList, imvFavorite, imvSpeed, imvAdd, imvBack, imvEstablish, imvClock;
     private SeekBar sbAudio;
     private TextView txtTime, txtDuration, txtName, txtSinger;
     private ViewPager vpContent;
     private Handler handler;
     private Runnable runnableTime, runnableLyrics;
     private boolean favorite, notification;
-    private String type;
     private DetailSongPresenter presenter;
 
     private final int TIME_UPDATE = 500, NOTIFICATION_ID = 0;
@@ -103,11 +105,11 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         vpContent = findViewById(R.id.viewpager_detailsong_content);
 
         //init
+        activity = this;
         presenter = new DetailSongPresenter(this);
         handler = new Handler();
         close = false;
-        open =true;
-        type = getString(R.string.key_hightlight);
+        typeLyrics = getString(R.string.key_hightlight);
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         getNotification();
@@ -158,12 +160,6 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
 
         //save data
         presenter.saveFavorite(this, song, favorite);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        open = false;
     }
 
     @Override
@@ -234,12 +230,12 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void updateShow() {
-        if (!open) {
-            //show new activity
-            Intent intent = new Intent(this, DetailSongActivity.class);
-            intent.putExtra(getString(R.string.detailsong_notification), true);
-            startActivity(intent);
-        }
+        DetailSongActivity.activity.finish();
+
+        //show new activity
+        Intent intent = new Intent(this, DetailSongActivity.class);
+        intent.putExtra(getString(R.string.detailsong_notification), true);
+        startActivity(intent);
     }
 
     @Override
@@ -257,12 +253,12 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void updateType(String type) {
-        this.type = type;
+        typeLyrics = type;
 
         //update lyrics
-        LyricsFragment.callBack.updateLyrics(mediaPlayer.getCurrentPosition(), type);
+        LyricsFragment.callBack.updateLyrics(this, mediaPlayer.getCurrentPosition(), typeLyrics);
 
-        Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, typeLyrics, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -327,9 +323,17 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                if (time > 0) {
-                    txtTime.setText(convertTime(time));
-                    Log.i("time_show", convertTime(time));
+                if (duration > 0) {
+                    String time;
+                    if (duration > 60 * 60 * 1000) {
+                        time = convertTimeLong(duration);
+                    }
+                    else {
+                        time = convertTime(duration);
+                    }
+
+                    txtTime.setText(time);
+                    Log.i("time_show", time);
                     handler.postDelayed(this, 0);
                 }
                 else {
@@ -344,7 +348,7 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
                 .setPositiveButton("Tắt hẹn giờ", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        time = 0;
+                        duration = 0;
                         clock = false;
 
                         Toast.makeText(DetailSongActivity.this, getString(R.string.detailsong_time), Toast.LENGTH_SHORT).show();
@@ -411,14 +415,14 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void handleTime(int t) {
-        time = t * 60 * 1000;
+        duration = t * 60 * 1000;      //mili seconds
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (time > 0) {
-                    time -= 1000;
-                    Log.i("time_set", convertTime(time));
+                if (duration > 0) {
+                    duration -= 1000;
+                    Log.i("time_set", convertTime(duration));
                     handler.postDelayed(this, 1000);
                 }
                 else if (clock){
@@ -459,6 +463,9 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
             imvFavorite.setImageResource(R.mipmap.detailsong_favorite);
             favorite = true;
         }
+
+        //save data
+        presenter.saveFavorite(this, song, favorite);
     }
 
     private void handleList() {
@@ -586,7 +593,11 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         setTime();
         setLyrics();
 
+        //show favorite
         presenter.getFavorite(this, song);
+
+        //update lyrics
+        LyricsFragment.callBack.updateLyrics(this, mediaPlayer.getCurrentPosition(), typeLyrics);
     }
 
     private void setTime() {
@@ -612,7 +623,7 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
             public void run() {
                 try {
                     int time = mediaPlayer.getCurrentPosition();
-                    LyricsFragment.callBack.run(time, type);
+                    LyricsFragment.callBack.run(getApplicationContext(), time, typeLyrics);
                 } catch (Exception e) {
 
                 }
@@ -664,6 +675,12 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
 
     private String convertTime(int duration) {
         SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
+        return sdf.format(duration);
+    }
+
+    private String convertTimeLong(int duration) {
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
         return sdf.format(duration);
     }
 
@@ -732,7 +749,7 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
             int time = seekBar.getProgress();
 
             //update lyrics
-            LyricsFragment.callBack.updateLyrics(time, type);
+            LyricsFragment.callBack.updateLyrics(getApplicationContext(), time, typeLyrics);
 
             mediaPlayer.seekTo(time);
         }

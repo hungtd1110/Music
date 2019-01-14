@@ -1,5 +1,7 @@
 package com.example.admin.music.view.lyrics;
 
+import android.content.Context;
+
 import com.example.admin.music.model.entity.Song;
 
 /**
@@ -11,7 +13,7 @@ public interface LyricsViewListener {
 
     public void show(Song song);
 
-    public void run(int time, String type);
+    public void run(Context context, int time, String type);
 
-    public void updateLyrics(int time, String type);
+    public void updateLyrics(Context context, int time, String type);
 }

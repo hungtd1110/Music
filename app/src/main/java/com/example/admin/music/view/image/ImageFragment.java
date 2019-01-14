@@ -55,14 +55,14 @@ public class ImageFragment extends Fragment implements ImageViewListener {
 
     @Override
     public void animation(boolean run) {
-        if (run) {
-            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_image_run);
-            civImage.startAnimation(animation);
-        }
-        else {
-            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_image_stop);
-            civImage.startAnimation(animation);
-        }
+//        if (run) {
+//            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_image_run);
+//            civImage.startAnimation(animation);
+//        }
+//        else {
+//            Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_image_stop);
+//            civImage.startAnimation(animation);
+//        }
     }
 
     private void show() {
