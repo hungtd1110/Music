@@ -1,5 +1,6 @@
 package com.example.admin.music.view.main;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +17,7 @@ import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Singer;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.main.MainPresenter;
+import com.example.admin.music.service.MusicService;
 import com.example.admin.music.view.detail_song.DetailSongActivity;
 import com.example.admin.music.view.favorite.FavoriteFragment;
 import com.example.admin.music.view.music.MusicFragment;

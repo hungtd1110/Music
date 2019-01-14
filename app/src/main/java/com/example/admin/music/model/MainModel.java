@@ -4,7 +4,6 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 
 import com.example.admin.music.R;
@@ -50,8 +49,12 @@ public class MainModel {
         getListSong(context);
         getListFavorite(context);
         getListSinger();
-        getListPlayList(context);
+        getListPlaylist(context);
         getListLyrics(context);
+
+        //check list
+        checkListFavorite();
+        checkListPlaylist();
 
         //set data
         MainActivity.listSong = listSong;
@@ -65,6 +68,54 @@ public class MainModel {
         }
         else if (action.equals(context.getString(R.string.main_action_update))) {
             callBack.showUpdate();
+        }
+    }
+
+    private void checkListPlaylist() {
+        for (int i = 0 ; i < listPlaylist.size() ; i++) {
+            Playlist playlist = listPlaylist.get(i);
+            ArrayList<Song> list = playlist.getListSong();
+
+            for (int j = 0 ; j < list.size() ; j++) {
+                int check = 0;
+
+                Song song = list.get(j);
+                for (Song s : listSong) {
+                    if (song.getName().equals(s.getName()) && song.getSinger().equals(s.getSinger())) {
+                        check ++;
+                        break;
+                    }
+                }
+
+                if (check == 0) {
+                    list.remove(j);
+                }
+            }
+
+            listPlaylist.remove(i);
+
+            if (list.size() > 0) {
+                playlist.setListSong(list);
+                listPlaylist.add(playlist);
+            }
+        }
+    }
+
+    private void checkListFavorite() {
+        for (int i = 0 ; i < listFavorite.size() ; i++) {
+            int check = 0;
+
+            Song song = listFavorite.get(i);
+            for (Song s : listSong) {
+                if (song.getName().equals(s.getName()) && song.getSinger().equals(s.getSinger())) {
+                    check ++;
+                    break;
+                }
+            }
+
+            if (check == 0) {
+                listFavorite.remove(i);
+            }
         }
     }
 
@@ -84,7 +135,7 @@ public class MainModel {
         }
     }
 
-    private void getListPlayList(Context context) {
+    private void getListPlaylist(Context context) {
         listPlaylist.clear();
         File file = new File(context.getFilesDir(), file_playlist);
         try {

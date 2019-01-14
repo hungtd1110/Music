@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.example.admin.music.R;
 import com.example.admin.music.view.detail_song.DetailSongActivity;
@@ -48,5 +49,11 @@ public class MusicService extends Service {
         }
         //flag này có tác dụng khi android bị kill hoặc bộ nhớ thấp, hệ thống sẽ start lại và gửi kết quả lần nữa.
         return START_REDELIVER_INTENT;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("service_cancel", "cancel");
     }
 }

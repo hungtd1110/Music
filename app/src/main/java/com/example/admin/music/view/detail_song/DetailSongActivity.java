@@ -198,9 +198,8 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
             FavoriteFragment.callBack.update();
         }
         else if (action.equals(getString(R.string.action_lyrics))) {
-            LyricsFragment.callBack.update(song);
-
             Toast.makeText(this, getString(R.string.detailsong_lyrics), Toast.LENGTH_SHORT).show();
+            LyricsFragment.callBack.update(song);
         }
     }
 
@@ -844,9 +843,11 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
             ArrayList<NormalFile> list = data.getParcelableArrayListExtra(Constant.RESULT_PICK_FILE);
-            String path = list.get(0).getPath();
-            song.setPathLyrics(path);
-            presenter.addLyrics(this, song);
+            if (list.size() > 0) {
+                String path = list.get(0).getPath();
+                song.setPathLyrics(path);
+                presenter.addLyrics(this, song);
+            }
         }
     }
 }

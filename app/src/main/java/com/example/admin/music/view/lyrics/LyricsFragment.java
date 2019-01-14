@@ -1,8 +1,6 @@
 package com.example.admin.music.view.lyrics;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,12 +13,8 @@ import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.lyrics.LyricsPresenter;
 import com.example.lyrics_lib.LyricsView;
-import com.vincent.filepicker.Constant;
-import com.vincent.filepicker.activity.NormalFilePickActivity;
-import com.vincent.filepicker.filter.entity.NormalFile;
 
 import java.io.File;
-import java.util.ArrayList;
 
 /**
  * Created by admin on 1/10/2019.
@@ -54,13 +48,17 @@ public class LyricsFragment extends Fragment implements LyricsViewListener {
     @Override
     public void update(Song song) {
         presenter.getLyrics(song);
-        show(song);
     }
 
     @Override
     public void show(Song song) {
         File file = new File(song.getPathLyrics());
-        lrvContent.loadFile(file);
+        try {
+            lrvContent.loadFile(file);
+        } catch (Exception e) {
+            presenter.removeLyrics(getContext(), song);
+            Toast.makeText(getContext(), getString(R.string.lyrics_errors), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

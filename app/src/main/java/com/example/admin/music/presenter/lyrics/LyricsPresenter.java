@@ -1,5 +1,7 @@
 package com.example.admin.music.presenter.lyrics;
 
+import android.content.Context;
+
 import com.example.admin.music.model.LyricsModel;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.view.lyrics.LyricsViewListener;
@@ -27,5 +29,10 @@ public class LyricsPresenter implements LyricsPresenterListener {
     @Override
     public void show(Song song) {
         callBack.show(song);
+    }
+
+    @Override
+    public void removeLyrics(Context context, Song song) {
+        model.removeLyrics(context, song);
     }
 }
