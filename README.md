@@ -18,6 +18,11 @@
 
 <br>
 
+#### Mẫu file lyrics
+[Mẫu Lyrics](/data/Zayn_Taylor_Swift_I_Don't_Wanna_Live_Forever_(Fifty_Shades_Darker).txt)
+
+<br>
+
 #### Tải file APK
 [Download APK](/data/Music.apk)
 
