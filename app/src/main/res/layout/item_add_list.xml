@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:paddingTop="@dimen/padding_add_10dp"
+        android:paddingTop="@dimen/padding_addplaylist_10dp"
         android:background="@color/all_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -13,12 +13,12 @@
             android:id="@+id/imageview_add_image"
             android:src="@drawable/all_imagesong"
             android:scaleType="fitXY"
-            android:layout_width="@dimen/width_add_image"
-            android:layout_height="@dimen/height_add_image" />
+            android:layout_width="@dimen/width_addplaylist_image"
+            android:layout_height="@dimen/height_addplaylist_image" />
 
         <RelativeLayout
             android:layout_toRightOf="@+id/imageview_add_image"
-            android:layout_marginLeft="@dimen/margin_add_10dp"
+            android:layout_marginLeft="@dimen/margin_addplaylist_10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -26,9 +26,9 @@
                 android:id="@+id/textview_add_name"
                 android:maxLines="2"
                 android:ellipsize="end"
-                android:textSize="@dimen/textsize_add_name"
+                android:textSize="@dimen/textsize_addplaylist_name"
                 android:text="Tên ca sĩ rất là dài và sẽ xuống dòng"
-                android:textColor="@color/add_name"
+                android:textColor="@color/addplaylist_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -36,7 +36,7 @@
                 android:id="@+id/textview_add_total"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:textSize="@dimen/textsize_add_total"
+                android:textSize="@dimen/textsize_addplaylist_total"
                 android:layout_below="@+id/textview_add_name"
                 android:text="N bài hát"
                 android:layout_width="wrap_content"

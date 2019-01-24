@@ -1,4 +1,4 @@
-package com.example.admin.music.view.add;
+package com.example.admin.music.view.addplaylist;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Song;
-import com.example.admin.music.presenter.add.AddPresenter;
+import com.example.admin.music.presenter.addplaylist.AddPlaylistPresenter;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -25,13 +25,13 @@ import java.util.ArrayList;
  * Created by admin on 1/6/2019.
  */
 
-public class AddAdapter extends RecyclerView.Adapter<AddAdapter.ViewHolder> {
+public class AddPlaylistAdapter extends RecyclerView.Adapter<AddPlaylistAdapter.ViewHolder> {
     private Context context;
     private ArrayList<Playlist> list;
-    private AddPresenter presenter;
+    private AddPlaylistPresenter presenter;
     private Song song;
 
-    public AddAdapter(Context context, ArrayList<Playlist> list, AddPresenter presenter, Song song) {
+    public AddPlaylistAdapter(Context context, ArrayList<Playlist> list, AddPlaylistPresenter presenter, Song song) {
         this.context = context;
         this.list = list;
         this.presenter = presenter;

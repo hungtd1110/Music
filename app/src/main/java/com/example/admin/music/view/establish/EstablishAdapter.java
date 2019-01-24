@@ -2,6 +2,7 @@ package com.example.admin.music.view.establish;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.music.R;
+import com.example.admin.music.model.entity.Song;
+import com.example.admin.music.view.addlyrics.AddLyricsActivity;
 import com.example.admin.music.view.detail_song.DetailSongActivity;
 
 import java.util.ArrayList;
@@ -24,12 +27,14 @@ public class EstablishAdapter extends RecyclerView.Adapter<EstablishAdapter.View
     private Context context;
     private ArrayList<String> listTitle;
     private ArrayList<Integer> listImage;
+    private Song song;
     private EstablishViewListener callBack;
 
-    public EstablishAdapter(Context context, ArrayList<String> listTitle, ArrayList<Integer> listImage, EstablishViewListener callBack) {
+    public EstablishAdapter(Context context, ArrayList<String> listTitle, ArrayList<Integer> listImage, Song song, EstablishViewListener callBack) {
         this.context = context;
         this.listTitle = listTitle;
         this.listImage = listImage;
+        this.song = song;
         this.callBack = callBack;
     }
 
@@ -121,7 +126,9 @@ public class EstablishAdapter extends RecyclerView.Adapter<EstablishAdapter.View
                             DetailSongActivity.callBack.addLyrics();
                         }
                         else {
-                            Toast.makeText(context, "server", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(context, AddLyricsActivity.class);
+                            intent.putExtra(context.getString(R.string.key_song), song);
+                            context.startActivity(intent);
                         }
                     }
                 })

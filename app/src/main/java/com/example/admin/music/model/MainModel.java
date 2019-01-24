@@ -2,9 +2,11 @@ package com.example.admin.music.model;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Playlist;
@@ -19,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by admin on 1/5/2019.
@@ -32,7 +35,7 @@ public class MainModel {
     private ArrayList<Playlist> listPlaylist;
     private ArrayList<Song> listLyrics;
 
-    private final String file_playlist = "playlist", file_favorite = "favorite", file_lyrics = "lyrics";
+    private final String file_playlist = "playlist", file_favorite = "favorite", file_lyrics = "lyrics", preferences_user = "user";
 
     public MainModel(MainPresenterListener callBack) {
         this.callBack = callBack;
@@ -69,6 +72,25 @@ public class MainModel {
         else if (action.equals(context.getString(R.string.main_action_update))) {
             callBack.showUpdate();
         }
+    }
+
+    public void getUser(final Context context) {
+        final SharedPreferences preferences = context.getSharedPreferences(preferences_user, context.MODE_PRIVATE);
+        String id = preferences.getString("id", "");
+        
+        if (id.equals("")) {
+            //new id
+            id = Calendar.getInstance().getTimeInMillis() + "";
+
+            //save data
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("id", id);
+            editor.commit();
+        }
+
+        MainActivity.idUser = id;
+
+        Log.i("id_user", id);
     }
 
     private void checkListPlaylist() {

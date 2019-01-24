@@ -6,7 +6,8 @@
 
     <!--All-->
     <color name="all_background">#ffffff</color>
-    <color name="all_swipe">#00BFA5</color>
+    <color name="all_swipe_1">#00BFA5</color>
+    <color name="all_swipe_2">#64DD17</color>
 
     <!--Main-->
     <color name="main_search">#ffffff</color>
@@ -50,12 +51,16 @@
     <color name="speed_title">#000000</color>
     <color name="speed_speed">#000000</color>
 
-    <!--Add-->
-    <color name="add_title">#000000</color>
-    <color name="add_close">#00BFA5</color>
-    <color name="add_name">#000000</color>
-    <color name="add_create">#00BFA5</color>
-    <color name="add_cancel">#00BFA5</color>
+    <!--Add Playlist-->
+    <color name="addplaylist_title">#000000</color>
+    <color name="addplaylist_close">#00BFA5</color>
+    <color name="addplaylist_name">#000000</color>
+    <color name="addplaylist_create">#00BFA5</color>
+    <color name="addplaylist_cancel">#00BFA5</color>
+
+    <!--Add Lyrics-->
+    <color name="addlyrics_search">#ffffff</color>
+    <color name="addlyrics_name">#000000</color>
 
     <!--Establish-->
     <color name="establish_title">#000000</color>

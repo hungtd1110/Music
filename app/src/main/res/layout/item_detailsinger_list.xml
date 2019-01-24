@@ -17,14 +17,13 @@
             android:id="@+id/imageview_detailsinger_add"
             android:src="@mipmap/detailsinger_add"
             android:padding="@dimen/padding_detailplaylist_10dp"
-            android:background="@color/all_swipe"
+            android:background="@color/all_swipe_1"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </LinearLayout>
 
     <!--layout show-->
-
     <RelativeLayout
         android:id="@+id/relativelayout_detailsinger_item"
         android:paddingTop="@dimen/padding_detailsinger_10dp"

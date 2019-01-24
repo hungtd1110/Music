@@ -1,17 +1,30 @@
 package com.example.admin.music.model;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.admin.music.R;
+import com.example.admin.music.config.Data;
+import com.example.admin.music.model.entity.Lyrics;
 import com.example.admin.music.model.entity.Song;
+import com.example.admin.music.model.entity.Test;
 import com.example.admin.music.presenter.detail_song.DetailSongPresenterListener;
+import com.example.admin.music.utils.APIUtils;
 import com.example.admin.music.view.main.MainActivity;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by admin on 1/6/2019.
@@ -75,6 +88,65 @@ public class DetailSongModel {
         writeLyrics(context);
 
         callBack.success(context.getString(R.string.action_lyrics));
+
+        uploadLyrics(song);
+    }
+
+    private void uploadLyrics(Song song) {
+        String content = getContent(song);
+
+        if (!content.equals("")) {
+            //get data
+            Lyrics lyrics = new Lyrics();
+            lyrics.setIdUser(MainActivity.idUser);
+            lyrics.setName(song.getName());
+            lyrics.setSinger(song.getSinger());
+            lyrics.setContent(content);
+
+            //upload
+            Data data = APIUtils.getData();
+            Call<Void> call = data.upload(lyrics.getIdUser(), lyrics.getName(), lyrics.getSinger(),
+                    lyrics.getContent(), lyrics.getDownload());
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    Log.i("call_upload", "ok");
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Log.i("call_upload", t.toString());
+                }
+            });
+        }
+    }
+
+    private String getContent(Song song) {
+        String content = "";
+        File file = new File(song.getPathLyrics());
+
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader reader = new BufferedReader(isr);
+            String line = "";
+            while ((line = reader.readLine()) != null) {
+                //check format
+                int begin = line.indexOf("[");
+                int end = line.indexOf("]");
+                String time = line.substring(begin + 1,end);
+                String lyrics = line.substring(end + 1);
+
+                //add content
+                content += line + "\n";
+            }
+            reader.close();
+        }
+        catch (Exception e) {
+
+        }
+
+        return content;
     }
 
     private void writeLyrics(Context context) {

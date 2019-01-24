@@ -58,11 +58,16 @@
     <!--Speed-->
     <string name="speed_title">Chọn tốc độ</string>
 
-    <!--Add-->
-    <string name="add_title">Tạo danh sách nhạc</string>
-    <string name="add_close">Đóng</string>
-    <string name="add_notify_success">Đã thêm vào danh sách nhạc</string>
-    <string name="add_notify_fail">Lỗi</string>
+    <!--Add Playlist-->
+    <string name="addplaylist_title">Tạo danh sách nhạc</string>
+    <string name="addplaylist_close">Đóng</string>
+    <string name="addplaylist_notify_success">Đã thêm vào danh sách nhạc</string>
+    <string name="addplaylist_notify_fail">Lỗi</string>
+
+    <!--Add Lyrics-->
+    <string name="addlyrics_title">Tìm kiếm bài hát, ca sĩ</string>
+    <string name="addlyrics_hint">Nhập từ khóa ...</string>
+    <string name="addlyrics_search">Danh sách lyrics</string>
 
     <!--Establish-->
     <string name="establish_title">Chọn chức năng</string>

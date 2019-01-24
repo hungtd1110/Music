@@ -35,7 +35,7 @@ import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.presenter.detail_song.DetailSongPresenter;
 import com.example.admin.music.service.MusicService;
-import com.example.admin.music.view.add.AddDialog;
+import com.example.admin.music.view.addplaylist.AddPlaylistDialog;
 import com.example.admin.music.view.establish.EstablishDialog;
 import com.example.admin.music.view.favorite.FavoriteFragment;
 import com.example.admin.music.view.image.ImageFragment;
@@ -109,7 +109,7 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         presenter = new DetailSongPresenter(this);
         handler = new Handler();
         close = false;
-        typeLyrics = getString(R.string.key_hightlight);
+        typeLyrics = getString(R.string.key_karaoke);
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         getNotification();
@@ -147,19 +147,6 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         imvEstablish.setOnClickListener(this);
         imvClock.setOnClickListener(this);
         sbAudio.setOnSeekBarChangeListener(changeListener);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        //save data
-        presenter.saveFavorite(this, song, favorite);
     }
 
     @Override
@@ -437,11 +424,14 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
 
     private void handleEstablish() {
         EstablishDialog dialog = new EstablishDialog();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(getString(R.string.key_song), song);
+        dialog.setArguments(bundle);
         dialog.show(getSupportFragmentManager(), "");
     }
 
     private void handleAdd() {
-        AddDialog dialog = new AddDialog();
+        AddPlaylistDialog dialog = new AddPlaylistDialog();
         Bundle bundle = new Bundle();
         bundle.putSerializable(getString(R.string.key_song), song);
         dialog.setArguments(bundle);

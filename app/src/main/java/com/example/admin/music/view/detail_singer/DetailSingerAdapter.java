@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Song;
-import com.example.admin.music.view.add.AddDialog;
+import com.example.admin.music.view.addplaylist.AddPlaylistDialog;
 import com.example.admin.music.view.detail_song.DetailSongActivity;
 
 import java.io.ByteArrayInputStream;
@@ -115,7 +115,7 @@ public class DetailSingerAdapter extends RecyclerView.Adapter<DetailSingerAdapte
             switch (view.getId()) {
                 case R.id.imageview_detailsinger_add:
                     Song song = list.get(getAdapterPosition());
-                    AddDialog dialog = new AddDialog();
+                    AddPlaylistDialog dialog = new AddPlaylistDialog();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(context.getString(R.string.key_song), song);
                     dialog.setArguments(bundle);

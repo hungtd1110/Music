@@ -1,22 +1,15 @@
 package com.example.admin.music.model;
 
 import android.content.Context;
-import android.os.Environment;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Song;
-import com.example.admin.music.presenter.add.AddPresenterListener;
+import com.example.admin.music.presenter.addplaylist.AddPlaylistPresenterListener;
 import com.example.admin.music.view.main.MainActivity;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
@@ -24,13 +17,13 @@ import java.util.ArrayList;
  * Created by admin on 1/6/2019.
  */
 
-public class AddModel {
-    private AddPresenterListener callBack;
+public class AddPlaylistModel {
+    private AddPlaylistPresenterListener callBack;
     private ArrayList<Playlist> list;
 
     private final String file_playlist = "playlist";
 
-    public AddModel(AddPresenterListener callBack) {
+    public AddPlaylistModel(AddPlaylistPresenterListener callBack) {
         this.callBack = callBack;
 
         //init

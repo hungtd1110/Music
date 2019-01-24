@@ -36,6 +36,11 @@ public class MainPresenter implements MainPresenterListener {
     }
 
     @Override
+    public void getUser(Context context) {
+        model.getUser(context);
+    }
+
+    @Override
     public void showUpdate() {
         callBack.showUpdate();
     }

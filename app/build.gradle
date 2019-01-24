@@ -38,4 +38,8 @@ dependencies {
     implementation 'com.vincent.filepicker:MultiTypeFilePicker:1.0.8'
     //circle image
     implementation 'com.pkmmte.view:circularimageview:1.1'
+    //restrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    //json parsing
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 }

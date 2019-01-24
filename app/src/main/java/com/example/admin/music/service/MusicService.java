@@ -1,9 +1,12 @@
 package com.example.admin.music.service;
 
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.example.admin.music.R;
@@ -26,8 +29,6 @@ public class MusicService extends Service {
         return null;
     }
 
-
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         switch (intent.getAction()) {
@@ -47,13 +48,19 @@ public class MusicService extends Service {
                 DetailSongActivity.callBack.updateShow();
                 break;
         }
-        //flag này có tác dụng khi android bị kill hoặc bộ nhớ thấp, hệ thống sẽ start lại và gửi kết quả lần nữa.
-        return START_REDELIVER_INTENT;
+        return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i("service_cancel", "cancel");
+        Log.i("service_destroy", "destroy");
+    }
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        super.onTaskRemoved(rootIntent);
+        Log.i("service_kill", "kill");
+        stopSelf();     //hủy service, app sẽ chắc chắn chạy vào onDestroy
     }
 }

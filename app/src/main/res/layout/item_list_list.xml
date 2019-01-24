@@ -6,6 +6,7 @@
     android:background="@color/all_background">
 
     <RelativeLayout
+        android:layout_centerVertical="true"
         android:layout_width="@dimen/margin_list_60dp"
         android:layout_height="wrap_content">
 
@@ -16,7 +17,7 @@
             android:textColor="@color/list_index"
             android:textSize="@dimen/textsize_list_index"
             android:layout_marginLeft="@dimen/margin_list_20dp"
-            android:layout_marginTop="@dimen/margin_list_5dp"
+            android:paddingBottom="@dimen/padding_list_5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

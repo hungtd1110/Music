@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.admin.music.R;
+import com.example.admin.music.model.entity.Song;
 import com.example.admin.music.view.detail_song.DetailSongActivity;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class EstablishDialog extends BottomSheetDialogFragment implements Establ
     private RecyclerView rvList;
     private ArrayList<String> listTitle;
     private ArrayList<Integer> listImage;
+    private Song song;
 
     @Nullable
     @Override
@@ -35,6 +37,7 @@ public class EstablishDialog extends BottomSheetDialogFragment implements Establ
         listTitle = new ArrayList<>();
         listImage = new ArrayList<>();
 
+        getData();
         show();
 
         return view;
@@ -54,10 +57,14 @@ public class EstablishDialog extends BottomSheetDialogFragment implements Establ
         listImage.add(R.mipmap.establish_change);
 
         //show
-        EstablishAdapter adapter = new EstablishAdapter(getContext(), listTitle, listImage, this);
+        EstablishAdapter adapter = new EstablishAdapter(getContext(), listTitle, listImage, song, this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
     }
 
+    private void getData() {
+        Bundle bundle = getArguments();
+        song = (Song) bundle.getSerializable(getString(R.string.key_song));
+    }
 }

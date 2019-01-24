@@ -1,27 +1,24 @@
-package com.example.admin.music.presenter.add;
+package com.example.admin.music.presenter.addplaylist;
 
 import android.content.Context;
 
-import com.example.admin.music.model.AddModel;
-import com.example.admin.music.model.entity.Playlist;
+import com.example.admin.music.model.AddPlaylistModel;
 import com.example.admin.music.model.entity.Song;
-import com.example.admin.music.view.add.AddViewListener;
-
-import java.util.ArrayList;
+import com.example.admin.music.view.addplaylist.AddPlaylistViewListener;
 
 /**
  * Created by admin on 1/6/2019.
  */
 
-public class AddPresenter implements AddPresenterListener {
-    private AddViewListener callBack;
-    private AddModel model;
+public class AddPlaylistPresenter implements AddPlaylistPresenterListener {
+    private AddPlaylistViewListener callBack;
+    private AddPlaylistModel model;
 
-    public AddPresenter(AddViewListener callBack) {
+    public AddPlaylistPresenter(AddPlaylistViewListener callBack) {
         this.callBack = callBack;
 
         //init
-        model = new AddModel(this);
+        model = new AddPlaylistModel(this);
     }
 
     @Override

@@ -17,5 +17,7 @@ public interface MainPresenterListener {
 
     public void show();
 
+    public void getUser(Context context);
+
     public void showUpdate();
 }

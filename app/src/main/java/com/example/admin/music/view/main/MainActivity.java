@@ -1,13 +1,11 @@
 package com.example.admin.music.view.main;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -36,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
     public static ArrayList<Singer> listSinger;
     public static ArrayList<Playlist> listPlaylist;
     public static ArrayList<Song> listLyrics;
+    public static String idUser;
     public static MainViewListener callBack;
 
     private MainPresenter presenter;
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.main_search);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.all_search);
 
         //controls
         msvSearch = findViewById(R.id.materialsearchview_main_search);
@@ -66,7 +65,9 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
         handler = new Handler();
         presenter = new MainPresenter(this);
 
-        handler.post(runnable);
+        handler.post(runnableData);
+        handler.post(runnableUser);
+        initService();  //init service
 
         //events
         msvSearch.setOnSearchViewListener(searchView);
@@ -76,9 +77,7 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (DetailSongActivity.callBack != null) {
-            DetailSongActivity.callBack.cancel();
-        }
+        DetailSongActivity.callBack.cancel();
     }
 
     @Override
@@ -106,13 +105,13 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
         rlProgressBar.setVisibility(View.GONE);
 
         //remove runnable
-        handler.removeCallbacks(runnable);
+        handler.removeCallbacks(runnableData);
     }
 
     @Override
     public void update() {
         action = getString(R.string.main_action_update);
-        handler.post(runnable);
+        handler.post(runnableData);
     }
 
     @Override
@@ -130,7 +129,13 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
         PlaylistFragment.callBack.update();
 
         //remove runnable
-        handler.removeCallbacks(runnable);
+        handler.removeCallbacks(runnableData);
+    }
+
+    private void initService() {
+        Intent intent = new Intent(this,MusicService.class);
+        intent.setAction("");
+        startService(intent);
     }
 
     private MaterialSearchView.SearchViewListener searchView = new MaterialSearchView.SearchViewListener() {
@@ -152,10 +157,17 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
         }
     };
 
-    private Runnable runnable = new Runnable() {
+    private Runnable runnableData = new Runnable() {
         @Override
         public void run() {
             presenter.getData(getApplicationContext(), action);
+        }
+    };
+
+    private Runnable runnableUser = new Runnable() {
+        @Override
+        public void run() {
+            presenter.getUser(getApplicationContext());
         }
     };
 

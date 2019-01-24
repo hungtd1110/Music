@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/all_background"
+    tools:context="com.example.admin.music.view.addlyrics.AddLyricsActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_addlyrics_toolbar"
+            android:background="@color/addlyrics_search"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+
+            <TextView
+                android:text="@string/addlyrics_title"
+                android:textSize="@dimen/textsize_addlyrics_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <com.miguelcatalan.materialsearchview.MaterialSearchView
+            android:id="@+id/materialsearchview_addlyrics_search"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:hint="@string/addlyrics_hint">
+        </com.miguelcatalan.materialsearchview.MaterialSearchView>
+
+        <TextView
+            android:layout_marginTop="?actionBarSize"
+            android:background="@color/notification_separate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_addlyrics_1dp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_addlyrics_list"
+            android:layout_margin="@dimen/margin_addlyrics_10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_addlyrics_progressbar"
+            android:background="@color/all_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

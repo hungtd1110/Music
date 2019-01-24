@@ -1,4 +1,4 @@
-package com.example.admin.music.view.add;
+package com.example.admin.music.view.addplaylist;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Song;
-import com.example.admin.music.presenter.add.AddPresenter;
+import com.example.admin.music.presenter.addplaylist.AddPlaylistPresenter;
 import com.example.admin.music.view.main.MainActivity;
 import com.example.admin.music.view.playlist.PlaylistFragment;
 
@@ -30,14 +30,14 @@ import java.util.ArrayList;
  * Created by admin on 1/6/2019.
  */
 
-public class AddDialog extends DialogFragment implements AddViewListener, View.OnClickListener {
-    private AddPresenter presenter;
+public class AddPlaylistDialog extends DialogFragment implements AddPlaylistViewListener, View.OnClickListener {
+    private AddPlaylistPresenter presenter;
     private Song song;
     private ArrayList<Playlist> list;
     private RecyclerView rvList;
     private LinearLayout llAdd;
     private TextView txtClose;
-    private AddAdapter adapter;
+    private AddPlaylistAdapter adapter;
 
     @Nullable
     @Override
@@ -51,7 +51,7 @@ public class AddDialog extends DialogFragment implements AddViewListener, View.O
 
         //init
         list = MainActivity.listPlaylist;
-        presenter = new AddPresenter(this);
+        presenter = new AddPlaylistPresenter(this);
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         getData();
@@ -66,7 +66,7 @@ public class AddDialog extends DialogFragment implements AddViewListener, View.O
 
     @Override
     public void show() {
-        adapter = new AddAdapter(getContext(), list, presenter, song);
+        adapter = new AddPlaylistAdapter(getContext(), list, presenter, song);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
@@ -81,12 +81,12 @@ public class AddDialog extends DialogFragment implements AddViewListener, View.O
         //update playlist
         PlaylistFragment.callBack.update();
 
-        Toast.makeText(context, context.getString(R.string.add_notify_success), Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, context.getString(R.string.addplaylist_notify_success), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void fail(Context context) {
-        Toast.makeText(context, context.getString(R.string.add_notify_fail), Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, context.getString(R.string.addplaylist_notify_fail), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -112,7 +112,7 @@ public class AddDialog extends DialogFragment implements AddViewListener, View.O
         //controls
         final EditText edtContent = view.findViewById(R.id.editext_add_content);
 
-        builder.setTitle(builder.getContext().getString(R.string.add_title))
+        builder.setTitle(builder.getContext().getString(R.string.addplaylist_title))
                 .setView(view)
                 .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                     @Override

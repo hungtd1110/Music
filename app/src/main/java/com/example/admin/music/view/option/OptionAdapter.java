@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,7 +16,7 @@ import android.widget.TextView;
 import com.example.admin.music.R;
 import com.example.admin.music.model.entity.Playlist;
 import com.example.admin.music.model.entity.Song;
-import com.example.admin.music.view.add.AddDialog;
+import com.example.admin.music.view.addplaylist.AddPlaylistDialog;
 
 import java.util.ArrayList;
 
@@ -89,7 +88,7 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
             String deletePlaylist = context.getString(R.string.option_item_deleteplaylist);
 
             if (title.equals(add)) {
-                AddDialog dialog = new AddDialog();
+                AddPlaylistDialog dialog = new AddPlaylistDialog();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(context.getString(R.string.key_song), song);
                 dialog.setArguments(bundle);

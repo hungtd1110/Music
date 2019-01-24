@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/padding_add_10dp"
-    android:paddingRight="@dimen/padding_add_10dp"
+    android:paddingLeft="@dimen/padding_addplaylist_10dp"
+    android:paddingRight="@dimen/padding_addplaylist_10dp"
     android:background="@color/all_background">
 
     <EditText
         android:id="@+id/editext_add_content"
-        android:layout_marginTop="@dimen/margin_add_5dp"
-        android:textSize="@dimen/textsize_add_subname"
-        android:textColor="@color/add_name"
+        android:layout_marginTop="@dimen/margin_addplaylist_5dp"
+        android:textSize="@dimen/textsize_addplaylist_subname"
+        android:textColor="@color/addplaylist_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
