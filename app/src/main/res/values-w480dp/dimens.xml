@@ -318,31 +318,31 @@
     1.33dp
   </dimen>
   <dimen name="width_addlyrics_index">
-    66.67dp
+    60.0dp
   </dimen>
   <dimen name="height_addlyrics_index">
-    106.67dp
+    73.33dp
   </dimen>
   <dimen name="width_addlyrics_action">
-    106.67dp
+    73.33dp
   </dimen>
   <dimen name="height_addlyrics_action">
-    106.67dp
+    73.33dp
   </dimen>
   <dimen name="textsize_addlyrics_title">
     18.67sp
   </dimen>
   <dimen name="textsize_addlyrics_name">
-    21.33sp
-  </dimen>
-  <dimen name="textsize_addlyrics_singer">
     18.67sp
   </dimen>
-  <dimen name="textsize_addlyrics_download">
+  <dimen name="textsize_addlyrics_singer">
     16.0sp
   </dimen>
+  <dimen name="textsize_addlyrics_download">
+    13.33sp
+  </dimen>
   <dimen name="textsize_addlyrics_id">
-    16.0sp
+    13.33sp
   </dimen>
   <dimen name="margin_addlyrics_10dp">
     13.33dp
@@ -352,6 +352,9 @@
   </dimen>
   <dimen name="margin_addlyrics_20dp">
     26.67dp
+  </dimen>
+  <dimen name="padding_addlyrics_5dp">
+    6.67dp
   </dimen>
   <dimen name="padding_addlyrics_10dp">
     13.33dp

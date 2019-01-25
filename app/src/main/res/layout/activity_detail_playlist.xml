@@ -21,7 +21,7 @@
 
             <ImageView
                 android:id="@+id/imageview_detailplaylist_imagebig"
-                android:src="@drawable/all_imagelist"
+                android:src="@drawable/all_imagelist_1"
                 android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_detailplaylist_imagebig" />

@@ -22,7 +22,7 @@ import retrofit2.http.Path;
 public interface Data {
     @FormUrlEncoded
     @POST("lyrics")
-    Call<Void> upload(@Field("idUser") String idUser, @Field("name") String name, @Field("singer") String singer,
+    Call<Void> select(@Field("idUser") String idUser, @Field("name") String name, @Field("singer") String singer,
                       @Field("content") String content, @Field("download") int download);
 
     @GET("lyrics/{id}/edit")

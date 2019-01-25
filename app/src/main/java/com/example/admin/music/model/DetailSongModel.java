@@ -103,19 +103,19 @@ public class DetailSongModel {
             lyrics.setSinger(song.getSinger());
             lyrics.setContent(content);
 
-            //upload
+            //select
             Data data = APIUtils.getData();
-            Call<Void> call = data.upload(lyrics.getIdUser(), lyrics.getName(), lyrics.getSinger(),
+            Call<Void> call = data.select(lyrics.getIdUser(), lyrics.getName(), lyrics.getSinger(),
                     lyrics.getContent(), lyrics.getDownload());
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
-                    Log.i("call_upload", "ok");
+                    Log.i("call_select", "ok");
                 }
 
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
-                    Log.i("call_upload", t.toString());
+                    Log.i("call_select", t.toString());
                 }
             });
         }

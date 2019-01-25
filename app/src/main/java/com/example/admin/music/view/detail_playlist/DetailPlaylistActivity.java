@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.admin.music.R;
@@ -16,10 +17,14 @@ import com.example.admin.music.presenter.detail_playlist.DetailPlaylistPresenter
 import com.example.admin.music.view.playlist.PlaylistFragment;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class DetailPlaylistActivity extends AppCompatActivity implements DetailPlaylistViewListener {
+    private static ArrayList<Integer> list;
+
     private DetailPlaylistPresenter presenter;
     private RecyclerView rvList;
+    private ImageView imvImage;
     private Playlist playlist;
     private String action;
 
@@ -36,11 +41,13 @@ public class DetailPlaylistActivity extends AppCompatActivity implements DetailP
 
         //controls
         rvList = findViewById(R.id.recyclerview_detailplaylist_list);
+        imvImage = findViewById(R.id.imageview_detailplaylist_imagebig);
 
         //init
         presenter = new DetailPlaylistPresenter(this);
 
         getData();
+        setImage();
         show();
 
         if (action.equals(getString(R.string.action_see))) {
@@ -89,6 +96,32 @@ public class DetailPlaylistActivity extends AppCompatActivity implements DetailP
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
+    }
+
+    private void setImage() {
+        //get data
+        if (list == null || list.size() == 0) {
+            list = new ArrayList<>();
+            list.add(R.drawable.all_imagelist_1);
+            list.add(R.drawable.all_imagelist_2);
+            list.add(R.drawable.all_imagelist_3);
+            list.add(R.drawable.all_imagelist_4);
+            list.add(R.drawable.all_imagelist_5);
+            list.add(R.drawable.all_imagelist_6);
+            list.add(R.drawable.all_imagelist_7);
+            list.add(R.drawable.all_imagelist_8);
+            list.add(R.drawable.all_imagelist_9);
+            list.add(R.drawable.all_imagelist_10);
+        }
+
+        //get random
+        Random random = new Random();
+        int index = random.nextInt(list.size());
+
+        //set image
+        imvImage.setImageResource(list.get(index));
+
+        list.remove(index);
     }
 
     private void getData() {

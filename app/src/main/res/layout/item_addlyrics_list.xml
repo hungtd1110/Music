@@ -49,7 +49,7 @@
                 android:id="@+id/textview_addlyrics_index"
                 android:text="1"
                 android:layout_centerInParent="true"
-                android:paddingRight="@dimen/padding_addlyrics_10dp"
+                android:paddingRight="@dimen/padding_addlyrics_5dp"
                 android:textColor="@color/list_index"
                 android:textSize="@dimen/textsize_list_index"
                 android:layout_width="wrap_content"
@@ -82,23 +82,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/textview_addlyrics_download"
-                android:textSize="@dimen/textsize_addlyrics_download"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:text="download"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textview_addlyrics_id"
-                android:textSize="@dimen/textsize_addlyrics_id"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:text="id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/textview_addlyrics_id"
+                    android:textSize="@dimen/textsize_addlyrics_id"
+                    android:layout_centerVertical="true"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textview_addlyrics_spe"
+                    android:layout_toRightOf="@id/textview_addlyrics_id"
+                    android:textSize="@dimen/textsize_addlyrics_id"
+                    android:layout_centerVertical="true"
+                    android:text=" _ "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textview_addlyrics_download"
+                    android:layout_toRightOf="@id/textview_addlyrics_spe"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/textsize_addlyrics_download"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="download"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
 
         </LinearLayout>
 
