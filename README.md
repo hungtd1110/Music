@@ -15,6 +15,7 @@
    * Control notification
    * Cài đặt thời gian tự tắt nhạc
    * Thêm file lyrics từ thiết bị
+   * Thêm file lyrics từ server
 
 <br>
 
