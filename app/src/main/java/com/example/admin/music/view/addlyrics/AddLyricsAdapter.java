@@ -166,7 +166,7 @@ public class AddLyricsAdapter extends RecyclerView.Adapter<AddLyricsAdapter.View
     private void saveLyrics(Lyrics lyrics) {
         String path = Environment.getExternalStorageDirectory() + "/Music";
 
-        File file = context.getExternalFilesDir(path);
+        File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
         }

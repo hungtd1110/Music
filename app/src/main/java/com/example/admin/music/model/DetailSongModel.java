@@ -143,7 +143,7 @@ public class DetailSongModel {
             reader.close();
         }
         catch (Exception e) {
-
+            content = "";
         }
 
         return content;

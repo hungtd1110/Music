@@ -235,6 +235,12 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
         intent.putExtra(Constant.MAX_NUMBER, 1);
         intent.putExtra(NormalFilePickActivity.SUFFIX, new String[] {"txt"});
         startActivityForResult(intent, 0);
+
+//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//        intent.addCategory(Intent.CATEGORY_OPENABLE);
+//        intent.setType("text/plain");
+//        intent.setType("*/*");
+//        startActivityForResult(intent, 0);
     }
 
     @Override
@@ -838,6 +844,14 @@ public class DetailSongActivity extends AppCompatActivity implements View.OnClic
                 song.setPathLyrics(path);
                 presenter.addLyrics(this, song);
             }
+
+//            if (data != null) {
+//                String path = data.getData().getPath();
+//                song.setPathLyrics(path);
+//                presenter.addLyrics(this, song);
+//
+//                Toast.makeText(this, path, Toast.LENGTH_LONG).show();
+//            }
         }
     }
 }

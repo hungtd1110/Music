@@ -75,12 +75,6 @@ public class MainActivity extends AppCompatActivity implements MainViewListener 
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        DetailSongActivity.callBack.cancel();
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:

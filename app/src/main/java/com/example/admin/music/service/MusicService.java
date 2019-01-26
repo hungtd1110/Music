@@ -48,13 +48,19 @@ public class MusicService extends Service {
                 DetailSongActivity.callBack.updateShow();
                 break;
         }
-        return START_STICKY;
+        return START_REDELIVER_INTENT;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         Log.i("service_destroy", "destroy");
+        try {
+            DetailSongActivity.callBack.cancel();
+        }
+        catch (Exception e) {
+
+        }
     }
 
     @Override
